@@ -1,0 +1,31 @@
+.grid {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 22;
+  pointer-events: none;
+  transition: opacity $transition ease;
+
+  .grid-line {
+    width: 100%;
+    height: 100%;
+    transform-origin: top center;
+    transform: scaleY(0);
+    @include shadow(1px 0px 0px 0px rgba($color-grid, 0.3));
+
+  }
+
+  &.formenu {
+    z-index: 32;
+  }
+
+  &.active {
+    .grid-line {
+      transition: transform $transition*5 ease;
+      transform: scaleY(1);
+    }
+  }
+}

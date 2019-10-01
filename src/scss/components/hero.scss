@@ -1,0 +1,31 @@
+.hero {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.scroll-line {
+  position: absolute;
+  opacity: 0;
+  left: 50%;
+  bottom: 0;
+  width: 1px;
+  height: 10vh;
+  transform: translate(-50%);
+  overflow: hidden;
+  z-index: 13;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: hsla(0,0%,100%,.75);
+    left: 0;
+    right: auto;
+    top: 0;
+    bottom: auto;
+    width: 100%;
+    height: 100%;
+    animation: scroll-line 1s ease-in-out infinite;
+  }
+}

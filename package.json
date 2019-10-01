@@ -1,0 +1,24 @@
+{
+  "name": "Anml",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-sass --output-style compressed --source-map true src/scss/style.scss -o dist/assets/styles/ && babel src -d dist/assets",
+    "dev": "onchange \"src/scss/**/*.scss\" \"src/libs/**/*.js\" -- npm run build"
+  },
+  "author": "Darfys",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.2",
+    "babel-preset-minify": "^0.5.1",
+    "node-sass": "^4.12.0",
+    "onchange": "^5.2.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0"
+  }
+}

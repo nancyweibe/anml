@@ -1,0 +1,357 @@
+.cover-anim {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &::after{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+  }
+
+  .cover-content-titles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 13;
+    pointer-events: none;
+
+    .cover-anim-title {
+      position: absolute;
+      top: 50%;
+      left: 16.6666%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity $transition/2 ease;
+
+      h2 {
+        margin-bottom: 3rem;
+        max-width: 400px;
+        opacity: 0;
+        font-size: 4rem;
+        line-height: 3.4rem;
+        transform: translateY(8rem);
+        transition: all $transition * 4 cubic-bezier(0.09, 0.34, 0, 1);
+        position: relative;
+      }
+
+      p {
+        opacity: 0;
+        transform: translateY(8rem);
+        margin-bottom: 4rem;
+        transition: all $transition * 4 cubic-bezier(0.09, 0.34, 0, 1);
+      }
+
+      &.active {
+        opacity: 1;
+        pointer-events: all;
+
+        h2 {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        p {
+          transition-delay: $transition;
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .cover-anim-titles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 13;
+
+    .cover-anim-title {
+      position: absolute;
+      top: 50%;
+      left: 45%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity $transition/2 ease;
+
+      h2 {
+        margin-bottom: 3rem;
+        max-width: 320px;
+        opacity: 0;
+        transform: translateY(8rem);
+        transition: all $transition * 4 cubic-bezier(0.09, 0.34, 0, 1);
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          display: block;
+          height: 2.875rem;
+          width: 100%;
+          left: -2rem;
+          bottom: -2rem;
+          transform: scaleX(0);
+          transform-origin: center left;
+          background-color: rgba($color-white, 0.3);
+          transition: transform $transition * 2 cubic-bezier(0.09, 0.34, 0, 1);
+        }
+      }
+
+      p {
+        opacity: 0;
+        transform: translateY(8rem);
+        margin-bottom: 4rem;
+        padding-left: 8vw;
+        transition: all $transition * 4 cubic-bezier(0.09, 0.34, 0, 1);
+      }
+
+      a {
+        display: block;
+        opacity: 0;
+        transform: translateY(8rem);
+        margin-bottom: 2rem;
+        padding-left: 10vw;
+        transition: all $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
+
+        &::after {
+          transform: scaleX(0);
+          transition: transform $transition * 2 cubic-bezier(0.09, 0.34, 0, 1);
+        }
+      }
+
+      &.active {
+        opacity: 1;
+        pointer-events: all;
+
+        h2 {
+          opacity: 1;
+          transform: translateY(0);
+
+          &:after {
+            transform: scaleX(1);
+            transition-delay: $transition * 6;
+          }
+        }
+
+        p {
+          transition-delay: $transition;
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        a {
+          transition-delay: $transition * 2;
+          opacity: 1;
+          transform: translateY(0);
+
+          &:after {
+            transform: scaleX(0.05);
+            transition-delay: $transition * 6;
+          }
+        }
+      }
+    }
+  }
+
+  .cover-anim-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    z-index: 12;
+    transition: all $transition*2 ease;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 5px;
+      width: 100%;
+      background-color: rgba($color-white, 0.5);
+    }
+
+    .cover-anim-progress-segment {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .cover-anim-progress-label {
+        color: rgba($color-white, 0.5);
+        font-size: 0.625rem;
+        letter-spacing: 0.1rem;
+        font-family: $font-family-secondary;
+      }
+
+      .cover-anim-progress-bar {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        height: 5px;
+        background-color: rgba($color-white, 1);
+        transform: scaleX(0);
+        transform-origin: center left;
+      }
+
+      &.active {
+        .cover-anim-progress-bar {
+          transition: transform 5000ms cubic-bezier(0.09, 0.34, 0, 1);
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+
+  .cover-anim-bgs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .cover-anim-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      .cover-anim-bg-segment {
+        left: 0;
+        top: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        clip: rect(0vh, 16.6666vw, 100vh, 0vw);
+        transform-origin: center left;
+        overflow: hidden;
+
+        > div {
+          width: 110vw;
+          height: 110vh;
+          left: 0;
+          top: 0;
+          position: absolute;
+          background-repeat: no-repeat !important;
+          background-size: cover !important;
+          background-position-x: 0 !important;
+          transform: translateX(0);
+        }
+
+        &:nth-child(1) {
+          clip: rect(0vh, 16.6666vw, 100vh, 16.6666vw);
+        }
+        &:nth-child(2) {
+          clip: rect(0vh, 33.3332vw, 100vh, 33.3332vw);
+        }
+        &:nth-child(3) {
+          clip: rect(0vh, 49.9998vw, 100vh, 49.9998vw);
+        }
+        &:nth-child(4) {
+          clip: rect(0vh, 66.6664vw, 100vh, 66.6664vw);
+        }
+        &:nth-child(5) {
+          clip: rect(0vh, 83.3333vw, 100vh, 83.3333vw);
+        }
+        &:nth-child(6) {
+          clip: rect(0vh, 100vw, 100vh, 100vw);
+        }
+      }
+
+      &.played {
+        z-index: 1;
+
+        .cover-anim-bg-segment {
+          &:nth-child(1) {
+            clip: rect(0vh, 16.6666vw, 100vh, 0vw);
+          }
+          &:nth-child(2) {
+            clip: rect(0vh, 33.3332vw, 100vh, 16.6666vw);
+          }
+          &:nth-child(3) {
+            clip: rect(0vh, 49.9998vw, 100vh, 33.3332vw);
+          }
+          &:nth-child(4) {
+            clip: rect(0vh, 66.6664vw, 100vh, 49.9998vw);
+          }
+          &:nth-child(5) {
+            clip: rect(0vh, 83.3333vw, 100vh, 66.6664vw);
+          }
+          &:nth-child(6) {
+            clip: rect(0vh, 100vw, 100vh, 83.3333vw);
+          }
+        }
+      }
+
+      &.active {
+        z-index: 2;
+        .cover-anim-bg-segment {
+          transition: clip $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
+          &:nth-child(1) {
+            clip: rect(0vh, 16.6666vw, 100vh, 0vw);
+          }
+          &:nth-child(2) {
+            clip: rect(0vh, 33.3332vw, 100vh, 16.6666vw);
+          }
+          &:nth-child(3) {
+            clip: rect(0vh, 49.9998vw, 100vh, 33.3332vw);
+          }
+          &:nth-child(4) {
+            clip: rect(0vh, 66.6664vw, 100vh, 49.9998vw);
+          }
+          &:nth-child(5) {
+            clip: rect(0vh, 83.3333vw, 100vh, 66.6664vw);
+          }
+          &:nth-child(6) {
+            clip: rect(0vh, 100vw, 100vh, 83.3333vw);
+          }
+        }
+      }
+
+      &.stop, &.played {
+        .cover-anim-bg-segment {
+          > div {
+            transition: transform $cover-transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
+            transform: translateX(-10vw);
+          }
+        }
+      }
+    }
+  }
+
+  &.expanded {
+
+    &::after{
+      opacity: 0.3;
+      background-color: $color-black;
+      transition: opacity $transition*8 cubic-bezier(0.09, 0.34, 0, 1);
+    }
+
+    .cover-anim-progress {
+      opacity: 0;
+    }
+
+    .scroll-line {
+      opacity: 1;
+    }
+  }
+}
