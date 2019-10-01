@@ -354,4 +354,38 @@
       opacity: 1;
     }
   }
+
+  &.formenu {
+    .cover-anim-titles {
+      .cover-anim-title {
+        transform: translateY(-50%);
+        pointer-events: none;
+        opacity: 0;
+  
+        h2 {
+          transform: translateY(8rem);
+  
+          &::after {
+            transform: scaleX(0);
+          }
+        }
+  
+        p {
+          opacity: 0;
+          transform: translateY(8rem);
+        }
+  
+        a {
+          transform: translateY(8rem);
+  
+          &::after {
+            transform: scaleX(0);
+          }
+        }
+      }
+    }
+    .cover-anim-progress {
+      opacity: 0;
+    }
+  }
 }

@@ -1,4 +1,4 @@
-let enter = null, intro = null, cover = null, header = null, menuToggler = null, grid = null, menu = null, content = null, next = null, loaderBar = null, isContent = false;
+let enter = null, coverAnimCont = null, intro = null, cover = null, header = null, menuToggler = null, grid = null, menu = null, content = null, next = null, loaderBar = null, isContent = false;
 
 const segmentsCount = 6;
 let coverAnim = null;
@@ -22,6 +22,7 @@ function init() {
   next = document.querySelector(".next");
   loaderBar = document.querySelector(".hero .scroll-line");
   grid = document.querySelector(".grid");
+  coverAnimCont = document.querySelector(".cover-anim");
 
   coverAnim = new CoverAnim(".cover-anim");
   sepText = new SepText();
@@ -72,11 +73,12 @@ function events() {
 
     if (menuToggler.classList.contains("active")) {
       header.classList.add("white");
-      cover.classList.add("z-31");
+      isContent ? cover.classList.add("z-31") : coverAnimCont.classList.add("formenu");
     } else {
       let theme = document.elementFromPoint(0, 50).closest("[data-theme]").dataset.theme;
       header.classList.add(theme);
-      setTimeout(() => { cover.classList.remove("z-31") }, 1500)
+      isContent ? setTimeout(() => { cover.classList.remove("z-31") }, 1500) : cover.classList.remove("z-31");
+      coverAnimCont.classList.remove("formenu");
     }
 
     if (isContent) {
