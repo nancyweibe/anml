@@ -1,4 +1,4 @@
-class FlowImages {
+export default class FlowImages {
   constructor(element) {
     this.selector = element;
     this.rowsCount = 2;
@@ -7,7 +7,7 @@ class FlowImages {
     this.rows = [];
     this.images = [];
     this.container = document.querySelector(element);
-    this.init();
+    if(this.container) this.init();
   }
 
   init() {

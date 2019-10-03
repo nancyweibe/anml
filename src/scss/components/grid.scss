@@ -28,4 +28,11 @@
       transform: scaleY(1);
     }
   }
+
+  &.active.x5 {
+    .grid-line {
+      transition: transform $transition*30 ease;
+      transform: scaleY(1);
+    }
+  }
 }

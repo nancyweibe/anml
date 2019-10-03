@@ -1,4 +1,4 @@
-class SepText {
+export default class SepText {
   constructor() {
     this.texts = [];
     this.init();

@@ -1,9 +1,10 @@
 .content {
   width: 100%;
-  display: none;
+  min-height: 100vh;
   font-size: 1.25rem;
   line-height: 2rem;
   color: $color-lgray;
+  position: relative;
 
   &.active {
     display: block;
@@ -21,4 +22,8 @@
     margin-block-start: 1.4em;
     margin-block-end: 1.4em;
   }
+}
+
+.loaded {
+  min-height: 100vh;
 }

@@ -14,12 +14,10 @@ html, body {
   margin: 0;
   padding: 0;
   position: relative;
-  background-color: color("gray", 4);
   font-family: $font-family;
   font-weight: $font-weight;
   font-size: $font-size;
   color: $color-text;
-  overflow-x: hidden;
 
   *::-webkit-scrollbar, &::-webkit-scrollbar {
     width: 12px;
@@ -49,6 +47,12 @@ html, body {
   *,&{
     scrollbar-width: none;
   } 
+}
+
+#page-title {display: none;}
+
+body {
+  overflow-x: hidden;
 }
 
 h1,h2,h3,h4,h5,h6{

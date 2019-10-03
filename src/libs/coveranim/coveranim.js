@@ -1,13 +1,12 @@
-class CoverAnim {
+export default class CoverAnim {
   constructor(selector, options) {
     this.options = { segments: 6, slideDelay: 5000 };
     this.states = { currentSlide: 0, ts: null, isTouched: false, isScroll: false, length: 0, direction: 1, isPaused: false, isMobile: false };
     this.bgsContainers = [];
     this.progressSegments = [];
     this.titles = [];
-    this.contentTitles = [];
     this.container = document.querySelector(selector);
-    this.init();
+    if(this.container) this.init();
   }
 
   init() {
@@ -24,8 +23,6 @@ class CoverAnim {
 
   open(i){
 
-    const cover = document.querySelector(".cover");
-
     this.states.isPaused = true;
     this.states.isScroll = true;
 
@@ -35,8 +32,6 @@ class CoverAnim {
         elm.classList.remove("active");
       });
 
-      this.contentTitles[i].classList.add("active");
-      cover.classList.add("expanded");
       this.container.classList.add("expanded");
     }, 600)
     
@@ -92,7 +87,6 @@ class CoverAnim {
 
   parseTitles = () => {
     this.titles = this.container.querySelectorAll(".cover-anim-titles .cover-anim-title");
-    this.contentTitles = this.container.querySelectorAll(".cover-content-titles .cover-anim-title");
   }
 
   move = (direction) => {
