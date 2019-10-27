@@ -1,5 +1,5 @@
 .grid {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -15,11 +15,19 @@
     transform-origin: top center;
     transform: scaleY(0);
     @include shadow(1px 0px 0px 0px rgba($color-grid, 0.3));
+  }
 
+  .simple-grid &{
+    position: absolute;
+    z-index: 2;
+
+    .grid-line {
+      transform: scaleY(1);
+    }
   }
 
   &.formenu {
-    z-index: 32;
+    z-index: 32 !important;
   }
 
   &.active {
@@ -31,8 +39,19 @@
 
   &.active.x5 {
     .grid-line {
-      transition: transform $transition*30 ease;
+      transition: transform $transition*5 ease;
       transform: scaleY(1);
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+    .grid-line {
+      &:nth-child(5){
+        display: none;
+      }  
+      &:nth-child(6){
+        display: none;
+      }  
     }
   }
 }

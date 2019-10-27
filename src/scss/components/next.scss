@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
 }
 
 .about-us-links {
@@ -37,5 +38,31 @@
       background-color: $color-white;
       color: $color-black;
     }
+  }
+
+  @media screen and (max-width: $mobile) {
+
+    >a {
+      display: flex;
+      width: calc(100vw/#{$segments-mobile});
+      height: calc(100vw/#{$segments-mobile});
+      margin: 0 calc(100vw/#{$segments-mobile}/2);
+      border: 1px solid rgba($color-white, 0.5);
+      align-items: center;
+      justify-content: center;
+      color: $color-white;
+      font-family: $font-family-secondary;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.625rem;
+      text-decoration: none;
+      transition: background-color $transition ease;
+  
+      &:hover{
+        background-color: $color-white;
+        color: $color-black;
+      }
+    }
+
   }
 }

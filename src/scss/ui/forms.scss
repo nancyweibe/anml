@@ -1,0 +1,112 @@
+form {
+
+  &::-webkit-input-placeholder {
+    font-family: $font-family-secondary;
+  }
+  &::-moz-placeholder {
+    font-family: $font-family-secondary;
+  }
+  &:-ms-input-placeholder {
+    font-family: $font-family-secondary;
+  }
+  &:-moz-placeholder {
+    font-family: $font-family-secondary;
+  }
+
+  button {
+    font-family: $font-family-additional;
+    font-weight: 600;
+  }
+
+  .group {
+    position: relative;
+    margin-top: 35px;
+  }
+
+  .inputMaterial {
+    font-size: 0.9375rem;
+    font-family: $font-family-secondary;
+    color: $color-white;
+    background-color: transparent;
+    padding: 15px 10px 15px 0;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid $color-black-border;
+  }
+
+  .inputMaterial:focus {
+    outline: none;
+  }
+
+  .form-notification {
+    margin-top: 1rem;
+    padding: 10px;
+    font-family: $font-family-secondary;
+    background: $color-white;
+    color: $color-black;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all $transition ease;
+  }
+
+  &.succes{
+    .form-notification {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  label {
+    color: $color-gray;
+    font-family: $font-family-secondary;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+
+  .inputMaterial:focus~label,
+  .inputMaterial[data-empty=false]~label,
+  .has-error .inputMaterial:invalid~label {
+    top: -1rem;
+    font-size: 0.75rem;
+    color: $color-gray;
+  }
+
+  .has-error .help-block {
+    color: #ff1744;
+  }
+
+  .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  .bar:after {
+    content: '';
+    height: 1px;
+    width: 0;
+    bottom: 0;
+    position: absolute;   
+    background: $color-white;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+
+  .bar:after {
+    left: 0;
+  }
+
+  .inputMaterial:focus~.bar:after {
+    width: 100%;
+  }
+
+}

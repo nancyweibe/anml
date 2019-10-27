@@ -1,21 +1,94 @@
-<div id="page-title">Anml - Contact</div>
-<div class="hero" data-theme="white">
-  <div class="cover-bg">
-    <div class="cover-bg-img" style="background: url(./assets/img/hero-3.jpg)"></div>
-    <div class="cover-bg-title">
-        <h2 class="text-hero-title">Contact</h2>
-        <p class="text-subtitle">Contact</p>
-      </div>
-    <span class="scroll-line"></span>
-  </div>
-</div>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
-<div class="content" data-theme="black">
+<div id="page-title">Anml - Contact</div>
+
+<div class="content bg-dark" data-theme="white">
   <div class="block p-d">
     <div class="container">
       <div class="row">
-        <div class="col" data-entry="fade-in">
-            <h2 data-entry="fade-in">Contact</h2>
+        <div class="col w-100">
+          <h2 class="text-caption">Lets Talk</h2>
+          <div>
+            <p class="text-subtitle-op">Body copy large dolor sit amet consectetur adipisicing elit est.</p>
+          </div>
+          <form id="contact-form" action="form-process.php" method="POST" data-hover="" autocomplete="off">
+            <div class="container-fuid">
+              <div class="row">
+                <div class="col w-40 w-md-100 pr">
+                  <div class="group">
+                    <input class="inputMaterial" type="text" name="name" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Name</label>
+                  </div>
+                </div>
+                <div class="col w-40 w-md-100 pr">
+                  <div class="group">
+                    <input class="inputMaterial" type="text" name="company">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Company</label>
+                  </div>
+                </div>
+                <div class="col w-40 w-md-100">
+                  <div class="group">
+                    <input class="inputMaterial" type="text" name="email" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Email</label>
+                  </div>
+                </div>
+                <div class="col w-40 w-md-100">
+                  <div class="group">
+                    <input class="inputMaterial" type="text" name="project-type" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Project Type</label>
+                  </div>
+                </div>
+                <div class="col w-40 w-md-100">
+                  <div class="group">
+                    <input class="inputMaterial" type="text" name="budget" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Budget</label>
+                  </div>
+                </div>
+                <div class="col w-40 w-md-100">
+                  <div class="group">
+                    <input class="inputMaterial" type="text" name="timeline" required="">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Timeline</label>
+                  </div>
+                </div>
+                <div class="col w-100">
+                  <div class="group">
+                    <textarea class="inputMaterial" rows="4" name="description" required="" spellcheck="false"></textarea>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Description</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row dir-rev-mb">
+                <div class="col w-100">
+                  <div class="form-notification"><strong>Thank you</strong>, I'll talk to you as soon as possible.</div>
+                </div>
+                <div class="col 50 w-md-100 mt-4">
+                  <div>info@anml.com</div>
+                  <div>50 University Ave. B312</div>
+                  <div>Los Gatos, CA 95030</div>
+                  <div>669.444.0412</div>
+                </div>
+                <div class="col 50 w-md-100 mt-4">
+                  <button class="btn-submit" id="buttonGet" type="submit">SUBMIT</button>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
         <div class="col">
         </div>

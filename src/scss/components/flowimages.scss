@@ -1,5 +1,5 @@
 .flow-images {
-  padding: 0 calc(100% / 6);
+  padding: 0 calc(100% / #{$segments});
   width: 100vw;
   height: 100vh;
   position: absolute;
@@ -64,6 +64,22 @@
           &:nth-child(even) {
             margin-left: 50%;
             width: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+    padding: 0;
+
+    .flow-images-row {
+      width: 50%;
+      
+      >div {
+        > div {
+          img {
+            width: calc(100vw / 2);
           }
         }
       }

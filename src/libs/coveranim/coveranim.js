@@ -1,15 +1,20 @@
 export default class CoverAnim {
   constructor(selector, options) {
-    this.options = { segments: 6, slideDelay: 5000 };
-    this.states = { currentSlide: 0, ts: null, isTouched: false, isScroll: false, length: 0, direction: 1, isPaused: false, isMobile: false };
+    this.options = { segments: window.innerWidth > 767 ? 6 : 4, slideDelay: 20000 };
+    this.states = { currentSlide: 0, ts: null, isTouched: false, isScroll: true, length: 0, direction: 1, isPaused: false, isMobile: false, isdisablesScroll: false };
     this.bgsContainers = [];
     this.progressSegments = [];
     this.titles = [];
     this.container = document.querySelector(selector);
-    if(this.container) this.init();
+    this.cover = null;
+    this.intro = null;
+    if (this.container) this.init();
   }
 
   init() {
+    this.cover = document.querySelector(".cover");
+    this.intro = document.querySelector(".intro");
+
     this.buildBgs();
     this.buildBar();
     this.parseTitles();
@@ -21,20 +26,19 @@ export default class CoverAnim {
 
   }
 
-  open(i){
+  open(i) {
 
     this.states.isPaused = true;
     this.states.isScroll = true;
 
-    setTimeout(()=>{
+    setTimeout(() => {
       this.titles.forEach((elm) => {
-        elm.querySelector("a").classList.remove("active");
         elm.classList.remove("active");
       });
 
       this.container.classList.add("expanded");
     }, 600)
-    
+
   }
 
   scrollEvents() {
@@ -55,11 +59,21 @@ export default class CoverAnim {
     this.container.addEventListener("touchstart", this.onTouch);
     this.container.addEventListener("touchstop", this.onstopTouch);
     this.container.addEventListener("touchmove", this.onWheel);
+
+    // this.container.addEventListener("mousedown", this.onTouch);
+    // this.container.addEventListener("mouseup", this.onstopTouch);
+    // this.container.addEventListener("mousemove", this.onWheel);
+
   }
 
   onTouch = (e) => {
     this.states.isTouched = true;
-    this.states.isMobile ? this.states.ts = e.touches[0].clientX : this.states.ts = e.touches[0].clientY;
+    if (e.type == 'touchstart') {
+      this.states.isMobile ? this.states.ts = e.touches[0].clientX : this.states.ts = e.touches[0].clientY;
+    }
+    if (e.type == 'mousedown') {
+      this.states.ts = e.clientX;
+    }
   }
 
   onstopTouch = (e) => {
@@ -67,22 +81,36 @@ export default class CoverAnim {
   }
 
   onWheel = (e) => {
-    e = e || window.event;
-    this.states.isPaused = true;
-    let delta = null;
-
-    this.states.isMobile ? delta = e.deltaX || e.detail || e.wheelDelta : delta = e.deltaY || e.detail || e.wheelDelta;     
-
-    if (e.type == 'touchmove') {
-      let te = null;
-
-      this.states.isMobile ?  te = e.changedTouches[0].clientX : te = e.changedTouches[0].clientY;
-
-      (this.states.ts > te) ? delta = 1 : delta = -1;
+    if(!this.states.isdisablesScroll) {
+      e = e || window.event;
+      //e.preventDefault(); 
+      this.states.isPaused = true;
+      let delta = null;
+  
+      this.states.isMobile ? delta = e.deltaY || e.detail || e.wheelDelta : delta = e.deltaY || e.detail || e.wheelDelta;
+  
+      if (e.type == 'touchmove') {
+        let te = null;
+  
+        this.states.isMobile ? te = e.changedTouches[0].clientX : te = e.changedTouches[0].clientY;
+  
+        (this.states.ts > te) ? delta = 1 : delta = -1;
+  
+      }
+  
+      // if (e.type == 'mousemove') {
+      //   if(this.states.isTouched) {
+      //     let te = null;
+      //     this.states.isMobile ? te = e.clientX : te = e.clientX;
+      //     console.log("move");
+      //     (this.states.ts > te) ? delta = 1 : delta = -1;
+  
+      //     (delta > 0) ? this.move(1) : this.move(-1);
+      //   }
+      // }
+  
+      (delta > 0) ? this.move(1) : this.move(-1);
     }
-
-    (delta > 0) ? this.move(1) : this.move(-1);
-
   }
 
   parseTitles = () => {
@@ -92,7 +120,6 @@ export default class CoverAnim {
   move = (direction) => {
     if (!this.states.isScroll) {
       this.states.isScroll = true;
-
       setTimeout(() => {
         this.states.isScroll = false;
         setTimeout(() => {
@@ -101,33 +128,66 @@ export default class CoverAnim {
       }, 1500)
 
       if (direction == 1) {
-        if (this.states.currentSlide < this.states.length - 1) {
+        if ((this.states.currentSlide < this.states.length - 1) && (this.states.currentSlide !== false) && (this.states.currentSlide < this.options.segments - 1)) {
           this.clearSliderStates();
           this.states.currentSlide = this.states.currentSlide + direction;
-          setTimeout(()=>{
+          this.bgsContainers[this.states.currentSlide].classList.add("forward");
+          setTimeout(() => {
             this.bgsContainers[this.states.currentSlide].classList.add("active");
           }, 50);
           this.bgsContainers[this.states.currentSlide].classList.add("stop");
-          ((this.states.currentSlide - 1) >= 0) ? this.bgsContainers[this.states.currentSlide-1].classList.add("played") : this.bgsContainers[(this.states.length-1)].classList.add("played");
+          ((this.states.currentSlide - 1) >= 0) ? this.bgsContainers[this.states.currentSlide - 1].classList.add("played") : this.bgsContainers[(this.states.length - 1)].classList.add("played");
           this.progressSegments[this.states.currentSlide].classList.add("active");
           this.clearTitles();
           if (this.titles[this.states.currentSlide]) this.titles[this.states.currentSlide].classList.add("active");
         } else {
-          this.clearSlider();
+          if (this.states.currentSlide !== false) {
+            this.container.classList.add("formenu");
+            this.container.querySelector(".cover-anim-titles").classList.add("disabled");
+            setTimeout(()=>{
+              document.querySelector(".next").classList.remove("disabled");
+            }, 600);
+            this.cover.classList.remove("show-right");
+            this.cover.classList.add("hide-left");
+            this.clearTitles();
+            this.clearSliderStates();
+            this.bgsContainers[this.states.currentSlide].classList.add("hide-forward");
+            this.expandSlider();
+            this.states.currentSlide = false;
+          }
         };
       } else {
         if (this.states.currentSlide > 0) {
           this.clearSliderStates();
           this.bgsContainers[this.states.currentSlide].classList.add("played");
           this.states.currentSlide = this.states.currentSlide + direction;
-          setTimeout(()=>{
+          this.bgsContainers[this.states.currentSlide].classList.add("backward");
+          setTimeout(() => {
             this.bgsContainers[this.states.currentSlide].classList.add("active");
           }, 50);
           this.progressSegments[this.states.currentSlide + 1].classList.remove("active");
           this.clearTitles();
           if (this.titles[this.states.currentSlide]) this.titles[this.states.currentSlide].classList.add("active");
         } else {
-          //this.clearSlider();
+          if (this.states.currentSlide===false) {
+            this.container.querySelector(".cover-anim-titles").classList.remove("disabled");
+            document.querySelector(".next").classList.add("disabled");
+            this.container.classList.remove("formenu");
+            this.cover.classList.remove("hide-left");
+            this.cover.classList.add("show-right");
+            this.states.currentSlide = this.bgsContainers.length - 1;
+            this.bgsContainers[this.states.currentSlide].classList.add("active");
+            this.bgsContainers[this.states.currentSlide].classList.remove("hide-forward");
+            if (this.titles[this.states.currentSlide]) this.titles[this.states.currentSlide].classList.add("active");
+          }else{
+            setTimeout(()=>{
+              this.clearSlider();
+            }, 1000);
+            this.states.isdisablesScroll = true;
+            this.states.currentSlide = 0;
+            this.intro.classList.remove("close");
+            this.cover.classList.remove("step-1", "step-2", "hide-left", "show-right");
+          }
         };
       }
     }
@@ -141,24 +201,33 @@ export default class CoverAnim {
 
   clearSliderStates = () => {
     this.bgsContainers.forEach((bgContainer) => {
-      bgContainer.classList.remove("played");
       bgContainer.classList.remove("active");
+      bgContainer.classList.remove("played");
+      bgContainer.classList.remove("forward");
+      bgContainer.classList.remove("backward");
     })
+  }
+
+  expandSlider = () => {
+
   }
 
   clearSlider = () => {
     this.states.currentSlide = 0;
     this.bgsContainers.forEach((bgContainer) => {
+      bgContainer.classList.remove("active");
       bgContainer.classList.remove("stop");
       bgContainer.classList.remove("played");
-      bgContainer.classList.remove("active");
+      bgContainer.classList.remove("forward");
+      bgContainer.classList.remove("backward");
     })
     this.progressSegments.forEach((progress) => {
       progress.classList.remove("active");
     })
-    this.bgsContainers[this.states.currentSlide].classList.add("active");
-    this.bgsContainers[(this.states.length-1)].classList.add("played");
-    setTimeout(()=>{
+    this.bgsContainers[this.states.currentSlide].classList.add("forward");
+    this.bgsContainers[(this.states.length - 1)].classList.add("played");
+    setTimeout(() => {
+      this.bgsContainers[this.states.currentSlide].classList.add("active");
       this.bgsContainers[this.states.currentSlide].classList.add("stop");
     }, 50)
     setTimeout(() => {
@@ -167,7 +236,6 @@ export default class CoverAnim {
 
     this.clearTitles();
     if (this.titles[this.states.currentSlide]) this.titles[this.states.currentSlide].classList.add("active");
-
   }
 
   buildBgs() {
@@ -185,9 +253,9 @@ export default class CoverAnim {
       segments[i] = [];
 
       img = bgContainer.querySelector("img");
-      img ? style = 'background:url('+img.src+')' : style = 'background-color: #000';
+      img ? style = 'background:url(' + img.src + ')' : style = 'background-color: #000';
 
-      if(img) img.remove();
+      if (img) img.remove();
 
       for (let y = 0; y < this.options.segments; y++) {
         segments[i].push(segment.cloneNode());
@@ -225,6 +293,7 @@ export default class CoverAnim {
   }
 
   show() {
+    this.bgsContainers[this.states.currentSlide].classList.add("forward");
     this.bgsContainers[this.states.currentSlide].classList.add("active");
   }
 

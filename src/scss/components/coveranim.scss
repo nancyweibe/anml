@@ -4,6 +4,18 @@
   position: relative;
   overflow: hidden;
 
+  // &::before{
+  //   content: '';
+  //   display: block;
+  //   width: 50%;
+  //   height: 100%;
+  //   right: 0;
+  //   top: 0;
+  //   position: absolute;
+  //   z-index: 3;
+  //   background-color: $color-black;
+  // }
+
   .cover-content-titles {
     position: absolute;
     width: 100%;
@@ -31,9 +43,11 @@
         transform: translateY(8rem);
         transition: all $transition * 4 cubic-bezier(0.09, 0.34, 0, 1);
         position: relative;
+        user-select: none;
       }
 
       p {
+        user-select: none;
         opacity: 0;
         transform: translateY(8rem);
         margin-bottom: 4rem;
@@ -66,6 +80,10 @@
     left: 0;
     z-index: 13;
 
+    &.disabled {
+      pointer-events: none;
+    }
+
     .cover-anim-title {
       position: absolute;
       top: 50%;
@@ -75,22 +93,23 @@
       opacity: 0;
       transition: opacity $transition/2 ease;
 
-      h2 {
-        margin-bottom: 3rem;
-        max-width: 320px;
+      .text-hero-title {
+        display: inline-block;
+        margin-bottom: 1.6rem;
         opacity: 0;
         transform: translateY(8rem);
         transition: all $transition * 4 cubic-bezier(0.09, 0.34, 0, 1);
         position: relative;
+        user-select: none;
 
         &::after {
           content: "";
           position: absolute;
           display: block;
           height: 2.875rem;
-          width: 100%;
-          left: -2rem;
-          bottom: -2rem;
+          width: calc(100% + 1.75rem);
+          left: -0.875rem;
+          bottom: -1rem;
           transform: scaleX(0);
           transform-origin: center left;
           background-color: rgba($color-white, 0.3);
@@ -100,18 +119,20 @@
 
       p {
         opacity: 0;
+        user-select: none;
         transform: translateY(8rem);
+        margin-top: 0;
         margin-bottom: 4rem;
         padding-left: 8vw;
         transition: all $transition * 4 cubic-bezier(0.09, 0.34, 0, 1);
       }
 
-      a {
-        display: block;
+      .btn-hero {
         opacity: 0;
         transform: translateY(8rem);
         margin-bottom: 2rem;
-        padding-left: 10vw;
+        margin-left: 8vw;
+        user-select: none;
         transition: all $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
 
         &::after {
@@ -124,7 +145,7 @@
         opacity: 1;
         pointer-events: all;
 
-        h2 {
+        .text-hero-title {
           opacity: 1;
           transform: translateY(0);
 
@@ -136,18 +157,17 @@
 
         p {
           transition-delay: $transition;
-          opacity: 1;
+          opacity: 0.5;
           transform: translateY(0);
         }
 
-        a {
+        .btn-hero {
           transition-delay: $transition * 2;
           opacity: 1;
           transform: translateY(0);
 
           &:after {
-            transform: scaleX(0.05);
-            transition-delay: $transition * 6;
+            transform: translateY(-50%) scaleX(0.14);
           }
         }
       }
@@ -199,11 +219,11 @@
         background-color: rgba($color-white, 1);
         transform: scaleX(0);
         transform-origin: center left;
+        transition: transform 5000ms cubic-bezier(0.09, 0.34, 0, 1);
       }
 
       &.active {
         .cover-anim-progress-bar {
-          transition: transform 5000ms cubic-bezier(0.09, 0.34, 0, 1);
           transform: scaleX(1);
         }
       }
@@ -228,11 +248,24 @@
         left: 0;
         top: 0;
         position: absolute;
-        width: 100%;
+        width: calc(100vw / #{$segments});
         height: 100%;
-        clip: rect(0vh, 16.6666vw, 100vh, 0vw);
+        -webkit-clip-path: inset(0 0 0 100%);
+        clip-path: inset(0 0 0 100%);
         transform-origin: center left;
         overflow: hidden;
+
+        &::after{
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          display: block;
+          width: 100%;
+          height: 100%;
+          background-color: $color-black;
+          opacity: 0.1;
+        }
 
         > div {
           width: 110vw;
@@ -243,26 +276,45 @@
           background-repeat: no-repeat !important;
           background-size: cover !important;
           background-position-x: 0 !important;
+          background-position-y: center !important;
           transform: translateX(0);
         }
 
         &:nth-child(1) {
-          clip: rect(0vh, 16.6666vw, 100vh, 16.6666vw);
+          left: calc(100vw/#{$segments}*0);
+          >div{
+            left: calc(-1 * 100vw/#{$segments}*0);
+          }
         }
         &:nth-child(2) {
-          clip: rect(0vh, 33.3332vw, 100vh, 33.3332vw);
+          left: calc(100vw/#{$segments}*1);
+          >div{
+            left: calc(-1 * 100vw/#{$segments}*1);
+          }
         }
         &:nth-child(3) {
-          clip: rect(0vh, 49.9998vw, 100vh, 49.9998vw);
+          left: calc(100vw/#{$segments}*2);
+          >div{
+            left: calc(-1 * 100vw/#{$segments}*2);
+          }
         }
         &:nth-child(4) {
-          clip: rect(0vh, 66.6664vw, 100vh, 66.6664vw);
+          left: calc(100vw/#{$segments}*3);
+          >div{
+            left: calc(-1 * 100vw/#{$segments}*3);
+          }
         }
         &:nth-child(5) {
-          clip: rect(0vh, 83.3333vw, 100vh, 83.3333vw);
+          left: calc(100vw/#{$segments}*4);
+          >div{
+            left: calc(-1 * 100vw/#{$segments}*4);
+          }
         }
         &:nth-child(6) {
-          clip: rect(0vh, 100vw, 100vh, 100vw);
+          left: calc(100vw/#{$segments}*5);
+         >div{
+          left: calc(-1 * 100vw/#{$segments}*5);
+        }
         }
       }
 
@@ -270,49 +322,40 @@
         z-index: 1;
 
         .cover-anim-bg-segment {
-          &:nth-child(1) {
-            clip: rect(0vh, 16.6666vw, 100vh, 0vw);
-          }
-          &:nth-child(2) {
-            clip: rect(0vh, 33.3332vw, 100vh, 16.6666vw);
-          }
-          &:nth-child(3) {
-            clip: rect(0vh, 49.9998vw, 100vh, 33.3332vw);
-          }
-          &:nth-child(4) {
-            clip: rect(0vh, 66.6664vw, 100vh, 49.9998vw);
-          }
-          &:nth-child(5) {
-            clip: rect(0vh, 83.3333vw, 100vh, 66.6664vw);
-          }
-          &:nth-child(6) {
-            clip: rect(0vh, 100vw, 100vh, 83.3333vw);
-          }
+          -webkit-clip-path: inset(0 0 0 0);
+          clip-path: inset(0 0 0 0);
+        }
+      }
+
+      &.forward {
+        .cover-anim-bg-segment {
+          -webkit-clip-path: inset(0 0 0 100%);
+          clip-path: inset(0 0 0 100%);
+        }
+      }
+
+      &.hide-forward {
+        .cover-anim-bg-segment {
+          transition: all $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
+          -webkit-clip-path: inset(0 100% 0 0);
+          clip-path: inset(0 100% 0 0);
+          z-index: 2;
+        }
+      }
+
+      &.backward {
+        .cover-anim-bg-segment {
+          -webkit-clip-path: inset(0 100% 0 0);
+          clip-path: inset(0 100% 0 0);
         }
       }
 
       &.active {
         z-index: 2;
         .cover-anim-bg-segment {
-          transition: clip $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
-          &:nth-child(1) {
-            clip: rect(0vh, 16.6666vw, 100vh, 0vw);
-          }
-          &:nth-child(2) {
-            clip: rect(0vh, 33.3332vw, 100vh, 16.6666vw);
-          }
-          &:nth-child(3) {
-            clip: rect(0vh, 49.9998vw, 100vh, 33.3332vw);
-          }
-          &:nth-child(4) {
-            clip: rect(0vh, 66.6664vw, 100vh, 49.9998vw);
-          }
-          &:nth-child(5) {
-            clip: rect(0vh, 83.3333vw, 100vh, 66.6664vw);
-          }
-          &:nth-child(6) {
-            clip: rect(0vh, 100vw, 100vh, 83.3333vw);
-          }
+          transition: all $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
+          -webkit-clip-path: inset(0 0 0 0);
+          clip-path: inset(0 0 0 0);
         }
       }
 
@@ -369,6 +412,98 @@
     }
     .cover-anim-progress {
       opacity: 0;
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+
+    // &::before{
+    //   width: calc(100%/4);
+    //   left: 0;
+    //   right: auto;
+    // }
+
+    .cover-anim-titles {
+      .cover-anim-title {
+        left: 0;
+        .text-hero-title {
+
+          font-size: 4.125rem;
+          line-height: 3.4rem;
+          margin-left: calc((100vw / #{$segments-mobile})/3);
+          margin-bottom: 2rem;
+          opacity: 0;
+          transform: translateY(8rem);
+          transition: all $transition * 4 cubic-bezier(0.09, 0.34, 0, 1);
+          position: relative;
+  
+
+        }
+  
+        p {
+          font-size: 2rem;
+          display: none;
+        }
+  
+        .btn-hero {
+          opacity: 0;
+          transform: translateY(8rem);
+          margin-bottom: 2rem;
+          margin-left: 10vw;
+          transition: all $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
+  
+          &::after {
+            transform: scaleX(0);
+            transition: transform $transition * 2 cubic-bezier(0.09, 0.34, 0, 1);
+          }
+        }
+      }
+    }
+
+    .cover-anim-bgs { 
+      .cover-anim-bg { 
+        .cover-anim-bg-segment {
+
+          width: calc(100vw / #{$segments-mobile});
+
+          &:nth-child(1) {
+            left: calc(100vw/#{$segments-mobile}*0);
+            >div{
+              left: calc(-1 * 100vw/#{$segments-mobile}*0);
+            }
+          }
+          &:nth-child(2) {
+            left: calc(100vw/#{$segments-mobile}*1);
+            >div{
+              left: calc(-1 * 100vw/#{$segments-mobile}*1);
+            }
+          }
+          &:nth-child(3) {
+            left: calc(100vw/#{$segments-mobile}*2);
+            >div{
+              left: calc(-1 * 100vw/#{$segments-mobile}*2);
+            }
+          }
+          &:nth-child(4) {
+            left: calc(100vw/#{$segments-mobile}*3);
+            >div{
+              left: calc(-1 * 100vw/#{$segments-mobile}*3);
+            }
+          }
+          &:nth-child(5) {
+            left: calc(100vw/#{$segments-mobile}*4);
+            >div{
+              left: calc(-1 * 100vw/#{$segments-mobile}*4);
+            }
+          }
+          &:nth-child(6) {
+            left: calc(100vw/#{$segments-mobile}*5);
+           >div{
+            left: calc(-1 * 100vw/#{$segments-mobile}*5);
+          }
+          }
+        }
+      }
     }
   }
 }

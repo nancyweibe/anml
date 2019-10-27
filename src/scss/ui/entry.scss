@@ -1,5 +1,4 @@
 [data-entry=fade-in] {
-  display: block;
   opacity: 0;
   transform: translateY(10rem);
   transition: transform $cover-transition * 5 cubic-bezier(0.09, 0.34, 0, 1), opacity $cover-transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
@@ -21,4 +20,21 @@
   &.d4 {
     transition-delay: $transition*4;
   }
+
+  @media screen and (max-width: $mobile) {
+    &.d1 {
+      transition-delay: 0;
+    }
+    &.d2 {
+      transition-delay: 0;
+    }
+    &.d3 {
+      transition-delay: 0;
+    }
+    &.d4 {
+      transition-delay: 0;
+    }
+  }
 }
+
+

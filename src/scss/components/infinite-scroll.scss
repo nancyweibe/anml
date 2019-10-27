@@ -1,0 +1,62 @@
+
+.infinite-scroll {
+
+  .infinite-scroll-item {
+    height: 500px;
+    overflow: hidden;
+
+    >div {
+      height: 100%;
+    }
+
+    .title-presset {
+      opacity: 1;
+    }
+
+    .preview-presset {
+      &::after{
+        opacity: 0;
+      }
+    }
+  
+    &.active {
+      .title-presset {
+        opacity: 1;
+      }
+
+      .preview-presset {
+        &::after{
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+
+    &.container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    >.col{
+      height: 100%;
+    }
+
+    .infinite-scroll-item {
+      height: 300px;
+
+      .text-counter {
+        display: none;
+      }
+
+      &.active {
+        .preview-presset {
+          &::after{
+            opacity: 0.1;
+          }
+        }
+      }
+    }
+  }
+}

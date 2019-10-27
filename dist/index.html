@@ -10,7 +10,7 @@
 
 <body>
 
-  <div class="overlay" style="position: fixed;background:black;width:100vw;height:100vh;left:0;top:0;z-index: 50;"></div>
+  <div class="overlay" style="position: fixed;background:black;width:100vw;height:100vh;left:0;top:0;z-index: 100;"></div>
   <div class="header">
     <div class="logo">
       <a href="./">
@@ -23,7 +23,7 @@
         </svg>
       </a>
     </div>
-    <div class="menu-toggler">
+    <div class="menu-toggler" data-cursor>
       <div></div>
       <div></div>
       <div></div>
@@ -32,15 +32,14 @@
 
   <div class="menu">
     <div class="primary-links">
-      <a href="./work.html"><span>Work</span></a>
-      <a href="./about.html"><span>About</span></a>
-      <a href="./contact.html"><span>Contact</span></a>
-      <a href="./careers.html"><span>Careers</span></a>
+      <a href="./work.html"><span class="link-special">Work</span></a>
+      <a href="./about.html"><span class="link-special">About</span></a>
+      <a href="./contact.html"><span class="link-special">Contact</span></a>
     </div>
     <div class="social-links">
-      <a href="./"><span>Dribbble</span></a>
-      <a href="./"><span>Instagram</span></a>
-      <a href="./"><span>Jobs</span></a>
+      <a href="./"><i class="icon-instagram d-mb-block"></i><span class="link-special d-mb-none">Dribbble</span></a>
+      <a href="./"><i class="icon-dribbble d-mb-block"></i><span class="link-special d-mb-none">Instagram</span></a>
+      <a href="./"><span class="link-special d-mb-none">Jobs</span></a>
     </div>
   </div>
 
@@ -67,7 +66,7 @@
         </div>
         <h2 class="text-center" data-sep="0.5s">Experts in form and function</h2>
       </div>
-      <div class="enter"><span>Enter</span></div>
+      <div data-cursorh class="enter"><span>Enter</span></div>
       <span class="scroll-line"></span>
     </div>
 
@@ -91,39 +90,66 @@
         </div>
       </div>
       <div class="cover-anim">
-        <div class="cover-anim-bgs" style="background-color: #000">
-          <div class="cover-anim-bg"><img src="./assets/img/hero-1.jpg" alt=""></div>
-          <div class="cover-anim-bg"><img src="./assets/img/hero-2.jpg" alt=""></div>
-          <div class="cover-anim-bg"><img src="./assets/img/hero-3.jpg" alt=""></div>
+        <div class="cover-anim-bgs">
+          <a href="./parts-unknown.html" class="cover-anim-bg"><img src="./assets/img/hero-1.jpg" alt=""></a>
+          <a href="./yummly.html" class="cover-anim-bg"><img src="./assets/img/hero-4.jpg" alt=""></a>
+          <a href="./whirlpool.html" class="cover-anim-bg"><img src="./assets/img/hero-2.jpg" alt=""></a>
+          <a href="./ernie-ball.html" class="cover-anim-bg"><img src="./assets/img/hero-3.jpg" alt=""></a>
+          <a href="./swrve.html" class="cover-anim-bg"><img src="./assets/img/swrve.jpg" alt=""></a>
+          <a href="./kombucha.html" class="cover-anim-bg"><img src="./assets/img/kombucha.jpg" alt=""></a>
         </div>
         <div class="cover-anim-titles">
           <div class="cover-anim-title">
-            <h2 class="text-hero-title">Parts Unknown</h2>
+            <a class="text-hero-title" href="./parts-unknown.html">Parts<br>Unknown</a>
             <p class="text-subtitle">Bringing fans into Bourdain’s world</p>
-            <a class="btn-hero" link-delay="900" href="./parts-unknown.html">View Case Study</a>
+            <a class="btn-hero" href="./parts-unknown.html">View Case Study</a>
           </div>
           <div class="cover-anim-title">
-            <h2 class="text-hero-title">Whirlpool</h2>
+            <a class="text-hero-title" href="./yummly.html">Yummly</a>
+            <p class="text-subtitle">A rebel chef experience</p>
+            <a class="btn-hero" href="./yummly.html">View Case Study</a>
+          </div>
+          <div class="cover-anim-title">
+            <a class="text-hero-title" href="./whirlpool.html">Whirlpool</a>
             <p class="text-subtitle">Changing behaviors in the kitchen</p>
-            <a class="btn-hero" link-delay="900" href="./whirlpool.html">View Case Study</a>
+            <a class="btn-hero" href="./whirlpool.html">View Case Study</a>
           </div>
           <div class="cover-anim-title">
-            <h2 class="text-hero-title">Ernie Ball</h2>
+            <a class="text-hero-title" href="./ernie-ball.html">Ernie Ball</a>
             <p class="text-subtitle">Communicating heritage and craft</p>
-            <a class="btn-hero" link-delay="900" href="./ernie-ball.html">View Case Study</a>
+            <a class="btn-hero" href="./ernie-ball.html">View Case Study</a>
           </div>
+          <div class="cover-anim-title">
+            <a class="text-hero-title" href="./swrve.html">Swrve</a>
+            <p class="text-subtitle">A rebel chef experience</p>
+            <a class="btn-hero" href="./swrve.html">View Case Study</a>
+          </div>
+          <div class="cover-anim-title">
+            <a class="text-hero-title" href="./kombucha.html">GT’S<br> Kombucha</a>
+            <p class="text-subtitle">A rebel chef experience</p>
+            <a class="btn-hero" href="./kombucha.html">View Case Study</a>
+          </div>
+        </div>
+        <div class="next disabled" data-target="./work.html" data-theme="white">
+          <div>
+            <h2 class="text-caption">View more work</h2>
+            <div class="about-us-links">
+              <a href="./about.html" cover-delay="1700">About</a>
+              <a href="./contact.html" cover-delay="1700">Contact</a>
+            </div>
+          </div>
+          <span class="scroll-line active"></span>
         </div>
         <span class="scroll-line"></span>
       </div>
     </div>
   </div>
-
   <script>
     var isIndex = true;
   </script>
 
   <script src="./assets/bundle.js"></script>
-  
+
 </body>
 
 </html>
