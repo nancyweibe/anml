@@ -140,6 +140,7 @@ export default class MaskScroll {
           if (scrollable + 10 > rect.height) {
 
             if (this.scrollNextCount > 0) {
+
               this.previous = this.current;
               this.clear();
               this.current < this.sections.length - 1 ? this.current++ : this.current = this.current;

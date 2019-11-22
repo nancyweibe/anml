@@ -10,7 +10,7 @@
     $timeline = $_POST["timeline"];
 
 
-$EmailTo = "jobs@anml.com";
+$EmailTo = "info@anml.com";
 $Subject = "Contact form ANML";
 
 // prepare email body text

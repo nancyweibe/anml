@@ -1,11 +1,24 @@
-
 .infinite-scroll {
+  //padding-top: calc((30vh) / 2);
 
   .infinite-scroll-item {
-    height: 500px;
+    height: 70vh;
     overflow: hidden;
+    width: calc(100% - 1px);
+    margin-left: 1px;
 
-    >div {
+    >.col {
+      &:first-child{
+        overflow: hidden;
+      }
+
+      a {
+        transform-origin: center center;
+        transition: transform $transition ease;
+      }
+    }
+
+    > div {
       height: 100%;
     }
 
@@ -14,19 +27,47 @@
     }
 
     .preview-presset {
-      &::after{
-        opacity: 0;
+      &::after {
+        opacity: 0.2;
+      }
+
+      &.darker::after {
+        opacity: 0.5;
       }
     }
-  
+
     &.active {
       .title-presset {
         opacity: 1;
       }
 
       .preview-presset {
-        &::after{
+        &::after {
+          opacity: 0.2;
+        }
+        &.darker::after {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    >.col {
+      &:first-child{
+        &:hover {
+          a {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+
+    &:hover {
+      .preview-presset {
+        &::after {
           opacity: 0;
+        }
+        &.darker::after {
+          opacity: 0.3;
         }
       }
     }
@@ -34,12 +75,14 @@
 
   @media screen and (max-width: $mobile) {
 
+    padding-top: 62px;
+
     &.container {
       padding-left: 0;
       padding-right: 0;
     }
 
-    >.col{
+    > .col {
       height: 100%;
     }
 
@@ -52,8 +95,12 @@
 
       &.active {
         .preview-presset {
-          &::after{
-            opacity: 0.1;
+          &::after {
+            opacity: 0.2;
+          }
+
+          &.darker::after {
+            opacity: 0.4;
           }
         }
       }

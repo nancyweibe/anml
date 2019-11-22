@@ -158,6 +158,12 @@
     }
   }
 
+  &.reverse {
+    .cover-segment {
+      transform-origin: center left;
+    }
+  }
+
   @media screen and (max-width: $mobile) {
     &.step-2 {
       opacity: 1;
@@ -184,6 +190,14 @@
       }
       &:nth-child(6) {
         display: none;
+      }
+    }
+
+    &.show-right {
+      .cover-segment {
+        &:nth-child(1) {
+          transform: scaleX(0);
+        }
       }
     }
 

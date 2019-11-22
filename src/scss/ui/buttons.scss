@@ -15,7 +15,7 @@
   &::after{
     content: '';
     display: block;
-    width: 100%;
+    width: 70%;
     position: absolute;
     left: 0;
     top: 50%;
@@ -125,5 +125,11 @@
   &:hover{
     background-color: transparent;
     color: $color-white;
+  }
+
+  @media screen and (max-width: $mobile) {
+    padding: 1rem 5rem;
+    font-size: 0.75rem;
+    width: 100%;
   }
 }

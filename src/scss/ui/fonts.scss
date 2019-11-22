@@ -97,6 +97,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-arrow-right-n:before {
+  content: "\e905";
+}
 .icon-arrow-small:before {
   content: "\e904";
 }

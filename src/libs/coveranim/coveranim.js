@@ -1,6 +1,6 @@
 export default class CoverAnim {
   constructor(selector, options) {
-    this.options = { segments: window.innerWidth > 767 ? 6 : 4, slideDelay: 20000 };
+    this.options = { segments: window.innerWidth > 767 ? 6 : 4, slideDelay: 5000, autoplay: false };
     this.states = { currentSlide: 0, ts: null, isTouched: false, isScroll: true, length: 0, direction: 1, isPaused: false, isMobile: false, isdisablesScroll: false };
     this.bgsContainers = [];
     this.progressSegments = [];
@@ -8,12 +8,18 @@ export default class CoverAnim {
     this.container = document.querySelector(selector);
     this.cover = null;
     this.intro = null;
+    this.next = null;
+    this.header = null;
+    this.played = false;
+    this.pauseTimer = null;
     if (this.container) this.init();
   }
 
   init() {
     this.cover = document.querySelector(".cover");
     this.intro = document.querySelector(".intro");
+    this.next = document.querySelector(".next");
+    this.header = document.querySelector(".header");
 
     this.buildBgs();
     this.buildBar();
@@ -60,16 +66,12 @@ export default class CoverAnim {
     this.container.addEventListener("touchstop", this.onstopTouch);
     this.container.addEventListener("touchmove", this.onWheel);
 
-    // this.container.addEventListener("mousedown", this.onTouch);
-    // this.container.addEventListener("mouseup", this.onstopTouch);
-    // this.container.addEventListener("mousemove", this.onWheel);
-
   }
 
   onTouch = (e) => {
     this.states.isTouched = true;
     if (e.type == 'touchstart') {
-      this.states.isMobile ? this.states.ts = e.touches[0].clientX : this.states.ts = e.touches[0].clientY;
+      this.states.isMobile ? this.states.ts = e.touches[0].clientY : this.states.ts = e.touches[0].clientY;
     }
     if (e.type == 'mousedown') {
       this.states.ts = e.clientX;
@@ -81,34 +83,23 @@ export default class CoverAnim {
   }
 
   onWheel = (e) => {
-    if(!this.states.isdisablesScroll) {
+    if (!this.states.isdisablesScroll) {
       e = e || window.event;
-      //e.preventDefault(); 
+      e.preventDefault();
       this.states.isPaused = true;
       let delta = null;
-  
+
       this.states.isMobile ? delta = e.deltaY || e.detail || e.wheelDelta : delta = e.deltaY || e.detail || e.wheelDelta;
-  
+
       if (e.type == 'touchmove') {
         let te = null;
-  
-        this.states.isMobile ? te = e.changedTouches[0].clientX : te = e.changedTouches[0].clientY;
-  
+
+        this.states.isMobile ? te = e.changedTouches[0].clientY : te = e.changedTouches[0].clientY;
+
         (this.states.ts > te) ? delta = 1 : delta = -1;
-  
+
       }
-  
-      // if (e.type == 'mousemove') {
-      //   if(this.states.isTouched) {
-      //     let te = null;
-      //     this.states.isMobile ? te = e.clientX : te = e.clientX;
-      //     console.log("move");
-      //     (this.states.ts > te) ? delta = 1 : delta = -1;
-  
-      //     (delta > 0) ? this.move(1) : this.move(-1);
-      //   }
-      // }
-  
+
       (delta > 0) ? this.move(1) : this.move(-1);
     }
   }
@@ -122,12 +113,16 @@ export default class CoverAnim {
       this.states.isScroll = true;
       setTimeout(() => {
         this.states.isScroll = false;
-        setTimeout(() => {
-          this.states.isPaused = false;
-        }, this.options.slideDelay)
+        if (this.pauseTimer) clearTimeout(this.pauseTimer);
+        if(!this.isIntro) {
+          this.pauseTimer = setTimeout(() => {
+            //this.states.isPaused = false;
+          }, this.options.slideDelay)
+        }
       }, 1500)
 
       if (direction == 1) {
+        this.isIntro = false;
         if ((this.states.currentSlide < this.states.length - 1) && (this.states.currentSlide !== false) && (this.states.currentSlide < this.options.segments - 1)) {
           this.clearSliderStates();
           this.states.currentSlide = this.states.currentSlide + direction;
@@ -142,11 +137,18 @@ export default class CoverAnim {
           if (this.titles[this.states.currentSlide]) this.titles[this.states.currentSlide].classList.add("active");
         } else {
           if (this.states.currentSlide !== false) {
-            this.container.classList.add("formenu");
+            this.container.classList.add("fornext");
             this.container.querySelector(".cover-anim-titles").classList.add("disabled");
-            setTimeout(()=>{
-              document.querySelector(".next").classList.remove("disabled");
+            this.next.classList.remove("d-none");
+            
+            setTimeout(() => {
+              this.next.classList.remove("disabled");
             }, 600);
+
+            setTimeout(() => {
+              this.next.classList.add("z-2");
+            }, 1400);
+
             this.cover.classList.remove("show-right");
             this.cover.classList.add("hide-left");
             this.clearTitles();
@@ -169,24 +171,45 @@ export default class CoverAnim {
           this.clearTitles();
           if (this.titles[this.states.currentSlide]) this.titles[this.states.currentSlide].classList.add("active");
         } else {
-          if (this.states.currentSlide===false) {
+          if (this.states.currentSlide === false) {
             this.container.querySelector(".cover-anim-titles").classList.remove("disabled");
-            document.querySelector(".next").classList.add("disabled");
-            this.container.classList.remove("formenu");
+            this.next.classList.add("disabled");
+
+            this.next.classList.remove("z-2");
+
+            setTimeout(() => {
+              this.next.classList.add("d-none");
+            }, 1600);
+
+            this.container.classList.remove("fornext");
             this.cover.classList.remove("hide-left");
-            this.cover.classList.add("show-right");
-            this.states.currentSlide = this.bgsContainers.length - 1;
+            setTimeout(()=>{
+              this.cover.classList.remove("show-right");
+            }, 1000);
+            this.states.currentSlide = this.options.segments - 1;
             this.bgsContainers[this.states.currentSlide].classList.add("active");
             this.bgsContainers[this.states.currentSlide].classList.remove("hide-forward");
             if (this.titles[this.states.currentSlide]) this.titles[this.states.currentSlide].classList.add("active");
-          }else{
-            setTimeout(()=>{
+          } else {
+            
+            setTimeout(() => {
+              if (this.pauseTimer) clearTimeout(this.pauseTimer);
               this.clearSlider();
+              this.clearTitles();
+              this.clearSliderStates();
+              document.body.classList.remove("disable-touch");
             }, 1000);
+
+           document.body.classList.add("disable-touch");
+
             this.states.isdisablesScroll = true;
             this.states.currentSlide = 0;
+            this.states.isPaused = true;
+            this.isIntro = true;
             this.intro.classList.remove("close");
             this.cover.classList.remove("step-1", "step-2", "hide-left", "show-right");
+            this.cover.classList.add("reverse");
+            this.header.classList.remove("active");
           }
         };
       }
@@ -230,9 +253,6 @@ export default class CoverAnim {
       this.bgsContainers[this.states.currentSlide].classList.add("active");
       this.bgsContainers[this.states.currentSlide].classList.add("stop");
     }, 50)
-    setTimeout(() => {
-      this.progressSegments[this.states.currentSlide].classList.add("active");
-    }, 50);
 
     this.clearTitles();
     if (this.titles[this.states.currentSlide]) this.titles[this.states.currentSlide].classList.add("active");
@@ -298,20 +318,25 @@ export default class CoverAnim {
   }
 
   play() {
+    if (!this.played) {
+      this.played = true;
+      setInterval(() => {
+        this.loop();
+      }, this.options.slideDelay);
+    }else{
+      this.bgsContainers[this.states.currentSlide].classList.add("forward");
+      this.bgsContainers[this.states.currentSlide].classList.add("active");
+      this.states.isPaused = false;
+    }
+
     this.bgsContainers[this.states.currentSlide].classList.add("stop");
     this.progressSegments[this.states.currentSlide].classList.add("active");
     this.titles[this.states.currentSlide].classList.add("active")
-
-    setInterval(() => {
-      if (!this.states.isPaused) {
-        this.loop();
-      }
-    }, this.options.slideDelay);
   }
 
   loop() {
 
-    if (!this.states.isPaused) {
+    if (!this.states.isPaused && this.options.autoplay) {
       this.move(1);
     }
   }

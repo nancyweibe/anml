@@ -1,4 +1,4 @@
-import { iefixes, scrollTo, getPosition, serialize } from './utils.js';
+import { iefixes, scrollTo, getPosition, serialize, disable_scroll, enable_scroll } from './utils.js';
 import CoverAnim from '../coveranim/coveranim';
 import SepText from '../septext/septext';
 import FlowImages from '../flowimages/flowimages';
@@ -10,9 +10,11 @@ import '../tinyslider/tiny-slider.scss';
 import { tns } from "../tinyslider/tiny-slider";
 import InfiniteScroll from "../infinitescroll/infinitescroll";
 import MaskScroll from "../maskscroll/maskscroll";
+import Siema from "../siema/siema";
+import LazyLoad from "vanilla-lazyload";
+import Pristine from "pristinejs";
 
-
-let enter = null, isEntered = false, MaskScrollClass=null, cursor = null, loaded = null, isLoadbar = true, scrollNextCount = 0, isNav = false, hero = null, coverAnimCont = null, intro = null, cover = null, header = null, menuToggler = null, grid = null, menu = null, content = null, next = null, loaderBar = null, isContent = false;
+let enter = null, isEntered = false, MaskScrollClass = null, cursor = null, loaded = null, isLoadbar = true, scrollNextCount = 0, isNav = false, hero = null, coverAnimCont = null, intro = null, cover = null, header = null, menuToggler = null, grid = null, menu = null, content = null, next = null, loaderBar = null, isContent = false;
 
 document.body.style.cursor = "url('./assets/img/cursor.svg') 3 3, auto";
 
@@ -33,6 +35,11 @@ function init() {
 
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+  window.addEventListener('popstate', function (event) {
+      event.preventDefault();
+        window.location.href = event.target.location.href;
+  }, false);
 
   if (typeof isIndex == 'undefined') {
 
@@ -136,6 +143,15 @@ function customCursor() {
 
     document.addEventListener('mousemove', (e) => {
       const state = createState(e)
+
+
+      if (document.elementFromPoint(e.clientX, e.clientY).closest("[data-theme]")) {
+        let theme = document.elementFromPoint(e.clientX, e.clientY).closest("[data-theme]").dataset.theme;
+        cursor.classList.remove("black", "white");
+        cursor.classList.add(theme);
+        theme == "black" ? document.body.style.cursor = "url('./assets/img/cursor-black.svg') 3 3, auto" : document.body.style.cursor = "url('./assets/img/cursor.svg') 3 3, auto";
+      }
+
       updateProperties(cursor, state)
     })
 
@@ -153,7 +169,7 @@ function customCursor() {
 }
 
 function clearCover() {
-  cover.classList.remove("step-1", "step-2");
+  cover.classList.remove("step-1", "step-2", "reverse");
 }
 
 function initBeforeContent() {
@@ -165,32 +181,6 @@ function initBeforeContent() {
     }, 600);
   }
 }
-
-// function initLockedViews() {
-//   let scroled = false;
-//   let views = document.querySelectorAll(".locked-view");
-
-//   views.forEach((view) => {
-
-//     view.addEventListener("mouseover", (e) => {
-//       var top = (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
-//       if (!scroled) {
-//         if (Math.abs(top - getPosition(view).y) > 2) {
-//           scrollTo(getPosition(view).y, 1000);
-//           scroled = true;
-//         }
-//       }
-//     });
-
-//     view.addEventListener("mouseleave", (e) => {
-//       setTimeout(() => {
-//         scroled = false;
-//       }, 2000)
-//     });
-
-
-//   });
-// }
 
 function initSpecialLinks() {
   let links = document.querySelectorAll(".link-special");
@@ -225,7 +215,7 @@ function applyTemplate(calback) {
   let html = '';
   let xmlhttp = new XMLHttpRequest();
 
-  let elements = document.querySelectorAll(".hero, .content, .next, .mask-scroll");
+  let elements = document.querySelectorAll(".hero, .content, .next, .mask-scroll, .cover-video");
 
   elements.forEach((element) => {
     if (element) element.remove();
@@ -287,6 +277,47 @@ function initContent() {
   simpleGrid();
   forms();
   customCursor();
+  mobileOptimization();
+  initConfigs();
+
+  const pageLazyLoad = new LazyLoad({
+    elements_selector: "[data-src]",
+    use_native: true,
+  });
+}
+
+function initConfigs(){
+
+  grid.classList.remove("op02", "op0");
+  document.querySelector(".loaded").classList.remove("fixed")
+
+  let videocover = document.querySelector(".cover-video");
+  if(videocover) {
+    videocover.remove();
+    document.body.appendChild(videocover);
+  }
+
+  let gridOpacity = document.querySelector("[data-grid]");
+  if(gridOpacity) gridOpacity = gridOpacity.dataset.grid;
+
+  let gridmobdisabled = document.querySelector("[data-gridmobdisabled]");
+  if(gridmobdisabled) gridmobdisabled = gridmobdisabled.dataset.gridmobdisabled;
+
+  
+  if(window.innerWidth < 991) if(gridmobdisabled) grid.classList.add(gridmobdisabled);
+  if(gridOpacity) grid.classList.add(gridOpacity);
+  
+}
+
+function mobileOptimization() {
+  if (window.innerWidth < 991) {
+    let videos = document.querySelectorAll(".remove-md");
+
+    videos.forEach((video) => {
+      video.remove();
+    });
+  }
+
 }
 
 function initMaskScroll() {
@@ -295,7 +326,7 @@ function initMaskScroll() {
   if (MaskScrollClass) MaskScrollClass.destroy();
 
 
-  if (maskScroll) {
+  if (maskScroll || window.innerWidth > 991) {
     MaskScrollClass = new MaskScroll(maskScroll, {}, (data) => {
       data.dataset.grid ? addClassToGrid(data.dataset.grid) : clearGrid("to-backward");
       setHeaderTheme();
@@ -308,9 +339,9 @@ function setHeaderTheme() {
   header.classList.remove("black", "white");
   let theme = document.elementFromPoint(0, 50).closest("[data-theme]").dataset.theme;
   header.classList.add(theme);
-  cursor.classList.add(theme);
+  //cursor.classList.add(theme);
 
-  theme == "black" ? document.body.style.cursor = "url('./assets/img/cursor-black.svg') 3 3, auto" : document.body.style.cursor = "url('./assets/img/cursor.svg') 3 3, auto";
+  //theme == "black" ? document.body.style.cursor = "url('./assets/img/cursor-black.svg') 3 3, auto" : document.body.style.cursor = "url('./assets/img/cursor.svg') 3 3, auto";
 }
 
 function initArrowLinks() {
@@ -318,18 +349,23 @@ function initArrowLinks() {
 
   links.forEach((link) => {
     let icon = document.createElement("i");
-    icon.classList.add("icon-arrow-small");
-    if (link.getAttribute("href")) link.appendChild(icon);
+    icon.classList.add("icon-arrow-right-n");
+    if (link.getAttribute("href")) {
+      link.classList.add("with-link");
+      link.appendChild(icon);
+    }
   });
 }
 
 function gridToBackWard() {
   if (!isIntro) {
+    let disableToBackward = document.querySelector("[data-grid=disabled]");
+
     setTimeout(() => {
-      if (typeof disableToBackward == "undefined") {
+      if (!disableToBackward) {
         addClassToGrid("to-backward");
       }
-    }, 600);
+    }, 0);
   }
 }
 
@@ -357,7 +393,7 @@ function initInfiniteScroll() {
 
 
     infiniteScrolls.forEach((infiniteScroll) => {
-      new InfiniteScroll(infiniteScroll, {}, ()=>{
+      new InfiniteScroll(infiniteScroll, {}, () => {
         initLinks();
       });
     });
@@ -394,20 +430,239 @@ function initMaskCarousels() {
 
 function initCarousels() {
   let carousels = document.querySelectorAll(".block-carousel-items");
+  let galleries = document.querySelectorAll(".block-gallery-carousel");
+  let galleries3 = document.querySelectorAll(".block-gallery-carousel-3");
+  let simple = document.querySelectorAll(".block-carousel-simple");
 
   carousels.forEach((carousel) => {
+
     var slider = tns({
       container: carousel,
       items: 1,
       slideBy: 'page',
       autoplay: true,
+      gutter: carousel.dataset.gutter ? carousel.dataset.gutter : 0,
+      edgePadding: carousel.dataset.edge ? carousel.dataset.edge : 0,
       autoplayButtonOutput: false,
       controlsPosition: "bottom",
       navPosition: "bottom",
       mouseDrag: true,
       controlsText: ["<i class='icon-arrow-left'></i>", "<i class='icon-arrow-right'></i>"]
     });
+  });
 
+  simple.forEach((gallery) => {
+    let slides = gallery.querySelectorAll(".block-carousel-item");
+
+    slides.forEach((slide, i) => {
+      slide.setAttribute("index", i + 1);
+    })
+
+    var slider = new Siema({
+      selector: gallery,
+      duration: 500,
+      easing: 'ease-out',
+      perPage: {
+        320: 3,
+        768: 3,
+        1024: 3,
+        1600: 3,
+      },
+      startIndex: 0,
+      draggable: true,
+      multipleDrag: true,
+      threshold: 20,
+      loop: true,
+      rtl: false,
+      onInit: onInit,
+      onChange: printSlideIndex,
+    });
+
+    function onInit() {
+      slides.forEach((slide) => {
+        slide.classList.remove("active");
+      })
+
+      window.innerWidth > 1024 ? slides[1].classList.add("active") : slides[1].classList.add("active");
+    }
+
+    function printSlideIndex() {
+
+      let rect = gallery.getBoundingClientRect();
+      let slides = gallery.querySelectorAll(".block-carousel-item");
+
+      let position = rect.top > 0 ? (rect.top + 100) : (window.innerHeight + rect.top) / 2;
+
+      setTimeout(() => {
+        slides.forEach((slide) => {
+          slide.classList.remove("active");
+        })
+
+        let element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
+        if (element) element.parentNode.classList.add("active");
+
+      }, 250);
+
+    }
+  });
+
+  galleries3.forEach((gallery) => {
+    let slides = gallery.querySelectorAll(".block-gallery-item");
+
+    slides.forEach((slide, i) => {
+      slide.setAttribute("index", i + 1);
+    })
+
+    var slider = new Siema({
+      selector: gallery,
+      duration: 500,
+      easing: 'ease-out',
+      perPage: {
+        320: 3,
+        768: 3,
+        1024: 3,
+        1600: 3,
+      },
+      startIndex: 0,
+      draggable: true,
+      multipleDrag: true,
+      threshold: 20,
+      loop: true,
+      rtl: false,
+      onInit: onInit,
+      onChange: printSlideIndex,
+    });
+
+    function onInit() {
+      let counter = document.createElement("div")
+      let nav = document.createElement("div")
+      nav.classList.add("block-gallery-controls", "wide");
+      counter.classList.add("block-gallery-counter");
+      nav.innerHTML = "<button type='button'><i class='block-gallery-prev icon-arrow-left'></i></button><button type='button'><i class='block-gallery-next icon-arrow-right'></i></button>";
+      counter.innerHTML = "<span class='block-gallery-current'>0</span> / <span class='block-gallery-length'>0</span>";
+      gallery.parentNode.appendChild(nav);
+      gallery.parentNode.appendChild(counter);
+      let current = gallery.parentNode.querySelector(".block-gallery-current");
+
+      let next =  gallery.parentNode.querySelector(".block-gallery-next");
+      let prev =  gallery.parentNode.querySelector(".block-gallery-prev");
+      let length = gallery.parentNode.querySelector(".block-gallery-length");
+
+      length.innerHTML = this.innerElements.length > 10 ? this.innerElements.length : ('0' + this.innerElements.length);
+      current.innerHTML = window.innerWidth > 1024 ? "02" : "02";
+
+      slides.forEach((slide) => {
+        slide.classList.remove("active");
+      })
+
+      window.innerWidth > 1024 ? slides[1].classList.add("active") : slides[1].classList.add("active");
+
+      prev.addEventListener('click', () => slider.prev(1));
+      next.addEventListener('click', () => slider.next(1));
+    }
+
+    function printSlideIndex() {
+
+      let rect = gallery.getBoundingClientRect();
+      let slides = gallery.querySelectorAll(".block-gallery-item");
+      let current = gallery.parentNode.querySelector(".block-gallery-current");
+
+      let position = rect.top > 0 ? (rect.top + 100) : (window.innerHeight + rect.top) / 2;
+
+      setTimeout(() => {
+        slides.forEach((slide) => {
+          slide.classList.remove("active");
+        })
+
+        let element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
+        if (element) element.classList.add("active");
+        let index = element.getAttribute("index");
+
+        current.innerHTML = index > 10 ? index : ('0' + index);
+
+      }, 250);
+
+    }
+
+  });
+
+  galleries.forEach((gallery) => {
+    let slides = gallery.querySelectorAll(".block-gallery-item");
+
+    slides.forEach((slide, i) => {
+      slide.setAttribute("index", i + 1);
+    })
+
+    var slider = new Siema({
+      selector: gallery,
+      duration: 500,
+      easing: 'ease-out',
+      perPage: {
+        320: 3,
+        768: 3,
+        1024: 3,
+        1400: 3,
+      },
+      startIndex: 0,
+      draggable: true,
+      multipleDrag: true,
+      threshold: 20,
+      loop: true,
+      rtl: false,
+      onInit: onInit,
+      onChange: printSlideIndex,
+    });
+
+    function onInit() {
+      let counter = document.createElement("div")
+      let nav = document.createElement("div")
+      nav.classList.add("block-gallery-controls");
+      counter.classList.add("block-gallery-counter");
+      nav.innerHTML = "<button type='button'><i class='block-gallery-prev icon-arrow-left'></i></button><button type='button'><i class='block-gallery-next icon-arrow-right'></i></button>";
+      counter.innerHTML = "<span class='block-gallery-current'>0</span> / <span class='block-gallery-length'>0</span>";
+      gallery.parentNode.appendChild(nav);
+      gallery.parentNode.appendChild(counter);
+      let current = gallery.parentNode.querySelector(".block-gallery-current");
+
+      let next = gallery.parentNode.querySelector(".block-gallery-next");
+      let prev = gallery.parentNode.querySelector(".block-gallery-prev");
+      let length = gallery.parentNode.querySelector(".block-gallery-length");
+
+      length.innerHTML = this.innerElements.length > 10 ? this.innerElements.length : ('0' + this.innerElements.length);
+      current.innerHTML = window.innerWidth > 1400 ? "01" : "01";
+
+      slides.forEach((slide) => {
+        slide.classList.remove("active");
+      })
+
+      window.innerWidth > 1400 ? slides[1].classList.add("active") : slides[1].classList.add("active");
+
+      prev.addEventListener('click', () => slider.prev(1));
+      next.addEventListener('click', () => slider.next(1));
+    }
+
+    function printSlideIndex() {
+
+      let rect = gallery.getBoundingClientRect();
+      let slides = gallery.querySelectorAll(".block-gallery-item");
+      let current = gallery.parentNode.querySelector(".block-gallery-current");
+
+      let position = rect.top > 0 ? (rect.top + 100) : (window.innerHeight + rect.top) / 2;
+
+      setTimeout(() => {
+        slides.forEach((slide) => {
+          slide.classList.remove("active");
+        })
+
+        let element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
+        if (element) element.classList.add("active");
+        let index = element.getAttribute("index");
+
+        current.innerHTML = index > 10 ? index : ('0' + index);
+
+      }, 250);
+
+    }
 
   });
 
@@ -418,6 +673,7 @@ function initIntro() {
   intro = document.querySelector(".intro");
   sepText = new SepText();
   flowImages = new FlowImages(".flow-images");
+  document.querySelector("html").classList.add("disable-scroll");
   document.body.classList.add("disable-scroll");
   disableScroll(intro);
 }
@@ -432,26 +688,33 @@ function initLinks() {
 
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
-      //e.preventDefault();
-      let href = link.getAttribute("href");
-      let delay = link.getAttribute("link-delay");
-      let cdelay = link.getAttribute("cover-delay");
+      let target = link.getAttribute("target");
+      if (!target) {
+        e.preventDefault();
+        let href = link.getAttribute("href");
+        let delay = link.getAttribute("link-delay");
+        let cdelay = link.getAttribute("cover-delay");
 
-      link.classList.add("active");
+        if(href) {
+          link.classList.add("active");
 
-      setTimeout(() => {
-        link.classList.remove("active");
-      }, 2000)
-
-      if (!delay) delay = 0;
-      if (!cdelay) cdelay = 650;
-
-      navigate(href, delay, cdelay, e);
+          setTimeout(() => {
+            link.classList.remove("active");
+          }, 2000)
+  
+          if (!delay) delay = 0;
+          if (!cdelay) cdelay = 650;
+  
+          navigate(href, delay, cdelay, e);
+        }
+      }
     });
   });
 };
 
 function navigate(href, delay, delayP = 900, e) {
+  enable_scroll();
+  scrollNextCount = 0;
   if (!isNav) {
 
     isNav = true;
@@ -464,6 +727,9 @@ function navigate(href, delay, delayP = 900, e) {
     if ((href.indexOf('./') + 1) || (href.indexOf(domain) + 1)) {
       if (e) e.preventDefault();
 
+      if (document.querySelector("#page-title")) document.querySelector("#page-title").remove();
+      if (document.querySelector(".cover-video")) document.querySelector(".cover-video").remove();
+
       var html = '';
       var xmlhttp = new XMLHttpRequest();
 
@@ -471,7 +737,7 @@ function navigate(href, delay, delayP = 900, e) {
         if (xmlhttp.status == 200 && xmlhttp.readyState == 4) {
           setTimeout(() => {
             html = xmlhttp.responseText;
-            cover.classList.remove("step-1", "step-2", "expanded", "hide-left");
+            cover.classList.remove("step-1", "step-2", "expanded", "hide-left", "reverse");
 
             clearGrid("to-backward");
 
@@ -539,7 +805,7 @@ function initHeader() {
     if (container) theme = container.dataset.theme;
 
     header.classList.add(theme);
-    if(cursor) cursor.classList.add(theme);
+    if (cursor) cursor.classList.add(theme);
 
     theme == "black" ? document.body.style.cursor = "url('./assets/img/cursor-black.svg') 3 3, auto" : document.body.style.cursor = "url('./assets/img/cursor.svg') 3 3, auto";
   });
@@ -547,47 +813,57 @@ function initHeader() {
 
 function forms() {
 
-  NodeList.prototype.map = Array.prototype.map;
-  var inputs = document.querySelectorAll("input, textarea");
+  let form = document.getElementById("contact-form");
 
-  inputs.map(function (elm) {
-    elm.addEventListener("change", function (e) {
-      if (elm.value.length > 0) {
-        elm.dataset.empty = false;
-      } else {
-        elm.dataset.empty = true;
-      }
-    });
-  });
+  if(form) {
+    let pristine = new Pristine(form);
 
-  var forms = document.querySelectorAll("form");
-
-  forms.map(function (elm) {
-    elm.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      let form = e.target;
-      let action = form.getAttribute("action");
-      let xhttp = new XMLHttpRequest();
-
-      xhttp.open("POST", action, true);
-      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhttp.send(serialize(elm));
-
-      xhttp.onreadystatechange = function (data) {
-        if (xhttp.status == 200 && xhttp.readyState == 4) {
-          if (data.target.responseText == "1") {
-            elm.classList.add("succes");
-          } else {
-            elm.classList.add("error");
-          }
+    NodeList.prototype.map = Array.prototype.map;
+    var inputs = document.querySelectorAll("input, textarea");
+  
+    inputs.map(function (elm) {
+      elm.addEventListener("change", function (e) {
+        if (elm.value.length > 0) {
+          elm.dataset.empty = false;
         } else {
-          elm.classList.add("error");
+          elm.dataset.empty = true;
         }
-      }
+      });
     });
-  });
-
+  
+    var forms = document.querySelectorAll("form");
+  
+    forms.map(function (elm) {
+      elm.addEventListener("submit", function (e) {
+        e.preventDefault();
+  
+        let form = e.target;
+        let action = form.getAttribute("action");
+        let xhttp = new XMLHttpRequest();
+  
+        let valid = pristine.validate();
+  
+        if(valid) {
+          xhttp.open("POST", action, true);
+          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          let email = form.querySelector("[type=email]").value;
+          xhttp.send(serialize(elm)+"&email="+email);
+    
+          xhttp.onreadystatechange = function (data) {
+            if (xhttp.status == 200 && xhttp.readyState == 4) {
+              if (data.target.responseText == "1") {
+                elm.classList.add("succes");
+              } else {
+                elm.classList.add("error");
+              }
+            } else {
+              elm.classList.add("error");
+            }
+          }
+        }
+      });
+    });
+  }
 }
 
 function initEvents() {
@@ -600,8 +876,8 @@ function initEvents() {
 }
 
 
-function globalEvents(){
-  window.addEventListener("resize", ()=>{
+function globalEvents() {
+  window.addEventListener("resize", () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   });
@@ -641,13 +917,16 @@ function scrollEvents() {
   function onWheel() {
     if (next && !next.classList.contains('disabled')) {
       const href = next.dataset.target;
-      var rect = next.getBoundingClientRect();
-      if (rect.top < 1) {
-        if (scrollNextCount > 2) {
-          navigate(href, 0, 650, null);
-          scrollNextCount = 0;
+      const type = next.dataset.type;
+      if(type != "click") {
+        var rect = next.getBoundingClientRect();
+        if (rect.top < 1) {
+          if (scrollNextCount > 10) {
+            navigate(href, 0, 650, null);
+            scrollNextCount = 0;
+          }
+          scrollNextCount++;
         }
-        scrollNextCount++;
       }
     }
   }
@@ -660,24 +939,30 @@ function menuEvents() {
     menuToggler.classList.toggle("active");
     menu.classList.toggle("active");
     header.classList.remove("black", "white");
-    document.body.classList.add("disable-scroll");
+    // document.querySelector("html").classList.add("disable-scroll");
+    // document.body.classList.add("disable-scroll");
+    disable_scroll();
 
     if (menuToggler.classList.contains("active")) {
       cover.classList.add("formenu");
       addClassToGrid("formenu");
-      //loaderBar.classList.add("formenu");
+      loaderBar.classList.add("formenu");
       header.classList.add("white");
       isContent ? cover.classList.add("z-31") : coverAnimCont ? coverAnimCont.classList.add("formenu") : '';
     } else {
-      document.body.classList.remove("disable-scroll");
+      enable_scroll();
+      // document.querySelector("html").classList.remove("disable-scroll");
+      // document.body.classList.remove("disable-scroll");
       menu.classList.add("hide");
       setTimeout(() => {
         menu.classList.remove("hide");
         cover.classList.remove("formenu");
 
-        clearGrid("formenu");
+        setTimeout(()=>{
+          clearGrid("formenu");
+        }, 600);
 
-        loaderBar.classList.add("formenu");
+        loaderBar.classList.remove("formenu");
 
         let theme = document.elementFromPoint(0, 50).closest("[data-theme]").dataset.theme;
         header.classList.add(theme);
@@ -696,21 +981,25 @@ function menuEvents() {
   })
 
   menuLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      menuToggler.classList.remove("active");
-      menu.classList.add("hide");
-      menu.classList.remove("active");
-      document.body.classList.remove("disable-scroll");
-      cover.classList.remove("formenu");
-      grid.classList.remove("formenu");
-      cover.classList.remove("z-31");
+    let target = link.getAttribute("target");
+    if (!target) {
+      link.addEventListener("click", () => {
+        menuToggler.classList.remove("active");
+        menu.classList.add("hide");
+        menu.classList.remove("active");
+        document.querySelector("html").classList.remove("disable-scroll");
+        document.body.classList.remove("disable-scroll");
+        cover.classList.remove("formenu");
+        grid.classList.remove("formenu");
+        cover.classList.remove("z-31");
 
-      setTimeout(() => {
-        menu.classList.remove("hide");
-      }, 600)
+        setTimeout(() => {
+          menu.classList.remove("hide");
+        }, 600)
 
-      if (coverAnimCont) coverAnimCont.classList.remove("formenu");
-    });
+        if (coverAnimCont) coverAnimCont.classList.remove("formenu");
+      });
+    }
   });
 }
 
@@ -813,7 +1102,10 @@ function goToPage() {
   coverAnim.play();
   isIntro = false;
 
-  setTimeout(()=>{
+  localStorage.setItem('introViewed', Date.now() + 3600000);
+
+  setTimeout(() => {
+    document.querySelector("html").classList.remove("disable-scroll");
     document.body.classList.remove("disable-scroll");
     if (coverAnim) coverAnim.states.isScroll = false;
     if (coverAnim) coverAnim.states.isdisablesScroll = false;
@@ -956,7 +1248,7 @@ function disableScroll(container) {
   }
   container.addEventListener("touchmove", onWheel);
 
-  function onWheel(e){
+  function onWheel(e) {
     e.preventDefault();
   }
 
@@ -969,31 +1261,48 @@ function play() {
   preloader(true, () => {
     init();
 
+    let viewedTime = localStorage.getItem('introViewed');
+
     if (coverAnim) {
       coverAnim.show();
 
-      setTimeout(() => {
-        ovrl.classList.add("d-none");
-        grid.classList.add("active");
-      }, 500);
-      setTimeout(() => {
-        intro.classList.add("step-1");
+      if (viewedTime > Date.now()) {
         setTimeout(() => {
+          ovrl.classList.add("d-none");
+          grid.classList.add("active");
+          intro.classList.add("step-1");
+          intro.classList.add("step-2");
+          intro.classList.add("close");
+          flowImages.show();
+          sepText.play();
+          checkIntroScroll();
+          enter.click();
+        }, 500);
+      } else {
+
+        setTimeout(() => {
+          ovrl.classList.add("d-none");
+          grid.classList.add("active");
+        }, 500);
+        setTimeout(() => {
+          intro.classList.add("step-1");
           setTimeout(() => {
-            intro.classList.add("step-2");
-            sepText.play();
             setTimeout(() => {
-              flowImages.show();
-              checkIntroScroll();
+              intro.classList.add("step-2");
+              sepText.play();
               setTimeout(() => {
-                if (!isEntered) {
-                  enter.click();
-                }
-              }, 10000)
-            }, 600);
-          }, 1400);
-        }, 600);
-      }, 1000);
+                flowImages.show();
+                checkIntroScroll();
+                setTimeout(() => {
+                  if (!isEntered) {
+                    //enter.click();
+                  }
+                }, 10000)
+              }, 600);
+            }, 1400);
+          }, 600);
+        }, 1000);
+      }
     } else {
       setTimeout(() => {
         grid.classList.add("active", "x5");

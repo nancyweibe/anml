@@ -74,10 +74,10 @@
 
   .cover-anim-titles {
     position: absolute;
-    width: 100%;
     height: 100%;
+    width: 55%;
     top: 0;
-    left: 0;
+    left: 45%;
     z-index: 13;
 
     &.disabled {
@@ -87,7 +87,7 @@
     .cover-anim-title {
       position: absolute;
       top: 50%;
-      left: 45%;
+      left: 0;
       transform: translateY(-50%);
       pointer-events: none;
       opacity: 0;
@@ -317,7 +317,7 @@
         }
         }
       }
-
+      
       &.played {
         z-index: 1;
 
@@ -415,6 +415,48 @@
     }
   }
 
+  &.fornext {
+    .cover-anim-titles {
+      .cover-anim-title {
+        transform: translateY(-50%);
+        pointer-events: none;
+        opacity: 0;
+  
+        h2 {
+          transform: translateY(8rem);
+  
+          &::after {
+            transform: scaleX(0);
+          }
+        }
+  
+        p {
+          opacity: 0;
+          transform: translateY(8rem);
+        }
+  
+        a {
+          transform: translateY(8rem);
+  
+          &::after {
+            transform: scaleX(0);
+          }
+        }
+      }
+    }
+    .cover-anim-progress {
+      opacity: 0;
+    }
+  }
+
+  
+
+  @media screen and (max-width: $md) {
+    .cover-anim-titles {
+      pointer-events: none;
+    }
+  }
+
   @media screen and (max-width: $mobile) {
 
     // &::before{
@@ -424,6 +466,8 @@
     // }
 
     .cover-anim-titles {
+      left: 0;
+      width: 100%;
       .cover-anim-title {
         left: 0;
         .text-hero-title {
@@ -462,8 +506,40 @@
 
     .cover-anim-bgs { 
       .cover-anim-bg { 
-        .cover-anim-bg-segment {
 
+        &.offset-1-mb {
+          .cover-anim-bg-segment {
+            > div {
+              background-position-x: 50% !important;
+            }
+          }
+        }
+
+        &.offset-2-mb {
+          .cover-anim-bg-segment {
+            > div {
+              background-position-x: 30% !important;
+            }
+          }
+        }
+
+        &.offset-3-mb {
+          .cover-anim-bg-segment {
+            > div {
+              background-position-x: 10% !important;
+            }
+          }
+        }
+
+        &.offset-4-mb {
+          .cover-anim-bg-segment {
+            > div {
+              background-position-x: 37% !important;
+            }
+          }
+        }
+
+        .cover-anim-bg-segment {
           width: calc(100vw / #{$segments-mobile});
 
           &:nth-child(1) {

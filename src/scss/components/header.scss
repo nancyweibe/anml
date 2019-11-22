@@ -109,6 +109,12 @@
     height: $nav-height-mobile;
 
     .menu-toggler {
+
+      &:hover{
+        >div{
+          background-color: rgba($color-white, 0.5);
+        }
+      }
  
       >div{
         height: 1px;
@@ -128,6 +134,10 @@
     .menu-toggler {
       &.active {
         transform: scale(0.8);
+
+        >div{
+          background-color: rgba($color-white, 1);
+        }
       }
     }
   }

@@ -6,6 +6,10 @@
   text-decoration: none;
 }
 
+.text-link {
+  text-decoration: none;
+}
+
 .text-subtitle {
   color: $color-white;
   font-size: 1.75rem;
@@ -60,6 +64,11 @@
   line-height: 4.625rem;
   color: $color-white;
   margin: 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 .text-medium {
@@ -84,15 +93,20 @@
 .text-extra-black {
   font-family: $font-family-additional;
   font-size: 3rem;
-  margin-block-end: 1.4em;
+  margin-block-end: 30px;
   font-weight: 900;
   line-height: 3.75rem;
   color: $color-black;
+
 }
 
 .color-white {color: $color-white !important;}
 .color-dark {color: $color-mgray !important;}
 .color-black {color: $color-black !important;}
+
+.text-underline {
+  text-decoration: underline !important;
+}
 
 .text-counter {
   font-family: $font-family-secondary;
@@ -114,9 +128,18 @@
 
 @media screen and (max-width: $mobile) {
   .text-label-bold {
-    font-size: 0.5rem;
+    font-size: 0.687rem;
     letter-spacing: 0.0875rem;
     line-height: 1.5rem;
+  }
+
+  .text-regular {
+    font-size: 1rem;
+    line-height: 1.625rem;
+  }
+
+  .text-subtitle-op {
+    line-height: 1.625rem;
   }
 
   .text-extra {
@@ -142,7 +165,7 @@
   .text-subtitle {
     font-size: 1.375rem;
     line-height: 1.5rem;
-    max-width: 180px;
+    max-width: 220px;
   }
 
   .text-light {
@@ -157,7 +180,7 @@
   }
 
   .text-medium {
-    font-size: 2rem;
+    font-size: 1.625rem;
     line-height: 2rem;
     margin-top: 0;
     margin-bottom: 0;

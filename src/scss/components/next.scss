@@ -2,11 +2,13 @@
   background-color: $color-black;
   width: 100vw;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
+  z-index: 1;
 }
 
 .about-us-links {
@@ -21,18 +23,27 @@
 
   >a {
     display: flex;
-    width: calc(100vw/6/2);
-    height: calc(100vw/6/2);
-    margin: 0 calc(100vw/6/2/2);
+    width: 118px;
+    height: 118px;
     border: 1px solid rgba($color-white, 0.5);
     align-items: center;
     justify-content: center;
     color: $color-white;
     font-family: $font-family-secondary;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.1rem;
+    font-size: 0.625rem;
     text-decoration: none;
     transition: background-color $transition ease;
+    background-color: $color-black;
+
+    &:first-child{
+      margin-left: calc((100vw/6 - 118px) / 2);
+    }
+
+    &:last-child{
+      margin-right: calc((100vw/6 - 118px) / 2);
+    }
 
     &:hover{
       background-color: $color-white;
@@ -42,11 +53,11 @@
 
   @media screen and (max-width: $mobile) {
 
+    padding: 0 calc(100vw/#{$segments-mobile} - 118px/2);
+
     >a {
       display: flex;
-      width: calc(100vw/#{$segments-mobile});
-      height: calc(100vw/#{$segments-mobile});
-      margin: 0 calc(100vw/#{$segments-mobile}/2);
+      flex-shrink: 0;
       border: 1px solid rgba($color-white, 0.5);
       align-items: center;
       justify-content: center;
@@ -57,6 +68,14 @@
       font-size: 0.625rem;
       text-decoration: none;
       transition: background-color $transition ease;
+
+      &:first-child{
+        margin-left: 0;
+      }
+  
+      &:last-child{
+        margin-right: 0;
+      }
   
       &:hover{
         background-color: $color-white;
@@ -64,5 +83,13 @@
       }
     }
 
+  }
+}
+
+.cover-anim {
+  .next {
+    .scroll-line {
+      display: none;
+    }
   }
 }
