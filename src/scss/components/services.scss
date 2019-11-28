@@ -22,6 +22,11 @@
     ul{
       li{
         display: inline-block;
+
+        &::after{
+          content:',';
+          display: inline-block;
+        }
       }
     }
   }

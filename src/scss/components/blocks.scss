@@ -69,7 +69,7 @@
       width: auto;
       text-align: center;
       user-select: none;
-      opacity: 0.3;
+      opacity: 1;
       transition: all $transition * 2 ease;
       display: flex;
       flex-direction: column;
@@ -89,7 +89,15 @@
       background-color: transparent;
 
       .block-carousel-item {
+        min-height: 90vh;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 30px;
         background-color: $color-black;
+        opacity: 0.3;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
       }
     }
 
@@ -526,7 +534,8 @@
     display: none;
     width: 100%;
     height: 100%;
-    background-position: center bottom;
+    background-size: cover !important;
+    background-position: center bottom !important;
   }
 
   @media screen and (max-width: $md) {
@@ -536,10 +545,6 @@
 
     &::after{
       display: none;
-    }
-
-    &::after{
-      display: block;
     }
   }
 }

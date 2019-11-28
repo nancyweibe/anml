@@ -775,22 +775,25 @@ function initLinks() {
       let target = link.getAttribute("target");
       if (!target) {
 
-        e.preventDefault();
         let href = link.getAttribute("href");
-        let delay = link.getAttribute("link-delay");
-        let cdelay = link.getAttribute("cover-delay");
 
-        if (href) {
-          link.classList.add("active");
-
-          setTimeout(() => {
-            link.classList.remove("active");
-          }, 2000)
-
-          if (!delay) delay = 0;
-          if (!cdelay) cdelay = 650;
-
-          navigate(href, delay, cdelay, e);
+        if(href.indexOf("mailto") == -1 ) {
+          e.preventDefault();
+          let delay = link.getAttribute("link-delay");
+          let cdelay = link.getAttribute("cover-delay");
+  
+          if (href) {
+            link.classList.add("active");
+  
+            setTimeout(() => {
+              link.classList.remove("active");
+            }, 2000)
+  
+            if (!delay) delay = 0;
+            if (!cdelay) cdelay = 650;
+  
+            navigate(href, delay, cdelay, e);
+          }
         }
       }
     });
