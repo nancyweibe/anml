@@ -288,12 +288,20 @@ function initContent() {
   customCursor();
   mobileOptimization();
   initConfigs();
+  initScrollLines();
 
   const pageLazyLoad = new LazyLoad({
     elements_selector: "[data-src]",
     use_native: true,
   });
 }
+
+function initScrollLines(){
+  const lines = document.querySelectorAll(".scroll-line");
+  lines.forEach((line)=>{
+    line.classList.add("animate");
+  });
+};
 
 function initConfigs() {
 

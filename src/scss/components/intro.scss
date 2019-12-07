@@ -272,4 +272,5 @@
   }
 }
 
-@keyframes scroll-line{0%{transform:translateY(-100%)}to{transform:translateY(100%)}}
+@keyframes scroll-line{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+@-webkit-keyframes scroll-line{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}

@@ -290,7 +290,7 @@
         left: 0;
         top: 0;
         position: absolute;
-        width: calc(100vw / #{$segments});
+        width: calc(100vw / #{$segments} + 1px);
         height: 100%;
         -webkit-clip-path: inset(0 0 0 100%);
         clip-path: inset(0 0 0 100%);
@@ -560,6 +560,14 @@
     .cover-anim-bgs { 
       .cover-anim-bg { 
 
+        .cover-anim-bg-segment {
+          &:nth-child(1){
+            &::after{
+              opacity: 1;
+            }
+          }
+        }
+
         &.offset-1-mb {
           .cover-anim-bg-segment {
             > div {
@@ -593,7 +601,7 @@
         }
 
         .cover-anim-bg-segment {
-          width: calc(100vw / #{$segments-mobile});
+          width: calc(100vw / #{$segments-mobile} + 1px);
 
           &:nth-child(1) {
             left: calc(100vw/#{$segments-mobile}*0);

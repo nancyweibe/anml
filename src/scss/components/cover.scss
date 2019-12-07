@@ -171,7 +171,7 @@
 
       .cover-segment {
         &:nth-child(1) {
-          transform: scaleX(1);
+          transform: scaleX(0);
         }
         &:nth-child(2) {
           transform: scaleX(0);
