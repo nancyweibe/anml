@@ -97,7 +97,10 @@
   font-weight: 900;
   line-height: 3.75rem;
   color: $color-black;
+}
 
+.text-regular {
+  color: inherit;
 }
 
 .color-white {color: $color-white !important;}

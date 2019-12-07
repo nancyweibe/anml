@@ -539,6 +539,14 @@ function initCarousels() {
         })
 
         let element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
+
+        if(!element) {
+          setTimeout(()=>{
+            position = rect.top > 0 ? (rect.top) : (window.innerHeight + rect.top) / 2;
+            element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
+          }, 500);
+        }
+
         if (element) element.closest(".block-carousel-item").classList.add("active");
 
       }, 250);
@@ -594,6 +602,7 @@ function initCarousels() {
         })
 
         let element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
+        
         if (element) element.parentNode.classList.add("active");
 
       }, 250);
@@ -670,6 +679,14 @@ function initCarousels() {
         })
 
         let element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
+
+        if(!element) {
+          setTimeout(()=>{
+            position = rect.top > 0 ? (rect.top) : (window.innerHeight + rect.top) / 2;
+            element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
+          }, 500);
+        }
+
         if (element) element.classList.add("active");
         let index = element.getAttribute("index");
 
@@ -698,7 +715,7 @@ function initCarousels() {
         1024: 3,
         1400: 3,
       },
-      startIndex: 0,
+      startIndex: -1,
       draggable: true,
       multipleDrag: true,
       threshold: 20,
@@ -730,10 +747,11 @@ function initCarousels() {
         slide.classList.remove("active");
       })
 
-      window.innerWidth > 1400 ? slides[1].classList.add("active") : slides[1].classList.add("active");
+      window.innerWidth > 1400 ? slides[0].classList.add("active") : slides[0].classList.add("active");
 
       prev.addEventListener('click', () => slider.prev(1));
       next.addEventListener('click', () => slider.next(1));
+
     }
 
     function printSlideIndex() {
@@ -750,6 +768,13 @@ function initCarousels() {
         })
 
         let element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
+        if(!element) {
+          setTimeout(()=>{
+            position = rect.top > 0 ? (rect.top) : (window.innerHeight + rect.top) / 2;
+            element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
+          }, 500);
+        }
+
         if (element) element.classList.add("active");
         let index = element.getAttribute("index");
 

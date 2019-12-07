@@ -507,6 +507,17 @@
     //   right: auto;
     // }
 
+    &::after{
+      content: '';
+      background-color: $color-black;
+      width: calc(100vw / #{$segments-mobile});
+      left: 0;
+      top: 0;
+      height: 100%;
+      position: absolute;
+      z-index: 11;
+    }
+
     .cover-anim-titles {
       left: 0;
       width: 100%;
@@ -559,14 +570,6 @@
 
     .cover-anim-bgs { 
       .cover-anim-bg { 
-
-        .cover-anim-bg-segment {
-          &:nth-child(1){
-            &::after{
-              opacity: 1;
-            }
-          }
-        }
 
         &.offset-1-mb {
           .cover-anim-bg-segment {

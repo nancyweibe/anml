@@ -65,7 +65,7 @@
     cursor: inherit !important;
 
     .block-carousel-item {
-      padding: 14vh 4vw;
+      padding: 8vh 4vw;
       width: auto;
       text-align: center;
       user-select: none;
@@ -75,7 +75,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin: 0 10px;
+      margin: 0 7.5px;
 
       &.active {
         opacity: 1;
@@ -83,18 +83,18 @@
     }
 
     @media screen and (max-width: $md) {
-      width: 220vw;
-      margin-left: -60vw;
+      width: 260vw;
+      margin-left: -80vw;
 
       background-color: transparent;
 
       .block-carousel-item {
-        min-height: 90vh;
-        padding-left: 30px;
-        padding-right: 30px;
-        padding-bottom: 30px;
+        min-height: 60vh;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-bottom: 25px;
         background-color: $color-black;
-        opacity: 0.3;
+        opacity: 0.5;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
