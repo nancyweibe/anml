@@ -159,7 +159,7 @@
     }
 
     @media screen and (max-width: $mobile) {
-        width: calc(100vw / 4 * 2);
+        width: calc(100vw / 4 * 2 - 1px);
         height: 100%;
         background-position: left center !important;
         background-size: cover !important;
@@ -387,6 +387,19 @@
     }
   }
 
+  @media screen and (max-width: $md) {
+    .image-presset-6 {
+      height: 100vh;
+
+      img {
+        &:nth-child(2) {
+          left: 100%;
+          height: 60vh;
+        }
+      }
+    }
+  }
+
   @media screen and (max-width: $mobile) {
     .image-presset-7 {
       padding: 4rem 0;
@@ -437,17 +450,6 @@
     .presset-offset-image-mb {
       width: 180%;
       margin-left: -40%;
-    }
-
-    .image-presset-6 {
-      height: 100vh;
-
-      img {
-        &:nth-child(2) {
-          left: 100%;
-          height: 60vh;
-        }
-      }
     }
 
     .awward-presset {

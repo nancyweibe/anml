@@ -10,6 +10,7 @@
     >.col {
       &:first-child{
         overflow: hidden;
+        width: calc(50% - 0.5px) !important;
       }
 
       a {

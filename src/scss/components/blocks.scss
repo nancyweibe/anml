@@ -549,3 +549,9 @@
     }
   }
 }
+
+.loaded {
+  &.formenu{
+    opacity: 0;
+  }
+}

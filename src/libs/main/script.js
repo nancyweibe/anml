@@ -40,7 +40,9 @@ function init() {
 
   window.addEventListener('popstate', function (event) {
     event.preventDefault();
-    window.location.href = event.target.location.href;
+    disable_scroll();
+    let link = event.target.location.href.split("/");
+    (link[link.length-1]) ? navigate(event.target.location.href, 0, 650, null) : window.location.href = event.target.location.href;
   }, false);
 
   if (typeof isIndex == 'undefined') {
@@ -835,9 +837,10 @@ function initLinks() {
 
 function navigate(href, delay, delayP = 900, e) {
 
-  enable_scroll();
-
   scrollNextCount = 0;
+  cover.classList.remove("expanded");
+  clearGrid("to-backward");
+
   if (!isNav) {
 
     isNav = true;
@@ -873,8 +876,9 @@ function navigate(href, delay, delayP = 900, e) {
                 window.history.pushState({ "pageTitle": pageTitle }, "", href);
 
                 setTimeout(() => {
-                  document.body.scrollTop = document.documentElement.scrollTop = 0;
                   cover.classList.add("expanded");
+                  enable_scroll();
+                  document.body.scrollTop = document.documentElement.scrollTop = 0;
 
                   initBeforeContent();
 
@@ -1071,6 +1075,9 @@ function menuEvents() {
       cursor.classList.remove("black");
       cursor.classList.add("white");
       cover.classList.add("formenu");
+      setTimeout(()=>{
+        loaded.classList.add("formenu");
+      }, 600);
       addClassToGrid("formenu");
       loaderBar.classList.add("formenu");
       header.classList.add("white");
@@ -1083,6 +1090,7 @@ function menuEvents() {
       setTimeout(() => {
         menu.classList.remove("hide");
         cover.classList.remove("formenu");
+        loaded.classList.remove("formenu");
 
         setTimeout(() => {
           clearGrid("formenu");
@@ -1117,6 +1125,7 @@ function menuEvents() {
         document.body.classList.remove("disable-scroll");
         cover.classList.remove("formenu");
         grid.classList.remove("formenu");
+        loaded.classList.remove("formenu");
         cover.classList.remove("z-31");
 
         setTimeout(() => {

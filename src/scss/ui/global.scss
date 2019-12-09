@@ -680,6 +680,13 @@ h2 {
   .mt-0-md {
     margin-top: 0 !important;
   }
+  .h-auto-md {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .pb-d-md{
+    padding-bottom: $spacer/2 !important;
+  }
 }
 
 @media screen and (max-width: $mobile) {
