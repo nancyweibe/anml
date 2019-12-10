@@ -226,7 +226,7 @@ function applyTemplate(calback) {
   let html = '';
   let xmlhttp = new XMLHttpRequest();
 
-  let elements = document.querySelectorAll(".hero, .content, .next, .mask-scroll, .cover-video");
+  let elements = document.querySelectorAll(".hero, .content, .next, .mask-scroll, .cover-video, .overlay");
 
   elements.forEach((element) => {
     if (element) element.remove();
@@ -247,6 +247,9 @@ function applyTemplate(calback) {
 
       let title = document.querySelector("#page-title");
       document.title = title.innerHTML;
+
+      const ovrl = document.querySelector(".overlay");
+      if(ovrl)ovrl.remove(); 
 
       calback();
     }
@@ -839,7 +842,6 @@ function navigate(href, delay, delayP = 900, e) {
 
   scrollNextCount = 0;
   cover.classList.remove("expanded");
-  clearGrid("to-backward");
 
   if (!isNav) {
 
@@ -869,6 +871,11 @@ function navigate(href, delay, delayP = 900, e) {
 
             setTimeout(() => {
               loaded.innerHTML = html;
+              const ovrls = document.querySelectorAll(".overlay");
+              if(ovrls) 
+              ovrls.forEach((ovrl)=>{
+                ovrl.remove();
+              });
 
               preloader(false, () => {
                 let pageTitle = document.querySelector("#page-title").innerHTML;
@@ -1125,11 +1132,12 @@ function menuEvents() {
         document.body.classList.remove("disable-scroll");
         cover.classList.remove("formenu");
         grid.classList.remove("formenu");
-        loaded.classList.remove("formenu");
+        
         cover.classList.remove("z-31");
 
         setTimeout(() => {
           menu.classList.remove("hide");
+          loaded.classList.remove("formenu");
         }, 600)
 
         if (coverAnimCont) coverAnimCont.classList.remove("formenu");

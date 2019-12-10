@@ -687,6 +687,9 @@ h2 {
   .pb-d-md{
     padding-bottom: $spacer/2 !important;
   }
+  .pt-d-md {
+    padding-top: $spacer/2 !important;
+  }
 }
 
 @media screen and (max-width: $mobile) {

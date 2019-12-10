@@ -13,7 +13,8 @@
   transition: opacity $transition ease;
 
   .cover-segment {
-    width: 100%;
+    width: calc(100vw /#{$segments} + 0.5px);
+    margin-left: -0.5px;
     height: 100%;
     background-color: rgba($color-black, 1);
     transform-origin: center right;
@@ -185,6 +186,9 @@
       }
     }
     .cover-segment {
+      width: calc(100vw /#{$segments-mobile} + 0.5px);
+      margin-left: -0.5px;
+      
       &:nth-child(5) {
         display: none;
       }
