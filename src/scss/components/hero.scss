@@ -3,7 +3,6 @@
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   position: relative;
-  z-index: 2;
   transition: height 999999s ease;
 
   .cover-bg {
