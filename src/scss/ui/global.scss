@@ -690,6 +690,12 @@ h2 {
   .pt-d-md {
     padding-top: $spacer/2 !important;
   }
+  .d-none-md {
+    display: none !important;
+  }
+  .remove-md {
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: $mobile) {

@@ -313,11 +313,11 @@ function initConfigs() {
   grid.classList.remove("op02", "op0");
   document.querySelector(".loaded").classList.remove("fixed")
 
-  let videocover = document.querySelector(".cover-video");
-  if (videocover) {
-    videocover.remove();
-    document.body.appendChild(videocover);
-  }
+  // let videocover = document.querySelector(".cover-video");
+  // if (videocover) {
+  //   videocover.remove();
+  //   document.body.appendChild(videocover);
+  // }
 
   let gridOpacity = document.querySelector("[data-grid]");
   if (gridOpacity) gridOpacity = gridOpacity.dataset.grid;
