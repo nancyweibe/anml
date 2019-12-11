@@ -510,7 +510,7 @@
     &::after{
       content: '';
       background-color: $color-black;
-      width: calc(100vw / #{$segments-mobile});
+      width: calc(100vw / #{$segments-mobile} + 1px);
       left: 0;
       top: 0;
       height: 100%;
