@@ -297,7 +297,8 @@ function initContent() {
 
   const pageLazyLoad = new LazyLoad({
     elements_selector: "[data-src]",
-    use_native: true,
+    use_native: false,
+    threshold: 2000,
   });
 }
 
@@ -842,6 +843,8 @@ function navigate(href, delay, delayP = 900, e) {
 
   scrollNextCount = 0;
   cover.classList.remove("expanded");
+  clearGrid("formenu");
+  clearGrid("to-backward");
 
   if (!isNav) {
 
@@ -863,16 +866,15 @@ function navigate(href, delay, delayP = 900, e) {
 
       xmlhttp.onreadystatechange = function () {
         if (xmlhttp.status == 200 && xmlhttp.readyState == 4) {
+
           setTimeout(() => {
             html = xmlhttp.responseText;
             cover.classList.remove("step-1", "step-2", "expanded", "hide-left", "reverse");
-
-            clearGrid("to-backward");
-
+            
             setTimeout(() => {
               loaded.innerHTML = html;
               const ovrls = document.querySelectorAll(".overlay");
-              if(ovrls) 
+              if(ovrls)
               ovrls.forEach((ovrl)=>{
                 ovrl.remove();
               });
@@ -886,6 +888,10 @@ function navigate(href, delay, delayP = 900, e) {
                   cover.classList.add("expanded");
                   enable_scroll();
                   document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+                  setTimeout(()=>{
+                    gridToBackWard();
+                  },600);
 
                   initBeforeContent();
 
@@ -1086,7 +1092,7 @@ function menuEvents() {
         loaded.classList.add("formenu");
       }, 600);
       addClassToGrid("formenu");
-      loaderBar.classList.add("formenu");
+      if(loaderBar) loaderBar.classList.add("formenu");
       header.classList.add("white");
       isContent ? cover.classList.add("z-31") : coverAnimCont ? coverAnimCont.classList.add("formenu") : '';
     } else {
