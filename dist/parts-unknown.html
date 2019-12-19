@@ -1,17 +1,91 @@
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 </head>
 
-<div class="overlay" style="position: fixed;background:black;width:100vw;height:100vh;left:0;top:0;z-index: 100;"></div>
+<style>
+  .cover-bg-img {
+    background: url(./assets/img/hero-1--xs.jpg);
+
+    @media (min-width: 768px) {
+      background: url(./assets/img/hero-1.jpg);
+    }
+  }
+
+  .collage {
+    overflow: hidden;
+    padding-top: 309.114%;
+    position: relative;
+
+    @media (min-width: 768px) {
+      padding-top: 171.73%;
+    }
+  }
+
+  .collage img {
+    position: absolute;
+    box-shadow: 0 12px 84px rgba(0, 0, 0, 0.224496);
+  }
+
+  .c1 {
+    left: 8%;
+    top: 4.1%;
+    width: 34.8% !important;
+  }
+  .c2 {
+    left: 8%;
+    top: 37.7%;
+    width: 34.8% !important;
+  }
+  .c3 {
+    left: 8%;
+    top: 63.6%;
+    width: 34.8% !important;
+  }
+  .c4 {
+    left: 46.1%;
+    top: 4.1%;
+    width: 9.2% !important;
+  }
+  .c5 {
+    left: 58.6%;
+    top: 4.1%;
+    width: 34.8% !important;
+  }
+  .c6 {
+    left: 46.4%;
+    top: 42.4%;
+    width: 34.8% !important;
+  }
+  .c7 {
+    left: 46.1%;
+    top: 55.5%;
+    width: 34.8% !important;
+  }
+  .c8 {
+    left: 84.3%;
+    top: 41.7%;
+    width: 9.1% !important;
+  }
+</style>
+
+<div
+  class="overlay"
+  style="position: fixed;background:black;width:100vw;height:100vh;left:0;top:0;z-index: 100;"
+></div>
 
 <div id="page-title">ANML - Parts Unknown</div>
 <div class="hero" data-theme="white">
   <div class="cover-bg">
-    <img class="d-none" src="./assets/img/hero-1.jpg" alt="">
-    <div class="cover-bg-img" style="background: url(./assets/img/hero-1.jpg)"></div>
+    <img
+      class="d-none"
+      src="./assets/img/hero-1--xs.jpg"
+      srcset="./assets/img/hero-1.jpg 768w"
+      alt=""
+    />
+    <div class="cover-bg-img"></div>
     <div class="cover-bg-title">
-      <h2 class="text-hero-title">Parts<br>Unknown</h2>
+      <h2 class="text-hero-title">Parts<br />Unknown</h2>
       <p class="text-subtitle">Bringing fans into Bourdain's world</p>
     </div>
     <span class="scroll-line active"></span>
@@ -43,10 +117,23 @@
           </div>
         </div>
         <div class="col w-50 w-md-100">
-          <h2 data-entry="fade-in">Anthony Bourdain was a legend, if you watched him, you wanted more.</h2>
+          <h2 data-entry="fade-in">
+            Anthony Bourdain was a legend, if you watched him, you wanted more.
+          </h2>
           <div data-entry="fade-in" data-delay="d1">
-            <p>You wanted to travel like he traveled, eat like he ate and live the experiences he lived. ANML and our sister company Roads & Kingdoms brought you into Bourdain's world, allowing fans to take a deeper dive after each episode.</p>
-            <p class="mb-p0">Using a Master content template, unique page types are created on the fly by the editing team. Pulling from a component library, editors are able publish a variety of content types within each story. Video throughout the site brings stories and sections to life. While micro-interactions enhance the user experience.</p>
+            <p>
+              You wanted to travel like he traveled, eat like he ate and live
+              the experiences he lived. ANML and our sister company Roads &
+              Kingdoms brought you into Bourdain's world, allowing fans to take
+              a deeper dive after each episode.
+            </p>
+            <p class="mb-p0">
+              Using a Master content template, unique page types are created on
+              the fly by the editing team. Pulling from a component library,
+              editors are able publish a variety of content types within each
+              story. Video throughout the site brings stories and sections to
+              life. While micro-interactions enhance the user experience.
+            </p>
           </div>
         </div>
       </div>
@@ -56,7 +143,11 @@
     <div class="container">
       <div class="row">
         <div class="col w-100 text-center" data-entry="fade-in">
-          <img class="image-shadow" data-src="./assets/img/portfolio-1.jpg" alt="">
+          <img
+            class="image-shadow"
+            data-src="./assets/img/portfolio-1.jpg"
+            alt=""
+          />
         </div>
       </div>
     </div>
@@ -65,11 +156,12 @@
     <div class="container">
       <div class="row">
         <div class="col w-50 w-md-100" data-entry="fade-in">
-          <h2 class="mb-0">Component based publishing allows for endless opportunities so that every page can be as unique as its destination.</h2>
+          <h2 class="mb-0">
+            Component based publishing allows for endless opportunities so that
+            every page can be as unique as its destination.
+          </h2>
         </div>
-        <div class="col w-50 w-md-100">
-
-        </div>
+        <div class="col w-50 w-md-100"></div>
       </div>
     </div>
   </div>
@@ -77,31 +169,58 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col w-100 text-center" data-entry="fade-in">
-          <img class="shadow-offset presset-offset-image-mb"  data-src="./assets/img/portfolio-2.png" alt="">
+          <div class="collage presset-offset-image-mb">
+            <img class="c1" src="./assets/img/collage/1.jpg" alt="" />
+            <img class="c2" src="./assets/img/collage/2.jpg" alt="" />
+            <img class="c3" src="./assets/img/collage/3.jpg" alt="" />
+            <img class="c4" src="./assets/img/collage/4.jpg" alt="" />
+            <img class="c5" src="./assets/img/collage/5.jpg" alt="" />
+            <img class="c6" src="./assets/img/collage/6.jpg" alt="" />
+            <img class="c7" src="./assets/img/collage/7.jpg" alt="" />
+            <img class="c8" src="./assets/img/collage/8.jpg" alt="" />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="block pb-d">
-    <div class="container">
-      <div class="row" data-entry="fade-in">
-        <div class="col w-100">
-          <div class="mw-700 mx-auto text-center">
-            <span class="text-label" data-entry="fade-in">FROM OUR PARTNERS</span>
-            <p data-entry="fade-in" data-delay="d1">”The deeper I dig on the site, the more great work I find. It's shaping up to be everything I imagined and more. Couldn't be happier or more impressed. Thanks again to you and to everyone involved in this staggering amount of great work.”</p>
-            <div class="op-05" data-entry="fade-in" data-delay="d2">Anthony Bourdain</div>
-            <div class="color-black" data-entry="fade-in" data-delay="d2"></div>
+    <div class="block pb-d">
+      <div class="container">
+        <div class="row" data-entry="fade-in">
+          <div class="col w-100">
+            <div class="mw-700 mx-auto text-center">
+              <span class="text-label" data-entry="fade-in"
+                >FROM OUR PARTNERS</span
+              >
+              <p data-entry="fade-in" data-delay="d1">
+                ”The deeper I dig on the site, the more great work I find. It's
+                shaping up to be everything I imagined and more. Couldn't be
+                happier or more impressed. Thanks again to you and to everyone
+                involved in this staggering amount of great work.”
+              </p>
+              <div class="op-05" data-entry="fade-in" data-delay="d2">
+                Anthony Bourdain
+              </div>
+              <div
+                class="color-black"
+                data-entry="fade-in"
+                data-delay="d2"
+              ></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="next" data-target="./jennair.html" data-type="click" data-theme="white">
-  <div>
-    <p class="text-light">Next Project</p>
-    <h2 class="text-caption"><a href="./jennair.html">JennAir</a></h2>
+  <div
+    class="next"
+    data-target="./jennair.html"
+    data-type="click"
+    data-theme="white"
+  >
+    <div>
+      <p class="text-light">Next Project</p>
+      <h2 class="text-caption"><a href="./jennair.html">JennAir</a></h2>
+    </div>
   </div>
-</div>
 
-<script src="./assets/bundle.js"></script>
+  <script src="./assets/bundle.js"></script>
+</div>
