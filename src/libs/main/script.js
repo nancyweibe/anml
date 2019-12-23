@@ -13,6 +13,7 @@ import MaskScroll from "../maskscroll/maskscroll";
 import Siema from "../siema/siema";
 import LazyLoad from "vanilla-lazyload";
 import Pristine from "pristinejs";
+import localforage from "localforage";
 
 let enter = null, isEntered = false, state = null, MaskScrollClass = null, mouseX = 0, mouseY = 0, cursor = null, loaded = null, isLoadbar = true, scrollNextCount = 0, isNav = false, hero = null, coverAnimCont = null, intro = null, cover = null, header = null, menuToggler = null, grid = null, menu = null, content = null, next = null, loaderBar = null, isContent = false;
 
@@ -1251,7 +1252,7 @@ function goToPage() {
   coverAnim.play();
   isIntro = false;
 
-  localStorage.setItem('introViewed', Date.now() + 3600000);
+  localforage.setItem('introViewed', Date.now() + 3600000);
 
   setTimeout(() => {
     document.querySelector("html").classList.remove("disable-scroll");
@@ -1410,7 +1411,7 @@ function play() {
   preloader(true, () => {
     init();
 
-    let viewedTime = localStorage.getItem('introViewed');
+    let viewedTime = localforage.getItem('introViewed');
 
     if (coverAnim) {
       coverAnim.show();
