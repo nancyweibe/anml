@@ -1,3 +1,4 @@
 node_modules/
 node_modules_mac/
 node_modules_win/
+.DS_Store
