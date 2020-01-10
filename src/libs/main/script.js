@@ -43,7 +43,7 @@ function init() {
     event.preventDefault();
     disable_scroll();
     let link = event.target.location.href.split("/");
-    (link[link.length-1]) ? navigate(event.target.location.href, 0, 650, null) : window.location.href = event.target.location.href;
+    (link[link.length - 1]) ? navigate(event.target.location.href, 0, 650, null) : window.location.href = event.target.location.href;
   }, false);
 
   if (typeof isIndex == 'undefined') {
@@ -126,7 +126,7 @@ function customCursor() {
     }
   }
 
-  if(!state) state = createState({clientX:0, clientY:0});
+  if (!state) state = createState({ clientX: 0, clientY: 0 });
 
   cursor = document.createElement("div");
   cursor.classList.add("cursor");
@@ -141,7 +141,7 @@ function customCursor() {
     elem.style.setProperty('--radius', state.radius)
     elem.style.setProperty('--scale', state.scale)
 
-  } 
+  }
 
   requestAnimationFrame(render);
 
@@ -170,7 +170,7 @@ function customCursor() {
   })
 
   function render() {
-    state = createState({clientX:lerp(state.x, mouseX, 0.15), clientY:lerp(state.y, mouseY, 0.15)});
+    state = createState({ clientX: lerp(state.x, mouseX, 0.15), clientY: lerp(state.y, mouseY, 0.15) });
     updateProperties(cursor, state)
     requestAnimationFrame(render);
   }
@@ -250,7 +250,7 @@ function applyTemplate(calback) {
       document.title = title.innerHTML;
 
       const ovrl = document.querySelector(".overlay");
-      if(ovrl)ovrl.remove(); 
+      if (ovrl) ovrl.remove();
 
       calback();
     }
@@ -303,9 +303,9 @@ function initContent() {
   });
 }
 
-function initScrollLines(){
+function initScrollLines() {
   const lines = document.querySelectorAll(".scroll-line");
-  lines.forEach((line)=>{
+  lines.forEach((line) => {
     line.classList.add("animate");
   });
 };
@@ -495,7 +495,7 @@ function initCarousels() {
       selector: gallery,
       duration: 500,
       easing: 'ease-out',
-      autoHeight:true,
+      autoHeight: true,
       perPage: {
         320: 3,
         768: 3,
@@ -547,8 +547,8 @@ function initCarousels() {
 
         let element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
 
-        if(!element) {
-          setTimeout(()=>{
+        if (!element) {
+          setTimeout(() => {
             position = rect.top > 0 ? (rect.top) : (window.innerHeight + rect.top) / 2;
             element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
           }, 500);
@@ -609,7 +609,7 @@ function initCarousels() {
         })
 
         let element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
-        
+
         if (element) element.parentNode.classList.add("active");
 
       }, 250);
@@ -687,8 +687,8 @@ function initCarousels() {
 
         let element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
 
-        if(!element) {
-          setTimeout(()=>{
+        if (!element) {
+          setTimeout(() => {
             position = rect.top > 0 ? (rect.top) : (window.innerHeight + rect.top) / 2;
             element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
           }, 500);
@@ -775,8 +775,8 @@ function initCarousels() {
         })
 
         let element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
-        if(!element) {
-          setTimeout(()=>{
+        if (!element) {
+          setTimeout(() => {
             position = rect.top > 0 ? (rect.top) : (window.innerHeight + rect.top) / 2;
             element = document.elementFromPoint(window.innerWidth / 2 + 20, position);
           }, 500);
@@ -817,21 +817,21 @@ function initLinks() {
 
         let href = link.getAttribute("href");
 
-        if(href.indexOf("mailto") == -1 ) {
+        if (href.indexOf("mailto") == -1) {
           e.preventDefault();
           let delay = link.getAttribute("link-delay");
           let cdelay = link.getAttribute("cover-delay");
-  
+
           if (href) {
             link.classList.add("active");
-  
+
             setTimeout(() => {
               link.classList.remove("active");
             }, 2000)
-  
+
             if (!delay) delay = 0;
             if (!cdelay) cdelay = 650;
-  
+
             navigate(href, delay, cdelay, e);
           }
         }
@@ -871,14 +871,14 @@ function navigate(href, delay, delayP = 900, e) {
           setTimeout(() => {
             html = xmlhttp.responseText;
             cover.classList.remove("step-1", "step-2", "expanded", "hide-left", "reverse");
-            
+
             setTimeout(() => {
               loaded.innerHTML = html;
               const ovrls = document.querySelectorAll(".overlay");
-              if(ovrls)
-              ovrls.forEach((ovrl)=>{
-                ovrl.remove();
-              });
+              if (ovrls)
+                ovrls.forEach((ovrl) => {
+                  ovrl.remove();
+                });
 
               preloader(false, () => {
                 let pageTitle = document.querySelector("#page-title").innerHTML;
@@ -890,9 +890,9 @@ function navigate(href, delay, delayP = 900, e) {
                   enable_scroll();
                   document.body.scrollTop = document.documentElement.scrollTop = 0;
 
-                  setTimeout(()=>{
+                  setTimeout(() => {
                     gridToBackWard();
-                  },600);
+                  }, 600);
 
                   initBeforeContent();
 
@@ -1089,11 +1089,11 @@ function menuEvents() {
       cursor.classList.remove("black");
       cursor.classList.add("white");
       cover.classList.add("formenu");
-      setTimeout(()=>{
+      setTimeout(() => {
         loaded.classList.add("formenu");
       }, 600);
       addClassToGrid("formenu");
-      if(loaderBar) loaderBar.classList.add("formenu");
+      if (loaderBar) loaderBar.classList.add("formenu");
       header.classList.add("white");
       isContent ? cover.classList.add("z-31") : coverAnimCont ? coverAnimCont.classList.add("formenu") : '';
     } else {
@@ -1139,7 +1139,7 @@ function menuEvents() {
         document.body.classList.remove("disable-scroll");
         cover.classList.remove("formenu");
         grid.classList.remove("formenu");
-        
+
         cover.classList.remove("z-31");
 
         setTimeout(() => {
@@ -1411,52 +1411,52 @@ function play() {
   preloader(true, () => {
     init();
 
-    let viewedTime = localforage.getItem('introViewed');
+    localforage.getItem('introViewed', function (err, viewedTime) {
+      if (coverAnim) {
+        coverAnim.show();
 
-    if (coverAnim) {
-      coverAnim.show();
-
-      if (viewedTime > Date.now()) {
-        setTimeout(() => {
-          ovrl.classList.add("d-none");
-          grid.classList.add("active");
-          intro.classList.add("step-1");
-          intro.classList.add("step-2");
-          intro.classList.add("close");
-          flowImages.show();
-          sepText.play();
-          checkIntroScroll();
-          enter.click();
-        }, 500);
-      } else {
-
-        setTimeout(() => {
-          ovrl.classList.add("d-none");
-          grid.classList.add("active");
-        }, 500);
-        setTimeout(() => {
-          intro.classList.add("step-1");
+        if (viewedTime > Date.now()) {
           setTimeout(() => {
+            ovrl.classList.add("d-none");
+            grid.classList.add("active");
+            intro.classList.add("step-1");
+            intro.classList.add("step-2");
+            intro.classList.add("close");
+            flowImages.show();
+            sepText.play();
+            checkIntroScroll();
+            enter.click();
+          }, 500);
+        } else {
+
+          setTimeout(() => {
+            ovrl.classList.add("d-none");
+            grid.classList.add("active");
+          }, 500);
+          setTimeout(() => {
+            intro.classList.add("step-1");
             setTimeout(() => {
-              intro.classList.add("step-2");
-              sepText.play();
               setTimeout(() => {
-                flowImages.show();
-                checkIntroScroll();
+                intro.classList.add("step-2");
+                sepText.play();
                 setTimeout(() => {
-                  if (!isEntered) {
-                    //enter.click();
-                  }
-                }, 10000)
-              }, 600);
-            }, 1400);
-          }, 600);
-        }, 1000);
+                  flowImages.show();
+                  checkIntroScroll();
+                  setTimeout(() => {
+                    if (!isEntered) {
+                      //enter.click();
+                    }
+                  }, 10000)
+                }, 600);
+              }, 1400);
+            }, 600);
+          }, 1000);
+        }
+      } else {
+        setTimeout(() => {
+          grid.classList.add("active", "x5");
+        }, 500);
       }
-    } else {
-      setTimeout(() => {
-        grid.classList.add("active", "x5");
-      }, 500);
-    }
+    });
   });
 }
