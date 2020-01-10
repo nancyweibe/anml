@@ -7,7 +7,7 @@
   z-index: 4;
   transform: translateX(1px);
 
-  .block-carousel-simple{
+  .block-carousel-simple {
     width: 140vw;
     margin-left: -20vw;
     height: 270px;
@@ -27,7 +27,7 @@
       justify-content: center;
       margin: 0 10px;
 
-      >div {
+      > div {
         height: 100%;
         width: 100%;
         background-repeat: no-repeat !important;
@@ -48,17 +48,16 @@
       width: 220vw;
       margin-left: -60vw;
     }
-
   }
 
-  .block-carousel-black{
+  .block-carousel-black {
     width: calc(100% - 100% / 6 * 4 - 1px);
     background-color: $color-black;
     margin: 0 auto;
     position: relative;
     user-select: none;
 
-    *{
+    * {
       user-select: none;
     }
 
@@ -101,9 +100,7 @@
         justify-content: center;
       }
     }
-
   }
-
 
   .block-carousel-items {
     .block-carousel-item {
@@ -123,7 +120,7 @@
     margin-bottom: 200px;
     user-select: none;
 
-    *{
+    * {
       user-select: none;
     }
 
@@ -137,19 +134,19 @@
       }
     }
 
-    .tns-outer .tns-nav{
+    .tns-outer .tns-nav {
       transform: translateY(0);
       margin-top: 2rem;
 
-      button{
+      button {
         width: 40px;
         height: 1px;
         margin: 0 0.5rem;
-        border:none;
+        border: none;
         background-color: $color-black;
         opacity: 0.3;
         transition: opacity $transition ease;
-  
+
         &.tns-nav-active {
           opacity: 1;
         }
@@ -166,7 +163,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-  
+
       button {
         background-color: transparent;
         border: 0;
@@ -174,7 +171,7 @@
         color: $color-white;
         font-size: 1.4rem;
         transition: opacity $transition ease;
-  
+
         &:hover {
           opacity: 1;
         }
@@ -203,7 +200,7 @@
         text-align: center;
         padding-top: 0;
 
-        >div {
+        > div {
           height: 100%;
           width: 100%;
           background-repeat: no-repeat !important;
@@ -213,19 +210,19 @@
       }
     }
 
-    .tns-outer .tns-nav{
+    .tns-outer .tns-nav {
       transform: translateY(0);
       margin-top: 2rem;
 
-      button{
+      button {
         width: 40px;
         height: 1px;
         margin: 0 0.5rem;
-        border:none;
+        border: none;
         background-color: $color-black;
         opacity: 0.3;
         transition: opacity $transition ease;
-  
+
         &.tns-nav-active {
           opacity: 1;
         }
@@ -236,7 +233,8 @@
   @media screen and (max-width: $mobile) {
     width: calc(100% - (100% /#{$segments-mobile}/ 2));
 
-    .tns-controls, .tns-nav {
+    .tns-controls,
+    .tns-nav {
       display: none !important;
     }
 
@@ -394,7 +392,6 @@
       left: 0;
       padding: 0 25%;
     }
-
   }
 
   @media screen and (max-width: $md) {
@@ -518,11 +515,11 @@
   top: 0;
   left: 0;
   z-index: 1;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
 
-  &::after{
+  &::after {
     position: absolute;
-    content: '';
+    content: "";
     display: block;
     top: 0;
     left: 0;
@@ -539,7 +536,7 @@
     height: 100%;
     background-size: cover !important;
     background-position: center bottom !important;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
   }
 
   @media screen and (max-width: $md) {
@@ -547,14 +544,14 @@
       opacity: 1;
     }
 
-    &::after{
+    &::after {
       display: none;
     }
   }
 }
 
 .loaded {
-  &.formenu{
+  &.formenu {
     opacity: 0;
   }
 }

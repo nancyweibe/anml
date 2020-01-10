@@ -1,7 +1,21 @@
 export default class CoverAnim {
   constructor(selector, options) {
-    this.options = { segments: window.innerWidth > 767 ? 7 : 5, slideDelay: 5000, autoplay: false };
-    this.states = { currentSlide: 0, ts: null, isTouched: false, isScroll: true, length: 0, direction: 1, isPaused: false, isMobile: false, isdisablesScroll: false };
+    this.options = {
+      segments: window.innerWidth > 767 ? 7 : 5,
+      slideDelay: 5000,
+      autoplay: false
+    };
+    this.states = {
+      currentSlide: 0,
+      ts: null,
+      isTouched: false,
+      isScroll: true,
+      length: 0,
+      direction: 1,
+      isPaused: false,
+      isMobile: false,
+      isdisablesScroll: false
+    };
     this.bgsContainers = [];
     this.progressSegments = [];
     this.titles = [];
@@ -30,30 +44,26 @@ export default class CoverAnim {
     this.buttonsEvents();
   }
 
-  buttonsEvents = () => {
-
-  }
+  buttonsEvents = () => {};
 
   open(i) {
-
     this.states.isPaused = true;
     this.states.isScroll = true;
 
     setTimeout(() => {
-      this.titles.forEach((elm) => {
+      this.titles.forEach(elm => {
         elm.classList.remove("active");
       });
 
       this.container.classList.add("expanded");
-    }, 600)
-
+    }, 600);
   }
 
   scrollEvents() {
     if (this.container.addEventListener) {
-      if ('onwheel' in document) {
+      if ("onwheel" in document) {
         this.container.addEventListener("wheel", this.onWheel);
-      } else if ('onmousewheel' in document) {
+      } else if ("onmousewheel" in document) {
         this.container.addEventListener("mousewheel", this.onWheel);
       } else {
         this.container.addEventListener("MozMousePixelScroll", this.onWheel);
@@ -62,55 +72,63 @@ export default class CoverAnim {
       this.container.attachEvent("onmousewheel", this.onWheel);
     }
 
-    window.innerWidth > 991 ? this.states.isMobile = false : this.states.isMobile = true;
+    window.innerWidth > 991
+      ? (this.states.isMobile = false)
+      : (this.states.isMobile = true);
 
     this.container.addEventListener("touchstart", this.onTouch);
     this.container.addEventListener("touchstop", this.onstopTouch);
     this.container.addEventListener("touchmove", this.onWheel);
-
   }
 
-  onTouch = (e) => {
+  onTouch = e => {
     this.states.isTouched = true;
-    if (e.type == 'touchstart') {
-      this.states.isMobile ? this.states.ts = e.touches[0].clientY : this.states.ts = e.touches[0].clientY;
+    if (e.type == "touchstart") {
+      this.states.isMobile
+        ? (this.states.ts = e.touches[0].clientY)
+        : (this.states.ts = e.touches[0].clientY);
     }
-    if (e.type == 'mousedown') {
+    if (e.type == "mousedown") {
       this.states.ts = e.clientX;
     }
-  }
+  };
 
-  onstopTouch = (e) => {
+  onstopTouch = e => {
     this.states.isTouched = false;
-  }
+  };
 
-  onWheel = (e) => {
+  onWheel = e => {
     if (!this.states.isdisablesScroll) {
       e = e || window.event;
       e.preventDefault();
       this.states.isPaused = true;
       let delta = null;
 
-      this.states.isMobile ? delta = e.deltaY || e.detail || e.wheelDelta : delta = e.deltaY || e.detail || e.wheelDelta;
+      this.states.isMobile
+        ? (delta = e.deltaY || e.detail || e.wheelDelta)
+        : (delta = e.deltaY || e.detail || e.wheelDelta);
 
-      if (e.type == 'touchmove') {
+      if (e.type == "touchmove") {
         let te = null;
 
-        this.states.isMobile ? te = e.changedTouches[0].clientY : te = e.changedTouches[0].clientY;
+        this.states.isMobile
+          ? (te = e.changedTouches[0].clientY)
+          : (te = e.changedTouches[0].clientY);
 
-        (this.states.ts > te) ? delta = 1 : delta = -1;
-
+        this.states.ts > te ? (delta = 1) : (delta = -1);
       }
 
-      (delta > 0) ? this.move(1) : this.move(-1);
+      delta > 0 ? this.move(1) : this.move(-1);
     }
-  }
+  };
 
   parseTitles = () => {
-    this.titles = this.container.querySelectorAll(".cover-anim-titles .cover-anim-title");
-  }
+    this.titles = this.container.querySelectorAll(
+      ".cover-anim-titles .cover-anim-title"
+    );
+  };
 
-  move = (direction) => {
+  move = direction => {
     if (!this.states.isScroll) {
       this.states.isScroll = true;
       setTimeout(() => {
@@ -119,113 +137,142 @@ export default class CoverAnim {
         if (!this.isIntro) {
           this.pauseTimer = setTimeout(() => {
             //this.states.isPaused = false;
-          }, this.options.slideDelay)
+          }, this.options.slideDelay);
         }
-      }, 1500)
+      }, 1500);
 
       if (direction == 1) {
+        //middle slides
         this.isIntro = false;
-        if ((this.states.currentSlide < this.states.length - 1) && (this.states.currentSlide !== false) && (this.states.currentSlide < this.options.segments - 1)) {
+        if (
+          this.states.currentSlide < this.states.length - 1 &&
+          this.states.currentSlide !== false &&
+          this.states.currentSlide < this.options.segments - 1
+        ) {
           this.clearSliderStates();
           this.states.currentSlide = this.states.currentSlide + direction;
           this.bgsContainers[this.states.currentSlide].classList.add("forward");
           setTimeout(() => {
-            this.bgsContainers[this.states.currentSlide].classList.add("active");
+            this.bgsContainers[this.states.currentSlide].classList.add(
+              "active"
+            );
           }, 50);
           this.bgsContainers[this.states.currentSlide].classList.add("stop");
-          ((this.states.currentSlide - 1) >= 0) ? this.bgsContainers[this.states.currentSlide - 1].classList.add("played") : this.bgsContainers[(this.states.length - 1)].classList.add("played");
-          if(this.states.currentSlide < this.options.segments - 1) {
-            this.progressSegments[this.states.currentSlide].classList.add("active")
-          }else{
+          this.states.currentSlide - 1 >= 0
+            ? this.bgsContainers[this.states.currentSlide - 1].classList.add(
+                "played"
+              )
+            : this.bgsContainers[this.states.length - 1].classList.add(
+                "played"
+              );
+          if (this.states.currentSlide < this.options.segments - 1) {
+            this.progressSegments[this.states.currentSlide].classList.add(
+              "active"
+            );
+          } else {
             this.scroll.classList.remove("active");
-            this.progress.classList.add("hide")
+            this.progress.classList.add("hide");
           }
           this.clearTitles();
-          if (this.titles[this.states.currentSlide]) this.titles[this.states.currentSlide].classList.add("active");
+          if (this.titles[this.states.currentSlide])
+            this.titles[this.states.currentSlide].classList.add("active");
         }
       } else {
+        //last slide
         if (this.states.currentSlide > 0) {
           this.clearSliderStates();
           this.bgsContainers[this.states.currentSlide].classList.add("played");
           this.states.currentSlide = this.states.currentSlide + direction;
-          this.bgsContainers[this.states.currentSlide].classList.add("backward");
+          this.bgsContainers[this.states.currentSlide].classList.add(
+            "backward"
+          );
           setTimeout(() => {
-            this.bgsContainers[this.states.currentSlide].classList.add("active");
+            this.bgsContainers[this.states.currentSlide].classList.add(
+              "active"
+            );
           }, 50);
 
           if (this.states.currentSlide < this.options.segments - 2) {
-            this.progressSegments[this.states.currentSlide + 1].classList.remove("active")
-          }else{
+            this.progressSegments[
+              this.states.currentSlide + 1
+            ].classList.remove("active");
+          } else {
             this.progress.classList.remove("hide");
-            this.scroll.classList.add("active")
-          };
+            this.scroll.classList.add("active");
+          }
 
           this.clearTitles();
-          if (this.titles[this.states.currentSlide]) this.titles[this.states.currentSlide].classList.add("active");
+          if (this.titles[this.states.currentSlide])
+            this.titles[this.states.currentSlide].classList.add("active");
+          //intro slide
         } else {
-          setTimeout(() => {
-            if (this.pauseTimer) clearTimeout(this.pauseTimer);
-            this.clearSlider();
-            this.clearTitles();
-            this.clearSliderStates();
-            document.body.classList.remove("disable-touch");
-          }, 1000);
-
           document.body.classList.add("disable-touch");
           this.states.isdisablesScroll = true;
           this.states.currentSlide = 0;
           this.states.isPaused = true;
           this.isIntro = true;
           this.intro.classList.remove("close");
-          this.cover.classList.remove("step-1", "step-2", "hide-left", "show-right");
+          this.cover.classList.remove(
+            "step-1",
+            "step-2",
+            "hide-left",
+            "show-right"
+          );
           this.cover.classList.add("reverse");
           this.header.classList.remove("active");
-        };
+          this.clearTitles();
+
+          setTimeout(() => {
+            if (this.pauseTimer) clearTimeout(this.pauseTimer);
+            this.clearSlider();
+            this.clearSliderStates();
+            document.body.classList.remove("disable-touch");
+          }, 1000);
+        }
       }
     }
-  }
+  };
 
   clearTitles = () => {
-    this.titles.forEach((title) => {
+    this.titles.forEach(title => {
       title.classList.remove("active");
-    })
-  }
+    });
+  };
 
   clearSliderStates = () => {
-    this.bgsContainers.forEach((bgContainer) => {
+    this.bgsContainers.forEach(bgContainer => {
       bgContainer.classList.remove("active");
       bgContainer.classList.remove("played");
       bgContainer.classList.remove("forward");
       bgContainer.classList.remove("backward");
-    })
-  }
+    });
+  };
 
-  expandSlider = () => {
-
-  }
+  expandSlider = () => {};
 
   clearSlider = () => {
     this.states.currentSlide = 0;
-    this.bgsContainers.forEach((bgContainer) => {
+    this.bgsContainers.forEach(bgContainer => {
       bgContainer.classList.remove("active");
       bgContainer.classList.remove("stop");
       bgContainer.classList.remove("played");
       bgContainer.classList.remove("forward");
       bgContainer.classList.remove("backward");
-    })
-    this.progressSegments.forEach((progress) => {
+    });
+    this.progressSegments.forEach(progress => {
       progress.classList.remove("active");
-    })
+    });
     this.bgsContainers[this.states.currentSlide].classList.add("forward");
-    this.bgsContainers[(this.states.length - 1)].classList.add("played");
+    this.bgsContainers[this.states.length - 1].classList.add("played");
     setTimeout(() => {
       this.bgsContainers[this.states.currentSlide].classList.add("active");
       this.bgsContainers[this.states.currentSlide].classList.add("stop");
-    }, 50)
+    }, 50);
 
     this.clearTitles();
-    if (this.titles[this.states.currentSlide]) this.titles[this.states.currentSlide].classList.add("active");
-  }
+    if (this.titles[this.states.currentSlide])
+      this.titles[this.states.currentSlide].classList.add("active");
+  };
 
   buildBgs() {
     this.bgsContainers = this.container.querySelectorAll(".cover-anim-bg");
@@ -241,7 +288,7 @@ export default class CoverAnim {
       if (window.innerWidth > 991) {
         addCover(bgContainer, i, this);
       } else {
-        if ((i < this.options.segments - 1 || i == this.states.length - 1)) {
+        if (i < this.options.segments - 1 || i == this.states.length - 1) {
           addCover(bgContainer, i, this);
         } else {
           this.titles[i].remove();
@@ -259,13 +306,15 @@ export default class CoverAnim {
       segments[i] = [];
 
       img = bgContainer.querySelector("img");
-      img ? style = 'background:url(' + img.src + ')' : style = 'background-color: #000';
+      img
+        ? (style = "background:url(" + img.src + ")")
+        : (style = "background-color: #000");
 
       if (img) {
-        img.remove()
+        img.remove();
       } else {
         bgContainer.setAttribute("style", "");
-      };
+      }
 
       for (let y = 0; y < self.options.segments - 1; y++) {
         segments[i].push(segment.cloneNode());
@@ -298,7 +347,6 @@ export default class CoverAnim {
       this.progressSegments[i].appendChild(bar.cloneNode());
       this.progress.appendChild(this.progressSegments[i]);
     }
-
   }
 
   show() {
@@ -320,11 +368,10 @@ export default class CoverAnim {
 
     this.bgsContainers[this.states.currentSlide].classList.add("stop");
     this.progressSegments[this.states.currentSlide].classList.add("active");
-    this.titles[this.states.currentSlide].classList.add("active")
+    this.titles[this.states.currentSlide].classList.add("active");
   }
 
   loop() {
-
     if (!this.states.isPaused && this.options.autoplay) {
       this.move(1);
     }

@@ -1,0 +1,201 @@
+{
+
+	"work": [
+
+		{
+
+			"client": "Bell Helmets",
+
+			"class": "bell",
+
+			"type": "Website Design",
+
+			"description": "How do you translate dirt and adrenalin from the physical environment to the digital one? With passion. Action sports enthusiasts ourselves, ANML was proud to assist Silverlign Group with design of the visual interface and tone of the Bell Helmets community and ecommerce website. The result: an experience that strengthens the brand by staying true to the bold and adventuresome spirit at the core of Bell and putting the community of athletes and products first.",
+
+			"contributions": "Art Direction, User Experience Support, <br>Visual Design",
+
+			"mainImages": ["bell/1.png", "bell/2.jpg", "bell/3.jpg","bell/4.jpg","bell/5.jpg"]
+
+		},
+
+		{
+
+			"client": "Roll CSR",
+
+			"class": "roll",
+
+			"type": "Website Design",
+
+			"description": "Roll Global, the holding corporation of consumer brands like Teleflora, POM Wonderful and FIGI Water, among others, looked to communicate their corporate social responsibility (CSR) practices for the public, their partners and investors alike. ANML established an approachable and flexible interface for visitors to access details by both brand and corporate value, whichever they'd like; from understanding the high levels of accountability, care and attention to quality that go into the creation of a specific product to disclosure of activities supporting a general community or corporate value.",
+
+			"contributions": "Art Direction, User Experience Support, <br>Visual Design",
+
+			"mainImages": ["roll/1.png", "roll/2.jpg", "roll/3.jpg", "roll/4.jpg", "roll/5.jpg"]
+
+		},
+
+		{
+
+			"client": "Gamefuse",
+
+			"class": "gamefuse",
+
+			"type": "Website Design",
+
+			"description": "GameFuse is an online gaming destination from Changyou (NASDAQ: CYOU) that enlisted ANML at the beginning stages of building and launching the GameFuse.com brand. ANML supported the site-wide design and user experience by creating the visual language to represent the brand, from how the games are promoted to the environment that the online community interacts within. ",
+
+			"contributions": "Creative Direction, User Experience, Visual Design",
+
+			"mainImages": ["gamefuse/1.png", "gamefuse/2.jpg", "gamefuse/3.png", "gamefuse/4.jpg", "gamefuse/5.jpg"]
+
+		},
+
+		{
+
+			"client": "ShopWell",
+
+			"class": "shopwell",
+
+			"type": "Mobile Application Design",
+
+			"description": "Healthy eating is a behavior owned by those who make good choices at the grocery store. But who has time to sort through the cluster of options? ShopWell gives users access to helpful, easy-to-access information that best fits their nutrition needs. Acting as an extension of the ShopWell team, ANML created the design language, supported developing the user experience and product application by creating a stress-free digital experience where users can the find products and make smarter decisions that meet their healthy eating objectives.",
+
+			"contributions": "Creative Direction, Visual Design, <br>Brand Development & User Experience",
+
+			"mainImages": ["shopwell/1.png", "shopwell/2.png"]
+
+		},
+
+		{
+
+			"client": "Qcue",
+
+			"class": "qcue",
+
+			"type": "Software Interface Design",
+
+			"description": "QCUE offers a software-based dynamic pricing solution used by athletic organizations, venues, promoters, and ticketing agents. The product's differentiating functionality allows clients to manage ticketing prices in real-time, but the interface was dated, difficult to use at times and presented QCUE's sales team with a serious challenge. ANML was enlisted to redesign the user experience and interface so users can now navigate complex schedules with easier visualization of all the data, which has also increased product sales.",
+
+			"contributions": "Creative Direction, Visual Design, <br>& User Experience",
+
+			"mainImages": ["qcue/1.png", "qcue/2.jpg", "qcue/3.jpg", "qcue/4.jpg"]
+
+		},
+
+		{
+
+			"client": "Roads & Kingdoms",
+
+			"class": "roadsandkingdoms",
+
+			"type": "Identity & Digital Experience",
+
+			"description": "Roads & Kingdoms is a digital magazine serving up editorial on travel, food, culture, arts and politics from (way) off the beaten path. ANML was there from the start to establish the visual identity for R&K to communicate the unapologetic and alternative nature of the journalism readers should expect. Additionally, ANML developed the magazine's digital platform, including user experience and visual design that gracefully houses a variety of multi-media content contributed from around the world.",
+
+			"contributions": "Photography, Creative Direction, Visual Design, Video Editing, Concept Development",
+
+			"mainImages": ["roadsandkingdoms/1.png", "roadsandkingdoms/2.jpg", "roadsandkingdoms/3.jpg", "roadsandkingdoms/4.jpg"]
+
+		},
+
+		{
+
+			"client": "Viewdle",
+
+			"class": "viewdle",
+
+			"type": "Brand & Digital Experience",
+
+			"description": "Viewdle, a mobile-focused computer vision company based in Palo Alto, develops face, object and gesture recognition technology products primarily for smart phones. Throughout a two-year relationship, ANML shaped the Viewdle brand style, designing everything from Keynote presentation templates and graphic elements for promotional videos to their corporate website and mobile application concepts. Viewdle was acquired by Google-owned, Motorola Mobility.",
+
+			"contributions": "Creative Direction, Visual Design, <br>User Experience, Video, Support, <br>Brand development",
+
+			"mainImages": ["viewdle/1.png", "viewdle/2.jpg", "viewdle/3.jpg", "viewdle/4.jpg", "viewdle/5.jpg"]
+
+		},
+
+		{
+
+			"client": "OpenShift",
+
+			"class": "openshift",
+
+			"type": "Brand Development",
+
+			"description": "OpenShift is a product division of Red Hat that offers developers an auto-scaling Platform as a Service (PaaS) solution for applications. The Linux and open source technology leader sought to make the OpenShift brand appeal to Web and enterprise developers that sit on the cutting edge of technology. In partnership with Great Monday and Dan Becker, ANML created the new OpenShift identity and brand extensions including the brand logo mark, digital graphics, icons, infographics and branded apparel.",
+
+			"contributions": "Creative Direction, Brand development, <br>Visual Design",
+
+			"mainImages": ["openshift/1.png", "openshift/2.jpg", "openshift/3.jpg"]
+
+		},
+
+		{
+
+			"client": "Microsoft Dynamics",
+
+			"class": "microsoft",
+
+			"type": "Infographic",
+
+			"description": "Microsoft Dynamics is a division of Microsoft dedicated to integrated business solutions utilizing Microsoft's broad suite of enterprise-level products. As their name implies, it's a dynamic experience sometimes difficult to visualize. Working with the team at Liquid Agency, ANML developed an infographic for their sales team to utilize that illustrated the life cycle of the customer and the ways in which they engage with the products.",
+
+			"contributions": "Creative Direction, Visual Design",
+
+			"mainImages": ["microsoft/1.png", "microsoft/2.jpg", "microsoft/3.jpg"]
+
+		},
+
+				{
+
+			"client": "Paramount Farms",
+
+			"class": "paramountfarms",
+
+			"type": "Website Design",
+
+			"description": "Paramount Farms is the world's largest grower and processor of almonds and pistachios, and is part of the Roll Global family of brands. With LEVEL Studios, a simple, vertical approach tells the story of Paramount Farms and showcases their unique process to prospective buyers and growers. With an extreme emphasis on high quality, the site allows its audience to browse through Paramounts approach and values by moving up, down, left, right or by a zoomed out view of the entire site. The site uses a parallax treatment with a flexible width design. 2011 Pixel Award Winner & 2011 Pixel Award Peoples Choice Winner in the Green category.",
+
+			"contributions": "Creative Direction, Visual Design, <br>Art Direction, User Experience",
+
+			"mainImages": ["paramountfarms/1.png", "paramountfarms/2.jpg", "paramountfarms/3.jpg", "paramountfarms/4.jpg", "paramountfarms/5.jpg", "paramountfarms/6.jpg"]
+
+		},		{
+
+			"client": "SaPhotonics",
+
+			"class": "saphotonics",
+
+			"type": "Website Design",
+
+			"description": "SA Photonics creates a range of vision and sensor systems for commercial and government customers. The team at SA Photonics enlisted ANML to create an online experience that effectively communicates their product's technical details with the level of boldness and sophistication matched only by their systems in action.",
+
+			"contributions": "Creative Direction, Visual Design, <br>User Experience, Web Development",
+
+			"mainImages": ["saphotonics/1.png", "saphotonics/2.jpg"]
+
+		},
+
+
+
+		{
+
+			"client": "Allex",
+
+			"class": "allex",
+
+			"type": "Website Design",
+
+			"description": "The ALLEX Foundation (Alliance for Language Learning and Educational Exchange) is an organization that enables universities to begin and/or maintain a high-quality Chinese or Japanese language program by providing them with professionally trained, native instructors. ALLEX sought out ANML to help them create a refined look and feel for their website, their primary communication and marketing channel. ANML developed an approachable visual style and user experience that allowed users to explore ALLEX.org and decide the best program for their needs.",
+
+			"contributions": "Visual Design, User Experience",
+
+			"mainImages": ["allex/1.png", "allex/2.jpg"]
+
+		}
+
+
+
+	]
+
+}

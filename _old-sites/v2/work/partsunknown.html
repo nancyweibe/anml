@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CNN Parts Unknown | ANML</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../css/main.css?v=2">
+    <style type="text/css">
+
+        .wrapper.blurred {
+            transform: scaleX(0.95) scaleY(0.99) !important;
+        }
+
+        .wrapper.case-study header {
+            border-bottom-width: 0;
+        }
+
+        .wrapper.case-study header h2,
+        .wrapper.case-study header h3,
+        .wrapper.case-study header p {
+            color: #000;
+        }
+
+        .wrapper.case-study h1 {
+            background-image: url(../img/logo.svg);
+        }
+
+        .wrapper.case-study header h3 {
+            margin: 0 0 20px 0;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-family: sharp, sans-serif;
+            letter-spacing: 0.01em;
+            font-kerning: normal;
+            background-size: 118px auto;
+            padding: 14px 0 26px;
+            line-height: 0.85em;
+        }
+
+        .wrapper.case-study header h3 .diamond {
+            display: inline-block;
+            margin: 0 10px 2px;
+            background: url("../img/diamond.svg") no-repeat;
+            background-size: 100% 100%;
+            height: 9px;
+            width: 13px;
+        }
+
+        .wrapper.case-study .slide .txt.txt-dark {
+            color: #000;
+        }
+
+        .wrapper.case-study .slide img.animated-video {
+            position: absolute;
+            box-shadow: 0px 12px 60px 0px #666;
+            padding: 0;
+            width: auto;
+            left: 50%;
+            transform: translate(-50%, 0);
+            -webkit-transform: translate(-50%, 0);
+        }
+
+        .wrapper.case-study .slide img.video-map {
+            top: 6%;
+            max-height: 74%;
+        }
+
+        .wrapper.case-study .slide img.video-nav {
+            top: 5%;
+            max-height: 75%;
+        }
+
+        .wrapper.case-study .slide .txt.center.vCenter {
+            padding: 0;
+            max-width: 600px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            width: 100%;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .wrapper.case-study header {
+                background-size: 180% auto;
+            }
+
+            .wrapper.case-study header h3 {
+                font-size: 10px;
+            }
+
+            .wrapper.case-study header h3 .diamond {
+                height: 7px;
+                width: 10px;
+                margin-bottom: 1px;
+            }
+
+            .wrapper.case-study .slide img.animated-video {
+                display: none;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .wrapper.case-study .slide .txt.vCenter {
+                top: 50% !important;
+                -webkit-transform: translateY(-50%) !important;
+                -ms-transform: translateY(-50%) !important;
+                transform: translateY(-50%) !important;
+            }
+        }
+
+
+    </style>
+</head>
+
+<body>
+<div class="topFrame"></div>
+<div class="bottomFrame"></div>
+
+<div class="loader">
+    <div class="animated">
+        <div class="flipper">
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
+    </div>
+</div>
+
+<span class="openNav"><span>Menu</span></span>
+
+<nav>
+    <ul>
+        <li class="magictime">
+            <a class="panel" href="../work.html">
+                <span class="title">Our<br>Work</span>
+                <span class="description">Engaging products and experiences.</span>
+                <span class="arrow"></span>
+            </a>
+            <div class="slider work top">
+                <div class="arrow up"><span></span></div>
+                <div class="mover">
+                    <a href="partsunknown.html" class="item partsunknown"><span>Parts Unknown</span></a>
+                    <a href="gts.html" class="item gts"><span>GT's</span></a>
+                    <a href="bell.html" class="item bell"><span>Bell Helmets</span></a>
+                    <a href="namco.html" class="item namco"><span>Bandai Namco</span></a>
+                    <a href="yummly.html" class="item yummly"><span>Yummly</span></a>
+                    <a href="marvell.html" class="item marvell"><span>Marvell</span></a>
+                    <a href="netapp.html" class="item netapp"><span>Netapp</span></a>
+                    <a href="autodesk.html" class="item autodesk"><span>Autodesk</span></a>
+                    <a href="servicenow.html" class="item servicenow"><span>Service Now</span></a>
+                    <a href="santanarow.html" class="item santanarow"><span>Santana Row</span></a>
+                    <a href="roadsandkingdoms.html" class="item roadsandkingdoms"><span>Roads &amp; Kingdoms</span></a>
+                    <a href="citrix.html" class="item citrix"><span>Citrix</span></a>
+                    <a href="ernieball.html" class="item ernieball"><span>Ernie Ball</span></a>
+                    <a href="partsunknown.html" class="item partsunknown"><span>Parts Unknown</span></a>
+                    <a href="gts.html" class="item gts"><span>GT's</span></a>
+                    <a href="bell.html" class="item bell"><span>Bell Helmets</span></a>
+                    <a href="namco.html" class="item namco"><span>Bandai Namco</span></a>
+                    <a href="yummly.html" class="item yummly"><span>Yummly</span></a>
+                    <a href="marvell.html" class="item marvell"><span>Marvell</span></a>
+                    <a href="netapp.html" class="item netapp"><span>Netapp</span></a>
+                    <a href="autodesk.html" class="item autodesk"><span>Autodesk</span></a>
+                    <a href="servicenow.html" class="item servicenow"><span>Service Now</span></a>
+                    <a href="santanarow.html" class="item santanarow"><span>Santana Row</span></a>
+                    <a href="roadsandkingdoms.html" class="item roadsandkingdoms"><span>Roads &amp; Kingdoms</span></a>
+                    <a href="citrix.html" class="item citrix"><span>Citrix</span></a>
+                    <a href="ernieball.html" class="item ernieball"><span>Ernie Ball</span></a>
+                    <a href="partsunknown.html" class="item partsunknown"><span>Parts Unknown</span></a>
+                    <a href="gts.html" class="item gts"><span>GT's</span></a>
+                    <a href="bell.html" class="item bell"><span>Bell Helmets</span></a>
+                    <a href="namco.html" class="item namco"><span>Bandai Namco</span></a>
+                    <a href="yummly.html" class="item yummly"><span>Yummly</span></a>
+                    <a href="marvell.html" class="item marvell"><span>Marvell</span></a>
+                    <a href="netapp.html" class="item netapp"><span>Netapp</span></a>
+                    <a href="autodesk.html" class="item autodesk"><span>Autodesk</span></a>
+                    <a href="servicenow.html" class="item servicenow"><span>Service Now</span></a>
+                    <a href="santanarow.html" class="item santanarow"><span>Santana Row</span></a>
+                    <a href="roadsandkingdoms.html" class="item roadsandkingdoms"><span>Roads &amp; Kingdoms</span></a>
+                    <a href="citrix.html" class="item citrix"><span>Citrix</span></a>
+                    <a href="ernieball.html" class="item ernieball"><span>Ernie Ball</span></a>
+                </div>
+            </div>
+            <div class="slider work bottom">
+                <div class="arrow down"><span></span></div>
+                 <div class="mover">
+                    <a href="partsunknown.html" class="item partsunknown"><span>Parts Unknown</span></a>
+                    <a href="gts.html" class="item gts"><span>GT's</span></a>
+                    <a href="bell.html" class="item bell"><span>Bell Helmets</span></a>
+                    <a href="namco.html" class="item namco"><span>Bandai Namco</span></a>
+                    <a href="yummly.html" class="item yummly"><span>Yummly</span></a>
+                    <a href="marvell.html" class="item marvell"><span>Marvell</span></a>
+                    <a href="netapp.html" class="item netapp"><span>Netapp</span></a>
+                    <a href="autodesk.html" class="item autodesk"><span>Autodesk</span></a>
+                    <a href="servicenow.html" class="item servicenow"><span>Service Now</span></a>
+                    <a href="santanarow.html" class="item santanarow"><span>Santana Row</span></a>
+                    <a href="roadsandkingdoms.html" class="item roadsandkingdoms"><span>Roads &amp; Kingdoms</span></a>
+                    <a href="citrix.html" class="item citrix"><span>Citrix</span></a>
+                    <a href="ernieball.html" class="item ernieball"><span>Ernie Ball</span></a>
+                    <a href="partsunknown.html" class="item partsunknown"><span>Parts Unknown</span></a>
+                    <a href="gts.html" class="item gts"><span>GT's</span></a>
+                    <a href="bell.html" class="item bell"><span>Bell Helmets</span></a>
+                    <a href="namco.html" class="item namco"><span>Bandai Namco</span></a>
+                    <a href="yummly.html" class="item yummly"><span>Yummly</span></a>
+                    <a href="marvell.html" class="item marvell"><span>Marvell</span></a>
+                    <a href="netapp.html" class="item netapp"><span>Netapp</span></a>
+                    <a href="autodesk.html" class="item autodesk"><span>Autodesk</span></a>
+                    <a href="servicenow.html" class="item servicenow"><span>Service Now</span></a>
+                    <a href="santanarow.html" class="item santanarow"><span>Santana Row</span></a>
+                    <a href="roadsandkingdoms.html" class="item roadsandkingdoms"><span>Roads &amp; Kingdoms</span></a>
+                    <a href="citrix.html" class="item citrix"><span>Citrix</span></a>
+                    <a href="ernieball.html" class="item ernieball"><span>Ernie Ball</span></a>
+                    <a href="partsunknown.html" class="item partsunknown"><span>Parts Unknown</span></a>
+                    <a href="gts.html" class="item gts"><span>GT's</span></a>
+                    <a href="bell.html" class="item bell"><span>Bell Helmets</span></a>
+                    <a href="namco.html" class="item namco"><span>Bandai Namco</span></a>
+                    <a href="yummly.html" class="item yummly"><span>Yummly</span></a>
+                    <a href="marvell.html" class="item marvell"><span>Marvell</span></a>
+                    <a href="netapp.html" class="item netapp"><span>Netapp</span></a>
+                    <a href="autodesk.html" class="item autodesk"><span>Autodesk</span></a>
+                    <a href="servicenow.html" class="item servicenow"><span>Service Now</span></a>
+                    <a href="santanarow.html" class="item santanarow"><span>Santana Row</span></a>
+                    <a href="roadsandkingdoms.html" class="item roadsandkingdoms"><span>Roads &amp; Kingdoms</span></a>
+                    <a href="citrix.html" class="item citrix"><span>Citrix</span></a>
+                    <a href="ernieball.html" class="item ernieball"><span>Ernie Ball</span></a>
+                </div>
+            </div>
+        </li>
+        <li class="magictime">
+            <a class="panel about" href="../about.html">
+                <span class="title">About<br>Us</span>
+                <span class="description">Create, transform and move people.</span>
+                <span class="arrow"></span>
+            </a>
+            <div class="slider about top">
+                <div class="mover">
+                    <a href="../about.html#who" class="item who"><span>Who</span></a>
+                    <a href="../about.html#what" class="item what"><span>What</span></a>
+                    <a href="../about.html#how" class="item how"><span>How</span></a>
+                    <a href="../about.html#why" class="item why"><span>Why</span></a>
+                    <a href="../about.html#who" class="item who"><span>Who</span></a>
+                    <a href="../about.html#what" class="item what"><span>What</span></a>
+                    <a href="../about.html#how" class="item how"><span>How</span></a>
+                    <a href="../about.html#why" class="item why"><span>Why</span></a>
+                    <a href="../about.html#who" class="item who"><span>Who</span></a>
+                    <a href="../about.html#what" class="item what"><span>What</span></a>
+                    <a href="../about.html#how" class="item how"><span>How</span></a>
+                    <a href="../about.html#why" class="item why"><span>Why</span></a>
+                </div>
+            </div>
+            <div class="slider about bottom">
+                <div class="mover">
+                    <a href="../about.html#who" class="item who"><span>Who</span></a>
+                    <a href="../about.html#what" class="item what"><span>What</span></a>
+                    <a href="../about.html#how" class="item how"><span>How</span></a>
+                    <a href="../about.html#why" class="item why"><span>Why</span></a>
+                    <a href="../about.html#who" class="item who"><span>Who</span></a>
+                    <a href="../about.html#what" class="item what"><span>What</span></a>
+                    <a href="../about.html#how" class="item how"><span>How</span></a>
+                    <a href="../about.html#why" class="item why"><span>Why</span></a>
+                    <a href="../about.html#who" class="item who"><span>Who</span></a>
+                    <a href="../about.html#what" class="item what"><span>What</span></a>
+                    <a href="../about.html#how" class="item how"><span>How</span></a>
+                    <a href="../about.html#why" class="item why"><span>Why</span></a>
+                </div>
+            </div>
+        </li>
+        <li class="magictime">
+            <a class="panel" href="../contact.html">
+                <span class="title">Contact<br>Us</span>
+                <span class="description">Connect, collaborate and innovate.</span>
+                <span class="arrow"></span>
+            </a>
+            <div class="slider contact top">
+                <div class="mover">
+                    <a href="../contact.html#contact" class="item contact"><span>Contact Us</span></a>
+                    <a href="../contact.html#working" class="item working"><span>Working at ANML</span></a>
+                    <a href="../contact.html#habitat" class="item habitat"><span>The Habitat</span></a>
+                    <a href="../contact.html#follow" class="item follow"><span>Follow Us</span></a>
+                    <a href="../contact.html#contact" class="item contact"><span>Contact Us</span></a>
+                    <a href="../contact.html#working" class="item working"><span>Working at ANML</span></a>
+                    <a href="../contact.html#habitat" class="item habitat"><span>The Habitat</span></a>
+                    <a href="../contact.html#follow" class="item follow"><span>Follow Us</span></a>
+                    <a href="../contact.html#contact" class="item contact"><span>Contact Us</span></a>
+                    <a href="../contact.html#working" class="item working"><span>Working at ANML</span></a>
+                    <a href="../contact.html#habitat" class="item habitat"><span>The Habitat</span></a>
+                    <a href="../contact.html#follow" class="item follow"><span>Follow Us</span></a>
+                </div>
+            </div>
+            <div class="slider contact bottom">
+                <div class="mover">
+                    <a href="../contact.html#contact" class="item contact"><span>Contact Us</span></a>
+                    <a href="../contact.html#working" class="item working"><span>Working at ANML</span></a>
+                    <a href="../contact.html#habitat" class="item habitat"><span>The Habitat</span></a>
+                    <a href="../contact.html#follow" class="item follow"><span>Follow Us</span></a>
+                    <a href="../contact.html#contact" class="item contact"><span>Contact Us</span></a>
+                    <a href="../contact.html#working" class="item working"><span>Working at ANML</span></a>
+                    <a href="../contact.html#habitat" class="item habitat"><span>The Habitat</span></a>
+                    <a href="../contact.html#follow" class="item follow"><span>Follow Us</span></a>
+                    <a href="../contact.html#contact" class="item contact"><span>Contact Us</span></a>
+                    <a href="../contact.html#working" class="item working"><span>Working at ANML</span></a>
+                    <a href="../contact.html#habitat" class="item habitat"><span>The Habitat</span></a>
+                    <a href="../contact.html#follow" class="item follow"><span>Follow Us</span></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<div class="wrapper case-study">
+    <h1><a href="../index.html">ANML</a></h1>
+
+    <div class="content">
+
+        <header style="background-image:url('../img/work/partsunknown/anml-parts-unknown-bg-bourdain.png'); background-color:#fff; opacity: 0.9; background-size: 84%; background-position-y: 50px;" alt="ANML Anthony Bourdain Parts Unknown CNN">
+            <div class="gradient" style="background:linear-gradient(rgba(255,255,255,0) 50%, rgba(255,255,255,1));">
+                <div class="inner clearfix">
+                    <h2 class="no-divider" style="margin-bottom:0; padding-bottom:0;">Parts Unknown</h2>
+                    <h3>Visual Design<i class="diamond"></i>UX<i class="diamond"></i>Development</h3>
+                    <p>Have you ever heard of Anthony Bourdain? How about CNN? We teamed up with our sister company,
+                        Roads and Kingdoms, to transport fans into the world of Parts Unknown. With R&K creating fresh
+                        original content, ANML developed the UX and Design to bring every story, meal, and destination
+                        to life. We gave our audience the ability to eat like Bourdain eats, travel like he travels, and
+                        further explore every unique global destination featured on his show.</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="slide">
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-1.jpg" alt="ANML Anthony Bourdain Parts Unknown Cuba">
+        </div>
+
+        <div class="slide">
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-2.jpg" alt="ANML Anthony Bourdain Parts Unknown Land Rover">
+        </div>
+
+        <div class="slide">
+            <div class="txt txt-dark center vCenter" style="top: 44%;">
+                <h3>homepage <br> map feature</h3>
+                <p>We created an interactive map that makes it easy for users to discover new destinations and exposes
+                    every location Bourdain has covered. Visitors can click on pins across the world map or quickly
+                    navigate to cities by region using our unique expanding menu.</p>
+            </div>
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-3a.jpg">
+        </div>
+        <div class="slide">
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-3b.jpg" alt="ANML Anthony Bourdain Parts Unknown Map">
+            <img class="animated-video video-map" data-src="../img/work/partsunknown/anml-parts-unknown-mapVideo.gif" alt="ANML Anthony Bourdain Parts Unknown">
+        </div>
+
+        <div class="slide">
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-4a.jpg">
+            <div class="txt vCenter center vCenter" style="top: 52%;">
+                <h3>content template <br> publishing capabilities</h3>
+                <p>Rather than lock pages into a set format, we created a flexible component library that empowers
+                    editors to create on their own terms. Our goal was to provide endless opportunities so that every
+                    page can be as unique as its destination.</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-4b.jpg">
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-5.jpg" alt="ANML Anthony Bourdain Parts Unknown Italian Cooking">
+        </div>
+
+        <div class="slide">
+            <div class="txt txt-dark center vCenter" style="top: 52%;">
+                <h3>regional navigation allows <br> you to browse the world from <br> anywhere on the site</h3>
+                <p>Global travel is at the heart of what Parts Unknown represents. We put regional navigation in the
+                    main menu to ensure that exploring the world is always at your fingertips.</p>
+            </div>
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-6a.jpg">
+
+        </div>
+        <div class="slide">
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-6b.jpg">
+            <img class="animated-video video-nav" data-src="../img/work/partsunknown/anml-parts-unknown-navVideo.gif" alt="ANML Anthony Bourdain Parts Unknown">
+
+        </div>
+
+        <div class="slide">
+            <div class="txt center vCenter" style="top: 52%;">
+                <h3>destination pages give a deep <br> dive into a particular location</h3>
+                <p>Every place that Anthony Bourdain travels to is a unique gem with its own food, drinks, monuments,
+                    and culture. We crafted destination pages to give viewers an insider perspective on how to
+                    understand, enjoy, and successfully travel to each specific location.</p>
+            </div>
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-7a.jpg">
+        </div>
+
+        <div class="slide">
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-7b.jpg" alt="ANML Anthony Bourdain Parts Unknown Cuba Field Notes">
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-8.jpg" alt="ANML Anthony Bourdain Parts Unknown CNN Japan Hawaii Peru">
+        </div>
+
+        <div class="slide">
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-9a.jpg">
+            <div class="txt txt-dark center vCenter" style="top:52%;">
+                <h3>a full experience <br style="display:block;"> on any device</h3>
+                <p>We designed the Parts Unknown experience so that Bourdain’s adventures would be available no matter
+                    where you are. Whether you’re planning your next big adventure or need some quick travel tips on the
+                    go, the site can always serve as your guide.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img data-src="../img/work/partsunknown/anml-parts-unknown-9b.jpg" alt="ANML Anthony Bourdain Parts Unknown CNN Cuba Africa Asia Europe Italy">
+        </div>
+
+
+        <div class="quote">
+            <blockquote>"The deeper I dig on the site, the more great work I find. It's shaping up to be everything I
+                imagined and more. Couldn't be happier or more impressed. Thanks again to you and to everyone involved
+                in this staggering amount of great work."
+            </blockquote>
+
+            <cite>Anthony Bourdain</cite>
+        </div>
+
+        <section class="bell">
+            <a class="shade" href="bell.html">
+                <div class="txt">
+                    <h3>Bell Helmets</h3>
+                    <p>eBay Enterprise and ANML helped reposition Bell’s brand and inspired a new generation of
+                        athletes.</p>
+                </div>
+                <span class="see-more"></span>
+            </a>
+        </section>
+        <section class="yummly">
+            <a class="shade" href="yummly.html">
+                <div class="txt">
+                    <h3>Yummly</h3>
+                    <p>Yummly’s trust in ANML turned a graphics project into a #1 app transformation. </p>
+                </div>
+                <span class="see-more"></span>
+            </a>
+        </section>
+        <section class="netapp">
+            <a class="shade" href="netapp.html">
+                <div class="txt">
+                    <h3>Netapp</h3>
+                    <p>ANML enabled NetApp to shatter corporate site stereotypes. And did it in record time. </p>
+                </div>
+                <span class="see-more"></span>
+            </a>
+        </section>
+        <section class="autodesk">
+            <a class="shade" href="autodesk.html">
+                <div class="txt">
+                    <h3>Autodesk</h3>
+                    <p>Insights into the gaming world allowed ANML to revolutionize Autodesk’s software UI.</p>
+                </div>
+                <span class="see-more"></span>
+            </a>
+        </section>
+        <section class="servicenow">
+            <a class="shade" href="servicenow.html">
+                <div class="txt">
+                    <h3>ServiceNow</h3>
+                    <p>ANML helped ServiceNow’s site live up to their promise of “changing how people work.”</p>
+                </div>
+                <span class="see-more"></span>
+            </a>
+        </section>
+        <section class="santanarow">
+            <a class="shade" href="santanarow.html">
+                <div class="txt">
+                    <h3>Santana Row</h3>
+                    <p>Santana Row needed ANML to deliver an online experience worthy of it’s real world one.</p>
+                </div>
+                <span class="see-more"></span>
+            </a>
+        </section>
+        <section class="roadsandkingdoms">
+            <a class="shade" href="roadsandkingdoms.html">
+                <div class="txt">
+                    <h3>Roads &amp; Kingdoms</h3>
+                    <p>ANML helped R&K redefine online travel journalism—and win an award in the process.</p>
+                </div>
+                <span class="see-more"></span>
+            </a>
+        </section>
+        <section class="citrix">
+            <a class="shade" href="citrix.html">
+                <div class="txt">
+                    <h3>Citrix</h3>
+                    <p>ANML worked with Citrix to design an immersive blog experience that would shine on every
+                        device.</p>
+                </div>
+                <span class="see-more"></span>
+            </a>
+        </section>
+        <section class="ernieball">
+            <a class="shade" href="ernieball.html">
+                <div class="txt">
+                    <h3>Ernie Ball</h3>
+                    <p>ANML created a web experience to celebrate Ernie Ball’s commitment to artistry, innovation, and
+                        music culture.</p>
+                </div>
+                <span class="see-more"></span>
+            </a>
+        </section>
+    </div>
+</div>
+
+<script src="../js/vendor/jquery-1.10.2.min.js"></script>
+<script src="../js/compiled.min.js"></script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-61533628-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<script>
+    $(document).ready(function () {
+        var r = function () {
+            $(".case-study.sm-md-lg div.slide").children("img").each(function () {
+                var a = $(this), b = a.data("src"), c = "../" + b.split(".")[2] + "-md.jpg", d = "../" + b.split(".")[2] + "-sm.jpg";
+                Modernizr.mq("(max-width: 767px)") ? a.attr("src", d) : Modernizr.mq("(max-width: 1023px)") ? a.attr("src", c) : a.attr("src", b);
+            });
+        };
+        $(window).resize(r);
+        r();
+    });
+</script>
+</body>
+</html>

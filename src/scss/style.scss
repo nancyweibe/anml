@@ -33,3 +33,18 @@
 @import "components/parralax";
 @import "components/infinite-scroll";
 @import "components/maskscroll";
+
+.hide-mobile {
+  display: block;
+
+  @media screen and (max-width: $mobile) {
+    display: none;
+  }
+}
+.show-mobile {
+  display: none;
+
+  @media screen and (max-width: $mobile) {
+    display: block;
+  }
+}

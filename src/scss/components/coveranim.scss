@@ -98,7 +98,7 @@
         height: 100vh;
         height: calc(var(--vh, 1vh) * 100);
         position: fixed;
-        left:0;
+        left: 0;
         top: 0;
         transform: translateY(0) !important;
 
@@ -220,7 +220,7 @@
     height: 40px;
     display: flex;
     z-index: 12;
-    transition: all $transition*2 ease;
+    transition: all $transition * 2 ease;
 
     &::after {
       content: "";
@@ -233,7 +233,7 @@
       background-color: rgba($color-white, 0.5);
     }
 
-    &.hide{
+    &.hide {
       transform: translateY(100%);
     }
 
@@ -285,6 +285,7 @@
       left: 0;
       width: 100%;
       height: 100%;
+      visibility: hidden;
 
       .cover-anim-bg-segment {
         left: 0;
@@ -297,8 +298,8 @@
         transform-origin: center left;
         overflow: hidden;
 
-        &::after{
-          content: '';
+        &::after {
+          content: "";
           position: absolute;
           left: 0;
           top: 0;
@@ -323,45 +324,46 @@
         }
 
         &:nth-child(1) {
-          left: calc(100vw/#{$segments}*0);
-          >div{
-            left: calc(-1 * 100vw/#{$segments}*0);
+          left: calc(100vw /#{$segments}* 0);
+          > div {
+            left: calc(-1 * 100vw /#{$segments}* 0);
           }
         }
         &:nth-child(2) {
-          left: calc(100vw/#{$segments}*1);
-          >div{
-            left: calc(-1 * 100vw/#{$segments}*1);
+          left: calc(100vw /#{$segments}* 1);
+          > div {
+            left: calc(-1 * 100vw /#{$segments}* 1);
           }
         }
         &:nth-child(3) {
-          left: calc(100vw/#{$segments}*2);
-          >div{
-            left: calc(-1 * 100vw/#{$segments}*2);
+          left: calc(100vw /#{$segments}* 2);
+          > div {
+            left: calc(-1 * 100vw /#{$segments}* 2);
           }
         }
         &:nth-child(4) {
-          left: calc(100vw/#{$segments}*3);
-          >div{
-            left: calc(-1 * 100vw/#{$segments}*3);
+          left: calc(100vw /#{$segments}* 3);
+          > div {
+            left: calc(-1 * 100vw /#{$segments}* 3);
           }
         }
         &:nth-child(5) {
-          left: calc(100vw/#{$segments}*4);
-          >div{
-            left: calc(-1 * 100vw/#{$segments}*4);
+          left: calc(100vw /#{$segments}* 4);
+          > div {
+            left: calc(-1 * 100vw /#{$segments}* 4);
           }
         }
         &:nth-child(6) {
-          left: calc(100vw/#{$segments}*5);
-         >div{
-          left: calc(-1 * 100vw/#{$segments}*5);
-        }
+          left: calc(100vw /#{$segments}* 5);
+          > div {
+            left: calc(-1 * 100vw /#{$segments}* 5);
+          }
         }
       }
-      
+
       &.played {
         z-index: 1;
+        visibility: visible;
 
         .cover-anim-bg-segment {
           -webkit-clip-path: inset(0 0 0 0);
@@ -376,15 +378,6 @@
         }
       }
 
-      &.hide-forward {
-        .cover-anim-bg-segment {
-          transition: all $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
-          -webkit-clip-path: inset(0 100% 0 0);
-          clip-path: inset(0 100% 0 0);
-          z-index: 2;
-        }
-      }
-
       &.backward {
         .cover-anim-bg-segment {
           -webkit-clip-path: inset(0 100% 0 0);
@@ -394,6 +387,8 @@
 
       &.active {
         z-index: 2;
+        visibility: visible;
+
         .cover-anim-bg-segment {
           transition: all $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
           -webkit-clip-path: inset(0 0 0 0);
@@ -401,10 +396,12 @@
         }
       }
 
-      &.stop, &.played {
+      &.stop,
+      &.played {
         .cover-anim-bg-segment {
           > div {
-            transition: transform $cover-transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
+            transition: transform $cover-transition * 5
+              cubic-bezier(0.09, 0.34, 0, 1);
             transform: translateX(-10vw);
           }
         }
@@ -413,7 +410,6 @@
   }
 
   &.expanded {
-
     .cover-anim-progress {
       opacity: 0;
     }
@@ -429,23 +425,23 @@
         transform: translateY(-50%);
         pointer-events: none;
         opacity: 0;
-  
+
         h2 {
           transform: translateY(8rem);
-  
+
           &::after {
             transform: scaleX(0);
           }
         }
-  
+
         p {
           opacity: 0;
           transform: translateY(8rem);
         }
-  
+
         a {
           transform: translateY(8rem);
-  
+
           &::after {
             transform: scaleX(0);
           }
@@ -463,23 +459,23 @@
         transform: translateY(-50%);
         pointer-events: none;
         opacity: 0;
-  
+
         h2 {
           transform: translateY(8rem);
-  
+
           &::after {
             transform: scaleX(0);
           }
         }
-  
+
         p {
           opacity: 0;
           transform: translateY(8rem);
         }
-  
+
         a {
           transform: translateY(8rem);
-  
+
           &::after {
             transform: scaleX(0);
           }
@@ -491,8 +487,6 @@
     }
   }
 
-  
-
   @media screen and (max-width: $md) {
     .cover-anim-titles {
       pointer-events: none;
@@ -500,15 +494,14 @@
   }
 
   @media screen and (max-width: $mobile) {
-
     // &::before{
     //   width: calc(100%/4);
     //   left: 0;
     //   right: auto;
     // }
 
-    &::after{
-      content: '';
+    &::after {
+      content: "";
       background-color: $color-black;
       width: calc(100vw / #{$segments-mobile} + 1px);
       left: 0;
@@ -535,31 +528,28 @@
         }
 
         .text-hero-title {
-
           font-size: 4.125rem;
           line-height: 3.4rem;
-          margin-left: calc((100vw / #{$segments-mobile})/3);
+          margin-left: calc((100vw / #{$segments-mobile}) / 3);
           margin-bottom: 2rem;
           opacity: 0;
           transform: translateY(8rem);
           transition: all $transition * 4 cubic-bezier(0.09, 0.34, 0, 1);
           position: relative;
-  
-
         }
-  
+
         p {
           font-size: 2rem;
           display: none;
         }
-  
+
         .btn-hero {
           opacity: 0;
           transform: translateY(8rem);
           margin-bottom: 2rem;
           margin-left: 10vw;
           transition: all $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
-  
+
           &::after {
             transform: scaleX(0);
             transition: transform $transition * 2 cubic-bezier(0.09, 0.34, 0, 1);
@@ -568,9 +558,8 @@
       }
     }
 
-    .cover-anim-bgs { 
-      .cover-anim-bg { 
-
+    .cover-anim-bgs {
+      .cover-anim-bg {
         &.offset-1-mb {
           .cover-anim-bg-segment {
             > div {
@@ -607,40 +596,32 @@
           width: calc(100vw / #{$segments-mobile} + 1px);
 
           &:nth-child(1) {
-            left: calc(100vw/#{$segments-mobile}*0);
-            >div{
-              left: calc(-1 * 100vw/#{$segments-mobile}*0);
+            left: calc(100vw /#{$segments-mobile}* 0);
+            > div {
+              display: none !important;
             }
           }
           &:nth-child(2) {
-            left: calc(100vw/#{$segments-mobile}*1);
-            >div{
-              left: calc(-1 * 100vw/#{$segments-mobile}*1);
+            left: calc(100vw /#{$segments-mobile}* 1);
+            > div {
+              left: calc(-1 * 100vw /#{$segments-mobile}* 1);
             }
           }
           &:nth-child(3) {
-            left: calc(100vw/#{$segments-mobile}*2);
-            >div{
-              left: calc(-1 * 100vw/#{$segments-mobile}*2);
+            left: calc(100vw /#{$segments-mobile}* 2);
+            > div {
+              left: calc(-1 * 100vw /#{$segments-mobile}* 2);
             }
           }
           &:nth-child(4) {
-            left: calc(100vw/#{$segments-mobile}*3);
-            >div{
-              left: calc(-1 * 100vw/#{$segments-mobile}*3);
+            left: calc(100vw /#{$segments-mobile}* 3);
+            > div {
+              left: calc(-1 * 100vw /#{$segments-mobile}* 3);
             }
           }
-          &:nth-child(5) {
-            left: calc(100vw/#{$segments-mobile}*4);
-            >div{
-              left: calc(-1 * 100vw/#{$segments-mobile}*4);
-            }
-          }
+          &:nth-child(5),
           &:nth-child(6) {
-            left: calc(100vw/#{$segments-mobile}*5);
-           >div{
-            left: calc(-1 * 100vw/#{$segments-mobile}*5);
-          }
+            display: none !important;
           }
         }
       }

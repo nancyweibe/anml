@@ -7,24 +7,24 @@
     position: relative;
   }
 
-  ul{
+  ul {
     list-style: none;
     padding: 0;
     margin: 0;
     line-height: 2.4;
 
-    li{
+    li {
       color: rgba($color-text, 0.6);
     }
   }
 
   @media screen and (max-width: $mobile) {
-    ul{
-      li{
+    ul {
+      li {
         display: inline-block;
 
-        &::after{
-          content:',';
+        &:not(:last-child)::after {
+          content: ",";
           display: inline-block;
         }
       }
