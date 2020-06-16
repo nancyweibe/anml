@@ -7,8 +7,8 @@
     width: calc(100% - 1px);
     margin-left: 1px;
 
-    >.col {
-      &:first-child{
+    > .col {
+      &:first-child {
         overflow: hidden;
         width: calc(50% - 0.5px) !important;
       }
@@ -52,30 +52,33 @@
       }
     }
 
-    >.col {
-      &:first-child{
-        &:hover {
-          a {
-            transform: scale(1.1);
+    > .col {
+      &:first-child {
+        @media screen and (min-width: $mobile+1) {
+          &:hover {
+            a {
+              transform: scale(1.1);
+            }
           }
         }
       }
     }
 
-    &:hover {
-      .preview-presset {
-        &::after {
-          opacity: 0;
-        }
-        &.darker::after {
-          opacity: 0.3;
+    @media screen and (min-width: $mobile+1) {
+      &:hover {
+        .preview-presset {
+          &::after {
+            opacity: 0;
+          }
+          &.darker::after {
+            opacity: 0.3;
+          }
         }
       }
     }
   }
 
   @media screen and (max-width: $mobile) {
-
     padding-top: 62px;
 
     &.container {

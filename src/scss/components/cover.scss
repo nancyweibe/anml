@@ -9,7 +9,6 @@
   opacity: 1;
   overflow: hidden;
   pointer-events: none;
-  //transition: opacity $transition * 3 cubic-bezier(0.09, 0.34, 0, 1);
   transition: opacity $transition ease;
 
   .cover-segment {
@@ -18,7 +17,6 @@
     height: 100%;
     background-color: rgba($color-black, 1);
     transform-origin: center right;
-    //transition: transform $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
     transition: transform $transition * 2 ease-in-out;
   }
 
@@ -32,21 +30,14 @@
 
     .cover-segment {
       transform-origin: center left;
-      &:nth-child(1) {
-        transform: scaleX(0);
-      }
-      &:nth-child(2) {
-        transform: scaleX(0);
-      }
+
+      &:nth-child(1),
+      &:nth-child(2),
       &:nth-child(3) {
         transform: scaleX(0);
       }
-      &:nth-child(4) {
-        transform: scaleX(1);
-      }
-      &:nth-child(5) {
-        transform: scaleX(1);
-      }
+      &:nth-child(4),
+      &:nth-child(5),
       &:nth-child(6) {
         transform: scaleX(1);
       }
@@ -58,21 +49,12 @@
       transform-origin: center left;
       transition: transform $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
       transition-delay: 100ms;
-      &:nth-child(1) {
-        transform: scaleX(0);
-      }
-      &:nth-child(2) {
-        transform: scaleX(0);
-      }
-      &:nth-child(3) {
-        transform: scaleX(0);
-      }
-      &:nth-child(4) {
-        transform: scaleX(0);
-      }
-      &:nth-child(5) {
-        transform: scaleX(0);
-      }
+
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
       &:nth-child(6) {
         transform: scaleX(0);
       }
@@ -83,21 +65,14 @@
     .cover-segment {
       transform-origin: center left;
       transition: transform $transition * 5 cubic-bezier(0.09, 0.34, 0, 1);
-      &:nth-child(1) {
-        transform: scaleX(0);
-      }
-      &:nth-child(2) {
-        transform: scaleX(0);
-      }
+
+      &:nth-child(1),
+      &:nth-child(2),
       &:nth-child(3) {
         transform: scaleX(0);
       }
-      &:nth-child(4) {
-        transform: scaleX(1);
-      }
-      &:nth-child(5) {
-        transform: scaleX(1);
-      }
+      &:nth-child(4),
+      &:nth-child(5),
       &:nth-child(6) {
         transform: scaleX(1);
       }
@@ -109,21 +84,12 @@
 
     .cover-segment {
       transform-origin: center left;
-      &:nth-child(1) {
-        transform: scaleX(0);
-      }
-      &:nth-child(2) {
-        transform: scaleX(0);
-      }
-      &:nth-child(3) {
-        transform: scaleX(0);
-      }
-      &:nth-child(4) {
-        transform: scaleX(0);
-      }
-      &:nth-child(5) {
-        transform: scaleX(0);
-      }
+
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
       &:nth-child(6) {
         transform: scaleX(0);
       }
@@ -138,21 +104,11 @@
       //transition: transform $transition * 3 cubic-bezier(0.09, 0.34, 0, 1);
       transition: transform $transition * 2 ease;
 
-      &:nth-child(1) {
-        transform: scaleX(1);
-      }
-      &:nth-child(2) {
-        transform: scaleX(1);
-      }
-      &:nth-child(3) {
-        transform: scaleX(1);
-      }
-      &:nth-child(4) {
-        transform: scaleX(1);
-      }
-      &:nth-child(5) {
-        transform: scaleX(1);
-      }
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
       &:nth-child(6) {
         transform: scaleX(1);
       }
@@ -171,15 +127,9 @@
       z-index: 10;
 
       .cover-segment {
-        &:nth-child(1) {
-          transform: scaleX(0);
-        }
-        &:nth-child(2) {
-          transform: scaleX(0);
-        }
-        &:nth-child(3) {
-          transform: scaleX(0);
-        }
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3),
         &:nth-child(4) {
           transform: scaleX(0);
         }
@@ -188,10 +138,8 @@
     .cover-segment {
       width: calc(100vw /#{$segments-mobile} + 0.5px);
       margin-left: -0.5px;
-      
-      &:nth-child(5) {
-        display: none;
-      }
+
+      &:nth-child(5),
       &:nth-child(6) {
         display: none;
       }
@@ -217,21 +165,11 @@
       opacity: 1;
 
       .cover-segment {
-        &:nth-child(1) {
-          transform: scaleX(1);
-        }
-        &:nth-child(2) {
-          transform: scaleX(1);
-        }
-        &:nth-child(3) {
-          transform: scaleX(1);
-        }
-        &:nth-child(4) {
-          transform: scaleX(1);
-        }
-        &:nth-child(5) {
-          transform: scaleX(1);
-        }
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5),
         &:nth-child(6) {
           transform: scaleX(1);
         }

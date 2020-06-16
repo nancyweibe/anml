@@ -10,7 +10,7 @@
     justify-content: space-between;
     transform: translateY(-50%);
 
-    button{
+    button {
       background-color: transparent;
       color: $color-white;
       border: 0;
@@ -18,8 +18,10 @@
       font-size: 1.4rem;
       transition: opacity $transition ease;
 
-      &:hover{
-        opacity: 1;
+      @media screen and (min-width: $mobile+1) {
+        &:hover {
+          opacity: 1;
+        }
       }
     }
   }
@@ -30,11 +32,11 @@
     display: flex;
     justify-content: center;
 
-    button{
+    button {
       width: 40px;
       height: 1px;
       margin: 0 0.5rem;
-      border:none;
+      border: none;
       background-color: $color-white;
       opacity: 0.5;
       transition: opacity $transition ease;

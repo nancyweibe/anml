@@ -40,69 +40,21 @@
 
   &:after {
     content: "";
-    display: block;
-    width: 110%;
-    margin-left: -5%;
-    height: 4px;
     position: absolute;
-    left: 0;
-    top: 55%;
-    transform: translateY(-50%) scaleX(0);
-    background-color: $color-white;
+    display: block;
+    height: 30%;
+    width: 120%;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%) scaleX(0);
     transform-origin: center left;
+    background-color: rgba($color-white, 0.3);
     transition: transform $transition * 2 cubic-bezier(0.09, 0.34, 0, 1);
   }
 
-  &:active {
-    opacity: 0.5;
-  }
-
-  &:hover,
-  &.active {
-    &:after {
-      transform: translateY(-50%) scaleX(1);
-    }
-
-    &:hover {
-      opacity: 1;
-    }
-  }
-
-  @media screen and (max-width: $mobile) {
-    &::after {
-      top: 50%;
-      height: 3px;
-    }
-  }
-}
-
-.special-link {
-  font-family: $font-family-secondary;
-  font-size: 0.625rem;
-  text-transform: uppercase;
-  color: $color-black;
-  letter-spacing: 0.1rem;
-  position: relative;
-  padding-left: 1.4rem;
-  text-decoration: none;
-  display: inline-block;
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: $color-black;
-    left: 0;
-    top: 50%;
-    transform-origin: center left;
-    transform: translateY(-50%) scaleX(0.1);
-    transition: transform $transition * 3 cubic-bezier(0.09, 0.34, 0, 1);
-  }
-
-  &:hover {
-    &::after {
-      transform: translateY(-50%) scaleX(1);
+  @media screen and (min-width: $mobile+1) {
+    &:hover:after {
+      transform: translateX(-50%) scaleX(1);
     }
   }
 }
@@ -118,9 +70,11 @@
   border: 1px solid $color-white;
   transition: all $transition ease;
 
-  &:hover {
-    background-color: transparent;
-    color: $color-white;
+  @media screen and (min-width: $mobile+1) {
+    &:hover {
+      background-color: transparent;
+      color: $color-white;
+    }
   }
 
   @media screen and (max-width: $mobile) {

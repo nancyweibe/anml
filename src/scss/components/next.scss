@@ -2,7 +2,9 @@
   background-color: $color-black;
   width: 100vw;
   height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
+  // height: calc(var(--vh, 1vh) * 100);
+  min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +24,7 @@
   align-items: center;
   justify-content: space-between;
 
-  >a {
+  > a {
     display: flex;
     width: 118px;
     height: 118px;
@@ -38,25 +40,26 @@
     transition: background-color $transition ease;
     background-color: $color-black;
 
-    &:first-child{
-      margin-left: calc((100vw/6 - 118px) / 2);
+    &:first-child {
+      margin-left: calc((100vw / 6 - 118px) / 2);
     }
 
-    &:last-child{
-      margin-right: calc((100vw/6 - 118px) / 2);
+    &:last-child {
+      margin-right: calc((100vw / 6 - 118px) / 2);
     }
 
-    &:hover{
-      background-color: $color-white;
-      color: $color-black;
+    @media screen and (min-width: $mobile+1) {
+      &:hover {
+        background-color: $color-white;
+        color: $color-black;
+      }
     }
   }
 
   @media screen and (max-width: $mobile) {
+    padding: 0 calc(100vw /#{$segments-mobile} - 118px / 2);
 
-    padding: 0 calc(100vw/#{$segments-mobile} - 118px/2);
-
-    >a {
+    > a {
       display: flex;
       flex-shrink: 0;
       border: 1px solid rgba($color-white, 0.5);
@@ -70,20 +73,14 @@
       text-decoration: none;
       transition: background-color $transition ease;
 
-      &:first-child{
+      &:first-child {
         margin-left: 0;
       }
-  
-      &:last-child{
+
+      &:last-child {
         margin-right: 0;
       }
-  
-      &:hover{
-        background-color: $color-white;
-        color: $color-black;
-      }
     }
-
   }
 }
 

@@ -8,18 +8,18 @@
   }
 
   &.without-nav {
-    .mask-carousel-items{
-      height: 100% ;
+    .mask-carousel-items {
+      height: 100%;
     }
   }
 
-  .mask-carousel-items{
+  .mask-carousel-items {
     position: relative;
     width: 100%;
     height: calc(100% - 7rem);
     overflow: hidden;
 
-    >div {
+    > div {
       position: absolute;
       left: 0;
       top: 0;
@@ -31,7 +31,7 @@
       -webkit-clip-path: inset(0 0 0 0);
       clip-path: inset(0 0 0 0);
       transform: scale(1.1);
-      
+
       &.previous {
         z-index: 1;
         -webkit-clip-path: inset(0 0 0 100%);
@@ -43,7 +43,9 @@
         transform: translateX(10%);
         -webkit-clip-path: inset(0 0 0 100%);
         clip-path: inset(0 0 0 100%);
-        transition: clip-path $transition*3 cubic-bezier(0.09, 0.34, 0, 1), -webkit-clip-path $transition*3 cubic-bezier(0.09, 0.34, 0, 1), transform $transition*6 cubic-bezier(0.09, 0.34, 0, 1);
+        transition: clip-path $transition * 3 cubic-bezier(0.09, 0.34, 0, 1),
+          -webkit-clip-path $transition * 3 cubic-bezier(0.09, 0.34, 0, 1),
+          transform $transition * 6 cubic-bezier(0.09, 0.34, 0, 1);
       }
 
       &.backward {
@@ -51,7 +53,9 @@
         transform: translateX(-10%);
         -webkit-clip-path: inset(0 100% 0 0);
         clip-path: inset(0 100% 0 0);
-        transition: clip-path $transition*3 cubic-bezier(0.09, 0.34, 0, 1), -webkit-clip-path $transition*3 cubic-bezier(0.09, 0.34, 0, 1), transform $transition*6 cubic-bezier(0.09, 0.34, 0, 1);
+        transition: clip-path $transition * 3 cubic-bezier(0.09, 0.34, 0, 1),
+          -webkit-clip-path $transition * 3 cubic-bezier(0.09, 0.34, 0, 1),
+          transform $transition * 6 cubic-bezier(0.09, 0.34, 0, 1);
       }
     }
   }
@@ -62,16 +66,18 @@
     align-items: center;
     justify-content: center;
 
-    .mask-carousel-control-left, .mask-carousel-control-right {
+    .mask-carousel-control-left,
+    .mask-carousel-control-right {
       margin: 0 2rem;
       font-size: 1.4rem;
       opacity: 0.7;
       transition: opacity $transition ease;
 
-      &:hover{
-        opacity: 1;
+      @media screen and (min-width: $mobile+1) {
+        &:hover {
+          opacity: 1;
+        }
       }
     }
   }
-
 }

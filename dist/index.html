@@ -16,7 +16,19 @@
       class="overlay"
       style="position: fixed;background:black;width:100vw;height:100vh;left:0;top:0;z-index: 100;"
     ></div>
+
+    <div class="rotate-phone-notice">
+      <img src="assets/img/RotatePhone.png" class="rotate-phone-notice__img" />
+    </div>
+
     <div class="header">
+      <div class="rotate-phone-notice">
+        <img
+          src="assets/img/RotatePhone.png"
+          class="rotate-phone-notice__img"
+        />
+      </div>
+
       <div class="logo">
         <a href="./">
           <?xml version="1.0" encoding="utf-8"?>
@@ -240,5 +252,20 @@
     </script>
 
     <script src="./assets/bundle.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-61533628-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-61533628-2");
+    </script>
   </body>
 </html>

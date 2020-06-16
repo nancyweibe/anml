@@ -28,9 +28,8 @@ body {
   font-size: $font-size;
   color: $color-text;
   overscroll-behavior: contain;
-  
 
-  a{
+  a {
     cursor: inherit !important;
   }
 
@@ -46,7 +45,8 @@ body {
     background-clip: padding-box;
     -webkit-border-radius: 7px;
     background-color: rgba(0, 0, 0, 0.15);
-    -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+      inset 1px 1px 0px rgba(0, 0, 0, 0.05);
   }
   *::-webkit-scrollbar-button,
   &::-webkit-scrollbar-button {
@@ -70,11 +70,11 @@ body {
   }
 
   @media screen and (max-width: $lg) {
-    font-size: $font-size*0.9;
+    font-size: $font-size * 0.9;
   }
 
   @media screen and (max-width: $md) {
-    font-size: $font-size*0.8;
+    font-size: $font-size * 0.8;
   }
 
   @media screen and (max-width: $mobile) {
@@ -159,7 +159,7 @@ h2 {
   }
 }
 
-.disable-scroll{
+.disable-scroll {
   position: relative;
   height: 100%;
   overflow: hidden !important;
@@ -479,7 +479,6 @@ h2 {
   }
 }
 
-
 .pt-xl {
   padding-top: $spacer * 2;
 
@@ -492,7 +491,7 @@ h2 {
   margin-left: -3px;
 
   @media screen and (max-width: $md) {
-    margin-left:0;
+    margin-left: 0;
   }
 }
 
@@ -500,7 +499,7 @@ h2 {
   margin-left: -4px;
 
   @media screen and (max-width: $md) {
-    margin-left:0;
+    margin-left: 0;
   }
 }
 
@@ -597,8 +596,8 @@ h2 {
 .bg-cover-half {
   position: relative;
 
-  &::after{
-    content: '';
+  &::after {
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
@@ -612,8 +611,8 @@ h2 {
 .bg-white-half-b {
   position: relative;
 
-  &::after{
-    content: '';
+  &::after {
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
@@ -649,14 +648,14 @@ h2 {
 
 .offset-m30 {
   background-position-x: -30% !important;
-  img{
+  img {
     margin-left: -30%;
   }
 }
 
 .offset-m70 {
   background-position-x: -70% !important;
-  img{
+  img {
     margin-left: -70%;
   }
 }
@@ -684,7 +683,7 @@ h2 {
     height: auto !important;
     min-height: 0 !important;
   }
-  .pb-d-md{
+  .pb-d-md {
     padding-bottom: $spacer/2 !important;
   }
   .pt-d-md {
@@ -699,7 +698,6 @@ h2 {
 }
 
 @media screen and (max-width: $mobile) {
-
   .mb-2-mb {
     margin-bottom: 2rem !important;
   }
@@ -710,7 +708,7 @@ h2 {
 
   .offset-m30-mb {
     background-position-x: -30% !important;
-    img{
+    img {
       margin-left: -30%;
     }
   }
@@ -725,7 +723,7 @@ h2 {
 
   .offset-m70-mb {
     background-position-x: -70% !important;
-    img{
+    img {
       margin-left: -70%;
     }
   }
@@ -750,8 +748,8 @@ h2 {
     padding-top: $spacer/2 !important;
     padding-bottom: $spacer/2 !important;
   }
-  
-  .d-none-mb{
+
+  .d-none-mb {
     display: none !important;
   }
 

@@ -1,7 +1,8 @@
 .intro {
   width: 100vw;
   height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
+  // height: calc(var(--vh, 1vh) * 100);
+  max-height: 100vh;
   position: fixed;
   left: 0;
   top: 0;
@@ -26,8 +27,11 @@
 
     span {
       transition: opacity $transition * 2 cubic-bezier(0.09, 0.34, 0, 1);
-      &:hover {
-        opacity: 0.5;
+
+      @media screen and (min-width: $mobile+1) {
+        &:hover {
+          opacity: 0.5;
+        }
       }
     }
   }
@@ -261,9 +265,8 @@
         flex-wrap: wrap;
         font-size: 2.5rem;
         line-height: 2.5rem;
-        
       }
-  
+
       p {
         font-size: 0.5625rem;
         letter-spacing: 0.28125rem;
@@ -272,5 +275,19 @@
   }
 }
 
-@keyframes scroll-line{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
-@-webkit-keyframes scroll-line{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+@keyframes scroll-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+@-webkit-keyframes scroll-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}

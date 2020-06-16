@@ -1,0 +1,21 @@
+.rotate-phone-notice {
+  display: none;
+  position: fixed;
+  background: #000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999999999999;
+
+  @media only screen and (max-width: $mobile) and (orientation: landscape) {
+    display: block;
+  }
+}
+
+.rotate-phone-notice__img {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+}
