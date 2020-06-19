@@ -22,8 +22,7 @@
         box-sizing: border-box;
 
         .block-text-side-wraper{
-            width: 90%;
-            max-width: 390px;
+            width: 90%;            
         }
     }    
     .block-image-side{
@@ -37,6 +36,10 @@
             top: 100px;
             position: relative;
             z-index: 9;
+
+            @media screen and (min-width: 1700px) {
+                top: 145px;
+            }
         }
     }
     
@@ -76,7 +79,7 @@
     }
     .centered-text-block{
         width: 100%;
-        max-width: 280px;
+        max-width: 550px;
         margin: 0 auto;
         text-align: center;
     }
