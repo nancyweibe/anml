@@ -65,6 +65,7 @@
         background-position: right;
         background-size: cover;
         background-attachment: fixed;
+        height: 100vh;
 
         .block-text-side-wraper{
             position: relative;
@@ -134,20 +135,88 @@
       }
 
       .theremometer-section3-video{
-        width:100%;
-        min-height: 100%;
+            width: 26.3%;
+            position: absolute;
+            top: 10%;
+            left: 32%;
+            z-index: 9;
+            border-radius: 4%;
+            overflow: hidden;            
+            box-sizing: border-box;
+            div{
+                position: relative;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+            video{
+                display: block;
+                width: 100%;
+                min-height: 100px;
+            }
+      }
+      .theremometer-section3-mobile{
+        width: 48.3%;
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 12%;
+        left: 10%;
         z-index: 9;
+        border-radius: 4%;
+        overflow: hidden;
+        box-sizing: border-box;
+
+        div{
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        video{
+            display: block;
+            width: 100%;
+            min-height: 100px;
+        }
       }
       .theremometer-section5-video{
-        width:100%;
-        min-height: 100%;
+            width: 23.3%;
+            position: absolute;
+            top: 12.4%;
+            left: 37%;
+            z-index: 9;
+            border-radius: 4%;
+            overflow: hidden;
+            height: 25vw;
+            box-sizing: border-box;
+            div{
+                position: relative;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+            video{
+                display: block;
+                width: 100%;
+                min-height: 100px;
+            }
+      }
+
+      .theremometer-section5-mobile{
+        width: 48.3%;
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 12%;
+        left: 44%;
         z-index: 9;
+        border-radius: 4%;
+        overflow: hidden;
+        box-sizing: border-box;
+
+        div{
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        video{
+            display: block;
+            width: 100%;
+            min-height: 100px;
+        }
       }
 
       .theremometer-section3 .block-image-side,  .theremometer-section5 .block-image-side{
@@ -205,5 +274,9 @@
         }
         .block-image-text .block-text-side-wraper.mobile-padding, .block-text-image .block-text-side-wraper.mobile-padding{
             padding: 60px 0;
+        }
+
+        .paralax-block-text{
+            height: 100vh;
         }
     }
