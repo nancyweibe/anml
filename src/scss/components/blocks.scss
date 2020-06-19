@@ -561,3 +561,16 @@
     opacity: 0;
   }
 }
+
+// bell helmets
+
+.helmets_two_img_row{
+  padding: 30px 0 70px 0;
+  .block-text-image{
+    width: 100%;
+  }
+  img{
+    box-shadow: 0 0 20px rgba(0,0,0,.4);
+    margin-bottom: 50px;
+  }
+}
