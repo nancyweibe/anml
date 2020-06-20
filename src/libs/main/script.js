@@ -1574,20 +1574,3 @@ function checkParalaxText(){
 }
 
 checkParalaxText();
-
-// document.querySelector('body').addEventListener('touchstart', ()=>{
-//   var section3Video = document.getElementById("section3-video");
-//   var section3VideoMob = document.getElementById("section3-video-mobile");
-//   var section5Video = document.getElementById("section5-video");
-//   var section5VideoMob = document.getElementById("section5-video-mobile");
-//   // console.log(section3Video, section5Video);
-//   if(section3Video)  section3Video.play();
-//   if(section5Video) section5Video.play();
-//   if(section3VideoMob) section3VideoMob.play();
-//   if(section5VideoMob)section5VideoMob.play();
-// })
-
-    
-
-
-
