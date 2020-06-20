@@ -1563,7 +1563,9 @@ function checkParalaxText(){
           item.style.transform = "translate(0, "+parseInt(limit/2.5)+"px)";  
         }       
 
-    });    
+    });
+    
+    
   }
   
   if(paralaxBlocks.length){
@@ -1572,13 +1574,3 @@ function checkParalaxText(){
 }
 
 checkParalaxText();
-
-// play video on thermometr case study
-var section3Video = document.getElementById("section3-video");
-var section5Video = document.getElementById("section5-video");
-console.log(section3Video, section5Video);
-if(section3Video) section3Video.load = () => {section3Video.play()}
-if(section5Video) section5Video.load = () => {section5Video.play()}
-
-
-
