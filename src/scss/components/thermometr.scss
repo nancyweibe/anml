@@ -133,7 +133,12 @@
         color: rgb(176, 176, 176);
         line-height: 1.6;
       }
-
+      
+      .theremometer-section5{
+        min-height: 650px;
+        height: 90vh;
+        max-height: 890px;
+      }
       .theremometer-section3-video{
             width: 26.3%;
             position: absolute;
@@ -222,9 +227,40 @@
       .theremometer-section3 .block-image-side,  .theremometer-section5 .block-image-side{
           position: relative;
       }
+
+      .theremometer-section8{
+          min-height: 95vh;
+      }
       
+      @media screen and (max-width: 1200px) and (orientation: portrait) {
+        .hero .cover-bg .cover-bg-img.thermometer-hero-bg{
+            background-position-x: 32%!important;
+        }
+    }
+
+    @media screen and (max-width: 991px) {
+        .theremometer-section8{
+            min-height: unset;
+            padding: 50px 0;
+        }
+        .theremometer-section3{
+            min-height: 700px;
+            height: auto;
+        }
+        .theremometer-section5{
+            max-height: unset;
+            height: auto;
+        }
+
+        .theremometer-section5 .block-image-side, .theremometer-section5 .block-text-side, .theremometer-section3 .block-image-side, .theremometer-section3 .block-text-side, .theremometer-section8 .block-image-side, .theremometer-section8 .block-text-side{
+            width: 100%;
+        }
+        .theremometer-section4{
+            min-height: 90vh;
+        }
+    }
      
-      
+         
 
     @media screen and (max-width: 767px) {
         .thermometer_fonts h3 {        
@@ -245,7 +281,7 @@
         
         .block-text-side{
             width: 100%;
-            padding: 0 10px;
+            padding: 0 30px;
             box-sizing: border-box;
     
             .block-text-side-wraper{
@@ -279,4 +315,21 @@
         .paralax-block-text{
             height: 100vh;
         }
+
+        .big-image-wraper.thermometer_fonts img {
+            top:0;
+        }
+
+        .theremometer-section5{
+            padding-top: 80px;
+        }
+
+        .theremometer-section8 h3, .theremometer-section-top h3{
+            font-size: 26pt;
+        }
+        .theremometer-section-top p, .theremometer-section8 p{
+            font-size: 18pt;
+        }
+        
+        
     }
