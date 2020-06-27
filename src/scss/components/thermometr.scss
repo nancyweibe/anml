@@ -1,5 +1,5 @@
     .main-container-wraper{
-        width: 90%;
+        width: 100%;
         max-width: 1700px;
         margin: 0 auto;
     }
@@ -44,11 +44,11 @@
     }
     
     .block-text-image .block-text-side-wraper{
-        padding-left: calc((100vw / 6) - 5vw);
+        padding-left: calc(100vw / 6);
         padding-right: 0;
     }
     .block-image-text .block-text-side-wraper{
-        padding-right: calc((100vw / 6) - 5vw);
+        padding-right: calc(100vw / 6);
         padding-left: 0;
         margin-right: 0;
         margin-left: auto;
