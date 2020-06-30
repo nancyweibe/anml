@@ -85,7 +85,7 @@
     }
 
     .big-image-wraper {
-        background-color: #ededed;
+        background-color: #F7F7F7;
         margin-bottom: 120px;
         img{
             position: relative;
@@ -100,19 +100,7 @@
     }
     .thermometr-mobile{
         display: none;        
-    }
-
-    .thermometer_fonts h3 {        
-            font-size: 40px;
-            font-family: "Sharp Sans No1";
-            line-height: 1.2; 
-    }
- 
-    .thermometer_fonts p {
-        font-size: 20px;
-        font-family: "Crimson Text";
-        line-height: 1.6;
-    }
+    }  
     .testimonials_heading{
         font-size: 11px;
         font-family: "MB Empire";
@@ -120,18 +108,18 @@
         text-transform: uppercase;
         line-height: 1.636;
       }
-      .testimonials_content{
-            font-size: 28px;
-            font-family: "Crimson Text";
-            color: rgb(112, 112, 112);
-            line-height: 1.2; 
-      }
-      .testimonials_signature {
-        font-size: 20px;
-        font-family: "Crimson Text";
-        color: rgb(176, 176, 176);
-        line-height: 1.6;
-      }
+    //   .testimonials_content{
+    //         font-size: 28px;
+    //         font-family: "Crimson Text";
+    //         color: rgb(112, 112, 112);
+    //         line-height: 1.2; 
+    //   }
+    //   .testimonials_signature {
+    //     font-size: 20px;
+    //     font-family: "Crimson Text";
+    //     color: rgb(176, 176, 176);
+    //     line-height: 1.6;
+    //   }
       
       .theremometer-section5{
         min-height: 650px;
@@ -262,11 +250,7 @@
          
 
     @media screen and (max-width: 767px) {
-        .thermometer_fonts h3 {        
-            font-size: 30px;
-            font-family: "Sharp Sans No1";
-            line-height: 1.067;
-        }
+        
         .thermometr-desktop{
             display: none;        
         }
@@ -321,14 +305,7 @@
 
         .theremometer-section5{
             padding-top: 80px;
-        }
-
-        .theremometer-section8 h3, .theremometer-section-top h3{
-            font-size: 26pt;
-        }
-        .theremometer-section-top p, .theremometer-section8 p{
-            font-size: 18pt;
-        }
+        }      
         
         
     }
