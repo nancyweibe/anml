@@ -118,6 +118,10 @@
       pointer-events: none;
       opacity: 0;
       transition: opacity $transition/2 ease;
+      
+      &.active {
+        pointer-events: all;
+      }
 
       &.full-screen {
         width: 100vw;
