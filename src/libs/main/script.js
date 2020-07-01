@@ -1548,7 +1548,6 @@ function play() {
 
 
 function checkParalaxText(){
-  // console.log('hello');
   var paralaxBlocks = document.querySelectorAll(".paralax-block-text");   
   const height = window.innerHeight;
 
@@ -1561,16 +1560,47 @@ function checkParalaxText(){
         var limit = parseInt(height/3) - parseInt(positionTop);
         if(limit < 500 && limit > -500){
           item.style.transform = "translate(0, "+parseInt(limit/2.5)+"px)";  
-        }       
+        }     
 
-    });
-    
+    });  
     
   }
   
   if(paralaxBlocks.length){
-    window.onscroll = checkPosition;
+    document.addEventListener('scroll', checkPosition);
+    // window.onscroll = checkPosition;
   }  
 }
 
 checkParalaxText();
+
+
+function scrollParalax(){
+  var el = document.querySelectorAll('.paralax_scroll');
+  const height = window.innerHeight;
+  const scale = height/100;
+
+  function paralaxImage(){
+
+    var wraper = document.querySelectorAll(".paralax_scroll");
+    var images = document.querySelectorAll(".paralax_scroll img");
+
+    wraper.forEach(function(item, index) {         
+      var positionTop = item.getBoundingClientRect().top;
+       var image = item.children;     
+        var limit = parseInt((parseInt(height) - parseInt(positionTop))/scale);        
+        if(limit > 40 && limit < 80){
+          var result = parseInt(40 - parseInt(limit - 40));
+          images[index].style.transform = "translate(0, -"+result+"vh)";  
+        }     
+
+    }); 
+
+  }
+
+  if(el.length){
+    document.addEventListener('scroll', paralaxImage);
+  }
+}
+
+scrollParalax();

@@ -562,6 +562,27 @@
   }
 }
 
+// Smart termometer
+
+
+.paralax_scroll{
+  position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
+    img{
+      width: 100%;
+      // transition: 1s!important;
+      transform: translateY(-40vh);
+      min-height: 100vh;
+      object-fit: cover;
+    }
+}
+
 // bell helmets
 
 .helmets_two_img_row{
