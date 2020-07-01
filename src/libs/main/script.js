@@ -1588,9 +1588,11 @@ function scrollParalax(){
     wraper.forEach(function(item, index) {         
       var positionTop = item.getBoundingClientRect().top;
        var image = item.children;     
-        var limit = parseInt((parseInt(height) - parseInt(positionTop))/scale);        
-        if(limit > 40 && limit < 80){
-          var result = parseInt(40 - parseInt(limit - 40));
+        var limit = parseInt((parseInt(height) - parseInt(positionTop))/scale);
+             
+        if(limit > 0 && limit < 100){
+          var result =parseInt( parseInt(100 - limit) * .7);
+           console.log(limit, result, 'res');  
           images[index].style.transform = "translate(0, -"+result+"vh)";  
         }     
 
