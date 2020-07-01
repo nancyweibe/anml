@@ -28,6 +28,13 @@
         width: 49%;
         box-sizing: border-box;
 
+        &.right {
+            img{
+                width: 91%;
+                margin-left: auto;
+            }
+        }
+
         img{
             width: 100%;
         }
@@ -127,10 +134,10 @@
         max-height: 890px;
       }
       .theremometer-section3-video{
-            width: 26.3%;
+            width: 23.9%;
             position: absolute;
             top: 10%;
-            left: 32%;
+            left: 38%;
             z-index: 9;
             border-radius: 4%;
             overflow: hidden;            
@@ -273,7 +280,16 @@
             }
         }    
         .block-image-side{
-            width: 100%;    
+            width: 100%;
+
+            
+            &.right {
+                img{
+                width: 100%;
+                margin-left: auto;
+                }
+            }
+
             img{
                 width: 100%;
             }
