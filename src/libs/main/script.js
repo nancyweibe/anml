@@ -9,9 +9,9 @@ import {
 import CoverAnim from "../coveranim/coveranim";
 import SepText from "../septext/septext";
 import FlowImages from "../flowimages/flowimages";
-import MaskCarousel from "../maskcarousel/MaskCarousel";
-import Odometer from "../odometer/Odometer";
-import Parralax from "../parralax/Parralax";
+import MaskCarousel from "../maskcarousel/maskcarousel";
+import Odometer from "../odometer/odometer";
+import Parralax from "../parralax/parralax";
 import styles from "../../scss/style.scss";
 import "../tinyslider/tiny-slider.scss";
 import { tns } from "../tinyslider/tiny-slider";
