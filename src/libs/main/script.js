@@ -1572,7 +1572,7 @@ function checkParalaxText(){
   }  
 }
 
-checkParalaxText();
+//checkParalaxText();
 
 
 function scrollParalax(){
