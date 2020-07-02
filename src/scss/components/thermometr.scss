@@ -81,6 +81,7 @@
 
     .centered-text-block-wrap{
         padding: 70px 0;
+        padding-top: 150px;
         margin: 0 auto;
         display: block;
     }
@@ -257,6 +258,10 @@
          
 
     @media screen and (max-width: 767px) {
+
+        .centered-text-block-wrap{
+            padding-top: 80px;
+        }
         
         .thermometr-desktop{
             display: none;        
@@ -301,6 +306,10 @@
             margin-left: auto;
             margin-right: auto;
             padding: 0 0 60px 0;
+
+            &.reduce-padding-mobile {
+                padding: 0 0 20px 0;
+            }
         }
         .block-image-text .block-text-side-wraper{
             margin-right: auto;
