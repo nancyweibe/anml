@@ -80,6 +80,9 @@ function init() {
     false
   );
 
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+
   if (typeof isIndex == "undefined") {
     isIntro = false;
 
@@ -1094,9 +1097,8 @@ function initEvents() {
 
 function globalEvents() {
   window.addEventListener("resize", () => {
-    // let vh = window.innerHeight * 0.01;
-    // document.documentElement.style.setProperty("--vh", `${vh}px`);
-    document.querySelector(".next").style.height = window.innerHeight + "px";
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
 }
 
