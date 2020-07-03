@@ -259,8 +259,24 @@
 
     @media screen and (max-width: 767px) {
 
+        .theremometer-section8 {
+            padding-bottom: 0;
+
+            .move-image-bottom {
+                margin-bottom: -120px;
+            }
+        }
+
+        .big-image-wraper {
+            margin-bottom: 80px;
+        }
+
         .centered-text-block-wrap{
             padding-top: 80px;
+
+            &.extra-padding-mobile {
+                padding-top: 120px;
+            }
         }
         
         .thermometr-desktop{
@@ -278,6 +294,10 @@
             width: 100%;
             padding: 0 30px;
             box-sizing: border-box;
+
+            &.extra-padding-mobile {
+                padding-top: 30px;
+            }
     
             .block-text-side-wraper{
                 width: 100%;
