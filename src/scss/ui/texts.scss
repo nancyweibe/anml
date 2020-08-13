@@ -62,6 +62,23 @@
   text-transform: uppercase;
 }
 
+.text-caption-wh {
+  font-family: $font-family-additional;
+  font-size: 4rem;
+  line-height: 4.625rem;
+  color: $color-white;
+  margin: 0;
+  position: relative;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    display: block;
+  }
+}
+
 .text-caption {
   font-family: $font-family-additional;
   font-size: 4rem;
@@ -210,7 +227,7 @@
     line-height: 1.125rem;
   }
 
-  .text-caption {
+  .text-caption, .text-caption-wh {
     font-size: 2.25rem;
     line-height: 2.875rem;
   }
