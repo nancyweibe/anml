@@ -702,6 +702,13 @@ h2 {
 }
 
 @media screen and (max-width: $mobile) {
+  .p-0-mb {
+    padding: 0 !important;
+  }
+  .plr-mb-d {
+    padding-left: $container-padding-mobile;
+    padding-right: $container-padding-mobile;
+  }
   .mb-2-mb {
     margin-bottom: 2rem !important;
   }
