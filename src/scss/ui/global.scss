@@ -286,12 +286,20 @@ h2 {
   margin-bottom: 4rem !important;
 }
 
+.mb-6 {
+  margin-bottom: 6rem !important;
+}
+
 .pb-m {
   padding-bottom: $spacer/2 !important;
 
   @media screen and (max-width: $mobile) {
     padding-bottom: $spacer/4 !important;
   }
+}
+
+.ml-05 {
+  margin-left: 0.5rem !important;
 }
 
 .mb-d {
@@ -673,6 +681,14 @@ h2 {
   margin-bottom: 0 !important;
 }
 
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.mb-8 {
+  margin-bottom: 8rem !important;
+}
+
 @media screen and (max-width: $md) {
   .d-md-none {
     display: none !important;
@@ -702,6 +718,12 @@ h2 {
 }
 
 @media screen and (max-width: $mobile) {
+  .text-center-mb {
+    text-align: center;
+  }
+  .justify-center-mb {
+    justify-content: center;
+  }
   .p-0-mb {
     padding: 0 !important;
   }
@@ -715,6 +737,10 @@ h2 {
 
   .mb-4-mb {
     margin-bottom: 2rem !important;
+  }
+
+  .mb-6-mb {
+    margin-bottom: 6rem !important;
   }
 
   .offset-m30-mb {

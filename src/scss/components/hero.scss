@@ -88,6 +88,12 @@
           transform: translateY(0);
         }
       }
+
+      &.center {
+        top: 50%;
+        transform: translateY(-50%);
+        max-width: 700px;
+      }
     }
   }
 
@@ -151,7 +157,10 @@
       }
       .cover-bg-title {
         top: 70%;
-        left: 2rem;
+        left: 0;
+        padding-left: 2rem;
+        padding-right: 2rem;
+
         h2 {
           font-size: 3rem;
           line-height: 3.1rem;
