@@ -745,11 +745,11 @@
     background-color: $color-black;
 
     &:first-child {
-      margin-left: calc((100vw / 6 - 118px) * -1);
+      margin-left: calc((100vw / 6 - 118px) / 2);
     }
 
     &:last-child {
-      margin-right: calc((100vw / 6 - 118px) * -1);
+      margin-right: calc((100vw / 6 - 118px) / 2);
     }
 
     @media screen and (min-width: $mobile+1) {
@@ -761,22 +761,9 @@
   }
 
   @media screen and (max-width: $mobile) {
-    padding: 0;
+    padding: 0 calc(100vw /4 - 118px / 2);
 
     > a {
-      display: flex;
-      flex-shrink: 0;
-      border: 1px solid rgba($color-white, 0.5);
-      align-items: center;
-      justify-content: center;
-      color: $color-white;
-      font-family: $font-family-secondary;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-size: 0.625rem;
-      text-decoration: none;
-      transition: background-color $transition ease;
-
       &:first-child {
         margin-left: 0;
       }
@@ -795,8 +782,8 @@
   
   li{
     font-size: 1.25rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    margin-bottom: $spacer * 0.14;
+
     &::before {
       content: "\2022";
       color: $color-white;
@@ -804,6 +791,13 @@
       display: inline-block;
       width: 1em;
       margin-left: -1em;
+    }
+  }
+
+  @media screen and (max-width: $md) {
+    li{
+      font-size: 1.25rem;
+      margin-bottom: $spacer * 0.10;
     }
   }
 }

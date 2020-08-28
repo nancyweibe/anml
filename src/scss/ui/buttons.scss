@@ -59,6 +59,55 @@
   }
 }
 
+.link-location {
+  display: block;
+  text-decoration: none;
+
+  .text-sub-label {
+    line-height: 1;
+  }
+
+  .link-location-op {
+    opacity: 0.5;
+    margin-top: 0.8rem;
+    transition: opacity $transition ease;
+  }
+
+  img {
+    opacity: 0.5;
+    margin-top: 0.8rem;
+    transition: opacity $transition ease;
+  }
+
+  .text-subtitle {
+    display: inline-block;
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      height: 30%;
+      width: 120%;
+      left: 50%;
+      bottom: 5%;
+      transform: translateX(-50%) scaleX(0);
+      transform-origin: center left;
+      background-color: rgba($color-white, 0.3);
+      transition: transform $transition * 2 cubic-bezier(0.09, 0.34, 0, 1);
+    }
+  }
+
+  @media screen and (min-width: $mobile+1) {
+    &:hover {
+      .text-subtitle {
+        &:after {
+          transform: translateX(-50%) scaleX(1);
+        }
+      }
+    }
+  }
+}
+
 .btn-submit {
   background-color: $color-white;
   color: $color-text;

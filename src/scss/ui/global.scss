@@ -395,6 +395,22 @@ h2 {
   }
 }
 
+.mb-dh {
+  margin-bottom: $spacer * 0.62 !important;
+
+  @media screen and (max-width: $md) {
+    margin-bottom: $spacer * 0.34 !important;
+  }
+}
+
+.mb-sm {
+  margin-bottom: $spacer * 0.18 !important;
+
+  @media screen and (max-width: $md) {
+    margin-bottom: $spacer * 0.12 !important;
+  }
+}
+
 .pt-d {
   padding-top: $spacer;
 
